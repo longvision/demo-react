@@ -37,6 +37,7 @@ module.exports = {
       },
     ],
     'func-names': 'off',
+    'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'no-process-exit': 'off',
     'object-shorthand': 'off',
