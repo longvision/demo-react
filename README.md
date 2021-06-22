@@ -1,3 +1,26 @@
+# Organizacao de pastas: Atomic Design Pattern:
+
+- Todas as pastas comecam com letras minusculas, apenas as pastas que sao componentes react comecao com Maiuscula, pois o React exige que assim sejam declarados.
+
+1. Pasta src contem o fonte.
+2. os componentes react estao na pasta components
+3. as configuracoes na config
+4. a baseURL para e endpoints estao na services
+5. o redux esta na pasta store
+6. e as funcoes auxiliares na pasta utils.
+
+# Pasta Components:
+
+-Dividem-se em 5 pastas:
+
+1. pages: Sao cada aba do website: por exemplo: Mapas, Clima, Animacoes, Hidrica, Eolica, Estacoes, Arquivos
+2. smartTemplates: Sao os containers que contem a 'iteligencia' (chamadas a apis, actions do redux...) e repassam as informacoes para os componentes filhos mais burros.
+3. organisms: Sao componentes intermediarios que contem estruturas vivas, com identidade composta por componentes mais genericos, simples e mais burros.
+4. molecules: Sao compoenentes simples compostos de pequenos atomos mais simples.
+5. atoms: Sao os compoentes mais simples de todos, apenas recebem informacao.
+
+- do 1 ao 5, o tamanho dos componentes sempre diminuira e se atomizará.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

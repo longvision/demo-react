@@ -1,0 +1,38 @@
+{
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80, 120],
+  // "editor.acceptSuggestionOnEnter": "on",
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.codeLens": true,
+  "editor.fontSize": 14,
+  "editor.snippetSuggestions": "bottom",
+  "editor.suggest.showEnums": true,
+  "editor.autoIndent": "advanced",
+
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.suggest.preview": true,
+  "editor.letterSpacing": 0,
+  "javascript.suggest.autoImports": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript", "jsx"],
+  // Controls how suggestions are pre-selected when showing the suggest list
+  "editor.suggestSelection": "recentlyUsed",
+
+  // Enable word based suggestions
+
+  // Enable parameter hints
+  "editor.parameterHints.enabled": true,
+  "editor.tabCompletion": "on",
+  "editor.suggest.localityBonus": true
+}
