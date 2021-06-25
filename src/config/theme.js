@@ -13,13 +13,15 @@ export const theme = createMuiTheme({
       main: '#68E3EE',
       light: '#D2EEF1',
     },
+    background: {
+      paper: '#FFFFFF',
+      default: '#EAEAEA',
+    },
   },
   typography: {
     fontFamily: [
       '-apple-system',
-      'BlinkMacSystemFont',
-      'Montsserat',
-      'Arial',
+      'IBM Plex Sans',
       'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',

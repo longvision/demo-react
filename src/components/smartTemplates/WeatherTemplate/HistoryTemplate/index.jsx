@@ -1,10 +1,19 @@
 import React from 'react';
-// import WeatherNavigator from '../../../organisms/navigators/WeatherNavigator';
+
+import { Grid } from '@material-ui/core';
+
+import GlobalMap from '../../../organisms/maps/GlobalMap';
+import TextBox from '../../../organisms/textboxes/TextBox';
 
 const HistoryTemplate = () => {
   return (
     <>
-      <h1>WeatherTemplate</h1>
+      <Grid>
+        <GlobalMap />
+      </Grid>
+      <Grid>
+        <TextBox />
+      </Grid>
     </>
   );
 };

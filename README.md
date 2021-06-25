@@ -1,3 +1,7 @@
+# Base_URL da imagem:
+
+<!-- https://storage.googleapis.com/imagens.clima.tempook.com/web/global/hist/med/pnmm/web_global_hist_med_pnmm_2020-Jan_layer1_5e1fd2bf.png -->
+
 # Organizacao de pastas: Atomic Design Pattern:
 
 - Todas as pastas comecam com letras minusculas, apenas as pastas que sao componentes react comecao com Maiuscula, pois o React exige que assim sejam declarados.
