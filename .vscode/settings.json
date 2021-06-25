@@ -10,7 +10,6 @@
   "editor.fontSize": 14,
   "editor.snippetSuggestions": "bottom",
   "editor.suggest.showEnums": true,
-  "editor.autoIndent": "advanced",
 
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,

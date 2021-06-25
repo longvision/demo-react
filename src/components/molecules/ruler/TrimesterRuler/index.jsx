@@ -2,7 +2,7 @@ import React from 'react';
 import Ruler from '../../../atoms/ruler/Ruler';
 import { setTrimesterName } from '../../../../utils/dates.js';
 
-const MonthRuler = ({ disabled }) => {
+const MonthRuler = ({ disabled, setTrimester, trimester }) => {
   return (
     <>
       <Ruler
@@ -13,6 +13,8 @@ const MonthRuler = ({ disabled }) => {
         max={11}
         labelFunction={setTrimesterName}
         disabled={disabled}
+        handleChange={setTrimester}
+        value={trimester}
       />
     </>
   );

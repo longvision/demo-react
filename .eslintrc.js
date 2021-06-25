@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['react', 'import', 'prettier'],
   rules: {
     'react/jsx-no-undef': 0,
+    'operator-linebreak': 0,
     'prettier/prettier': 0,
     'arrow-body-style': 0,
     'react/jsx-filename-extension': 0,
@@ -56,6 +57,7 @@ module.exports = {
     ],
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 0,
+
     'react/self-closing-comp': [
       'error',
       {

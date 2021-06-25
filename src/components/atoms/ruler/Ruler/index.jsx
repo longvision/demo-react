@@ -10,17 +10,20 @@ const useStyles = makeStyles({
 
 const Ruler = ({
   title,
+  marks,
   defaultValue,
   step,
   min,
   max,
   labelFunction,
   disabled,
+  value,
+  handleChange,
 }) => {
   const classes = useStyles();
 
-  function valuetext(value) {
-    return labelFunction(value);
+  function valuetext(textValue) {
+    return labelFunction(textValue);
   }
   return (
     <div className={classes.root}>
@@ -32,10 +35,12 @@ const Ruler = ({
         defaultValue={defaultValue}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
+        valueLabelDisplay="on"
         valueLabelFormat={valuetext}
+        onChange={(e, v) => handleChange(v)}
+        value={value}
         step={step}
-        marks
+        marks={marks}
         min={min}
         max={max}
       />
