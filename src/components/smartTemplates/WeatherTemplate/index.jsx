@@ -3,6 +3,7 @@ import HistoryTemplate from './HistoryTemplate';
 import IndexTemplate from './IndexTemplate';
 
 import HeaderControls from '../../organisms/controls/HeaderControls';
+import RulerControls from '../../organisms/controls/RulerControls';
 
 const WeatherTemplate = () => {
   const [analysis, setAnalysis] = useState(1);
@@ -35,6 +36,14 @@ const WeatherTemplate = () => {
     }
   }, [analysis]);
 
+  useEffect(() => {
+    if (region !== 'mjo') {
+      setStatistics(0);
+      setVariables(0);
+      setPhase(0);
+    }
+  }, [region]);
+
   return (
     <>
       <HeaderControls
@@ -50,6 +59,7 @@ const WeatherTemplate = () => {
         setPhase={setPhase}
       />
       {renderTab(analysis)}
+      <RulerControls />
     </>
   );
 };
