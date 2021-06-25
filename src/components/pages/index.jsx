@@ -1,26 +1,19 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import HomeNavigator from '../organisms/navigators/HomeNavigator';
 import Weather from './Weather';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: '#eaeaea',
-  },
-}));
 const Pages = () => {
-  const classes = useStyles();
-
   return (
-    <Box className={classes.container}>
-      <HomeNavigator />
+    <>
       <Switch>
-        <Route path="/clima">
+        <Route path="/">
           <Weather />
         </Route>
       </Switch>
-    </Box>
+    </>
   );
 };
 
