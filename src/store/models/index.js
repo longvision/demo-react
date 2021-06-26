@@ -1,5 +1,5 @@
-import { auth } from './auth';
+import { history } from './history';
 
 export const models = {
-  auth,
+  history,
 };
