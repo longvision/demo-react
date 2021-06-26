@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import IconButton from '../../../atoms/button/IconButton';
+import IconButton from '../../../molecules/button/IconButton';
 import MonthRuler from '../../../molecules/ruler/MonthRuler';
 import TrimesterRuler from '../../../molecules/ruler/TrimesterRuler';
 import YearRuler from '../../../molecules/ruler/YearRuler';
