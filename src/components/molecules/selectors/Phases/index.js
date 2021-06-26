@@ -2,7 +2,9 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { mjo, pdo, aao } from './data.js';
 
-const Phases = ({ phase, setPhase, region }) => {
+const Phases = ({
+  phase, setPhase, region,
+}) => {
   const selectData = (selectedRegion) => {
     switch (selectedRegion) {
       case 'mjo':

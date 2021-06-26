@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import HistoryTemplate from './HistoryTemplate';
 import IndexTemplate from './IndexTemplate';
 
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+}));
+
 const WeatherTemplate = () => {
+  const classes = useStyles();
   const [analysis, setAnalysis] = useState(1);
   const [statistics, setStatistics] = useState(0);
   const [variables, setVariables] = useState(0);
@@ -45,7 +55,7 @@ const WeatherTemplate = () => {
   }, [region]);
 
   return (
-    <>
+    <Box>
       <HeaderControls
         analysis={analysis}
         statistics={statistics}
@@ -60,7 +70,7 @@ const WeatherTemplate = () => {
       />
       {renderTab(analysis)}
       <RulerControls />
-    </>
+    </Box>
   );
 };
 

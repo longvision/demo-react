@@ -4,24 +4,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
+  root: { '& > *': { margin: theme.spacing(1) } },
 }));
 
-const IconButton = ({ iconName, handleChange, title = '' }) => {
+const IconButton = ({ icon, handle, title = '', disabled }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Button
+        disabled={disabled}
         variant="contained"
         color="primary"
         size="large"
-        startIcon={iconName}
-        onClick={handleChange}
+        startIcon={icon}
+        onClick={handle}
       >
         {title}
       </Button>

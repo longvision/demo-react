@@ -12,9 +12,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  selectEmpty: { marginTop: theme.spacing(2) },
 }));
 
 const SelectorFilter = ({ title, label, state, setState, data }) => {
