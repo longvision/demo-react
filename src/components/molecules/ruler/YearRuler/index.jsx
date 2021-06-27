@@ -11,11 +11,13 @@ const useStyles = makeStyles(() => ({
     // height: 600,
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   icon: {
     height: 44,
-    width: 44,
+    width: 84,
   },
 }));
 
@@ -70,7 +72,7 @@ const YearRuler = ({
         min={maxYear - range - 10}
         max={maxYear - range}
         labelFunction={labelFunction}
-        disabled={disabled}
+        disabled={false}
         handleChange={setYear}
         value={year}
         marks

@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   slider: {
     // border: 'none',
     width: '100%',
+    borderColor: '#BFBFBF',
   },
 });
 
@@ -27,7 +28,9 @@ const CustomSlider = withStyles({
     width: 28,
     marginTop: -14,
     // marginLeft: -14,
+    backgroundColor: '#68E3EE',
     right: 5,
+
     '&:focus, &:hover, &$active': {
       backgroundColor: '#68E3EE',
 
@@ -61,7 +64,7 @@ const CustomSlider = withStyles({
     width: 5,
     marginTop: -3,
     bottom: -2,
-    marginRight: 5,
+    left: -10,
   },
   markActive: {
     opacity: 1,
@@ -96,7 +99,6 @@ const Ruler = ({
         className={classes.slider}
         onClick={handleToggle}
         variant="outlined"
-        color="primary"
       >
         <Typography id="discrete-slider" gutterBottom>
           {title}
