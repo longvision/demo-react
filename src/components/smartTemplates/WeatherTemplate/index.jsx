@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
   },
 }));
 
@@ -55,7 +56,7 @@ const WeatherTemplate = () => {
   }, [region]);
 
   return (
-    <Box>
+    <Box className={classes.container}>
       <HeaderControls
         analysis={analysis}
         statistics={statistics}

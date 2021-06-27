@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import Ruler from '../../../atoms/ruler/Ruler';
 import { setTrimesterName } from '../../../../utils/dates.js';
 
@@ -12,9 +13,17 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
   },
 
-  label: {
+  leftLabel: {
     height: 44,
-    width: 84,
+    width: 105,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightLabel: {
+    height: 44,
+    width: 105,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -29,7 +38,9 @@ const MonthRuler = ({
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <h2 className={classes.label}>DJF</h2>
+      <Box className={classes.leftLabel}>
+        <h2>DJF</h2>
+      </Box>
       <Ruler
         title=""
         defaultValue={0}
@@ -43,7 +54,9 @@ const MonthRuler = ({
         marks
         handleToggle={handleClick}
       />
-      <h2 className={classes.label}>NDJ</h2>
+      <Box className={classes.rightLabel}>
+        <h2>NDJ</h2>
+      </Box>
     </div>
   );
 };

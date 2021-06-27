@@ -6,18 +6,31 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '../../button/IconButton';
 import Ruler from '../../../atoms/ruler/Ruler';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    // height: 600,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  icon: {
+  rightIcon: {
+    [theme.breakpoints.down('sm')]: { width: 44 },
     height: 44,
-    width: 84,
+    width: 95,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  leftIcon: {
+    [theme.breakpoints.down('sm')]: { width: 44 },
+    height: 44,
+    width: 95,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
@@ -57,7 +70,7 @@ const YearRuler = ({
   return (
     <div className={classes.container}>
       <IconButton
-        className={classes.icon}
+        className={classes.leftIcon}
         icon={<RemoveIcon />}
         handle={handleDecrement}
         disabled={disableDecrement}
@@ -81,7 +94,7 @@ const YearRuler = ({
 
       <IconButton
         icon={<AddIcon />}
-        className={classes.icon}
+        className={classes.rightIcon}
         disabled={disableIncrement}
         handle={handleIncrement}
       />

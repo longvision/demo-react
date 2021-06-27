@@ -4,10 +4,12 @@ import { Slider, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: { width: '100%' },
-  slider: {
+  button: {
     // border: 'none',
+
     width: '100%',
     borderColor: '#BFBFBF',
+    '&:hover': { backgroundColor: 'transparent' },
   },
 });
 
@@ -96,7 +98,7 @@ const Ruler = ({
     <div className={classes.root}>
       <Button
         type="button"
-        className={classes.slider}
+        className={classes.button}
         onClick={handleToggle}
         variant="outlined"
       >
@@ -107,7 +109,6 @@ const Ruler = ({
           disabled={disabled}
           defaultValue={defaultValue}
           getAriaValueText={valuetext}
-          // aria-labelledby="|"
           aria-label="ios slider"
           valueLabelDisplay="on"
           valueLabelFormat={valuetext}

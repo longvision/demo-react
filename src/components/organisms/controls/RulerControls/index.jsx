@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    width: '90%',
   },
 }));
 
@@ -49,7 +50,6 @@ const RulerControls = () => {
         setTrimester={setTrimester}
         trimester={trimester}
       />
-      {`Range: ${range}, Year:${year}`}
       <YearRuler
         handleDecrement={handleDecrement}
         handleIncrement={handleIncrement}

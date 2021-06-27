@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Button } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  root: { '& > *': { margin: theme.spacing(1) } },
-}));
+const useStyles = makeStyles((theme) => ({ root: { '& > *': {} } }));
 
-const IconButton = ({ icon, handle, title = '', disabled }) => {
+const IconButton = ({
+  icon, handle, title = '', disabled, ...props
+}) => {
   const classes = useStyles();
 
   return (
@@ -19,6 +19,7 @@ const IconButton = ({ icon, handle, title = '', disabled }) => {
         size="large"
         startIcon={icon}
         onClick={handle}
+        {...props}
       >
         {title}
       </Button>
