@@ -5,23 +5,25 @@ import { setMonthName } from '../../../../utils/dates.js';
 
 const useStyles = makeStyles((theme) => ({ button: { border: 'none' } }));
 
-const MonthRuler = ({ disabled, setMonth, month, handleClick }) => {
+const MonthRuler = ({
+  disabled, setMonth, month, handleClick,
+}) => {
   const classes = useStyles();
   return (
     <>
-      <button type="button" className={classes.button} onClick={handleClick}>
-        <Ruler
-          title="Mes"
-          defaultValue={0}
-          step={1}
-          min={0}
-          max={11}
-          labelFunction={setMonthName}
-          disabled={disabled}
-          handleChange={setMonth}
-          value={month}
-        />
-      </button>
+      <Ruler
+        title="Mes"
+        defaultValue={0}
+        step={1}
+        min={0}
+        max={11}
+        labelFunction={setMonthName}
+        disabled={disabled}
+        handleChange={setMonth}
+        value={month}
+        marks
+        handleToggle={handleClick}
+      />
     </>
   );
 };

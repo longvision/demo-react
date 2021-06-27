@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '../../button/IconButton';
@@ -12,10 +12,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
   },
-  slider: {
-    border: 'none',
-    width: '100%',
-  },
+
   icon: {
     height: 44,
     width: 44,
@@ -28,7 +25,7 @@ const YearRuler = ({
   year,
   range,
   maxYear,
-  handleToggle,
+  handleClick,
   handleDecrement,
   handleIncrement,
   disableDecrement,
@@ -63,23 +60,22 @@ const YearRuler = ({
         handle={handleDecrement}
         disabled={disableDecrement}
       />
-      <button type="button" className={classes.slider} onClick={handleToggle}>
-        <Ruler
-          title=""
-          defaultValue={maxYear}
-          step={1}
-          // min={year - range > maxYear ? maxYear - 10 : maxYear - range - 10}
-          // max={year - range > maxYear ? maxYear : maxYear - range}
-          min={maxYear - range - 10}
-          max={maxYear - range}
-          labelFunction={labelFunction}
-          disabled={disabled}
-          handleChange={setYear}
-          value={year}
-          // marks={createDates(maxYear)}
-          marks={createDates(maxYear)}
-        />
-      </button>
+
+      <Ruler
+        title=""
+        defaultValue={maxYear}
+        step={1}
+        // min={year - range > maxYear ? maxYear - 10 : maxYear - range - 10}
+        // max={year - range > maxYear ? maxYear : maxYear - range}
+        min={maxYear - range - 10}
+        max={maxYear - range}
+        labelFunction={labelFunction}
+        disabled={disabled}
+        handleChange={setYear}
+        value={year}
+        marks
+        handleToggle={handleClick}
+      />
 
       <IconButton
         icon={<AddIcon />}

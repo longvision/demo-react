@@ -27,8 +27,6 @@ const RulerControls = () => {
       setRange(range + 1);
       setYear(year - 1);
     }
-
-    // if(year<=1989)
   }
   function handleIncrement() {
     if (year < maxYear && range > 0) {
@@ -55,12 +53,10 @@ const RulerControls = () => {
       <YearRuler
         handleDecrement={handleDecrement}
         handleIncrement={handleIncrement}
-        disableDecrement={
-          isTrimesterSearch || year > maxYear || (year <= 1988 && range === 33)
-        }
-        disableIncrement={isTrimesterSearch || year >= maxYear}
-        handleToggle={() => setIsTrimesterSearch(false)}
-        disabled={isTrimesterSearch || year > maxYear}
+        disableDecrement={year > maxYear || (year <= 1988 && range === 33)}
+        disableIncrement={year >= maxYear || range === 0}
+        handleClick={() => {}}
+        disabled={year > maxYear}
         year={year}
         setYear={setYear}
         range={range}
