@@ -1,3 +1,8 @@
+<!-- desde 1978 -->
+<!-- slider sem contrste na barra. -->
+<!-- ano+mes ou ano+trimestre -->
+<!-- botao de mais e menos na Fase -->
+
 # Base_URL da imagem:
 
 <!-- https://storage.googleapis.com/imagens.clima.tempook.com/web/global/hist/med/pnmm/web_global_hist_med_pnmm_2020-Jan_layer1_5e1fd2bf.png -->
