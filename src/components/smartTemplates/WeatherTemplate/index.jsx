@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HistoryTemplate from './HistoryTemplate';
 import IndexTemplate from './IndexTemplate';
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  paper: { backgroundColor: 'white', padding: 15 },
 }));
 
 const WeatherTemplate = () => {
@@ -57,18 +58,20 @@ const WeatherTemplate = () => {
 
   return (
     <Box className={classes.container}>
-      <HeaderControls
-        analysis={analysis}
-        statistics={statistics}
-        variables={variables}
-        region={region}
-        phase={phase}
-        setAnalysis={setAnalysis}
-        setStatistics={setStatistics}
-        setVariables={setVariables}
-        setRegion={setRegion}
-        setPhase={setPhase}
-      />
+      <Paper className={classes.paper}>
+        <HeaderControls
+          analysis={analysis}
+          statistics={statistics}
+          variables={variables}
+          region={region}
+          phase={phase}
+          setAnalysis={setAnalysis}
+          setStatistics={setStatistics}
+          setVariables={setVariables}
+          setRegion={setRegion}
+          setPhase={setPhase}
+        />
+      </Paper>
       {renderTab(analysis)}
       <RulerControls />
     </Box>

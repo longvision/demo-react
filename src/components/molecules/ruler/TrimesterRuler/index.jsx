@@ -6,7 +6,6 @@ import { setTrimesterName } from '../../../../utils/dates.js';
 
 const useStyles = makeStyles(() => ({
   container: {
-    // height: 600,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

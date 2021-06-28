@@ -6,7 +6,6 @@ import { setMonthName } from '../../../../utils/dates.js';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    // height: 600,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

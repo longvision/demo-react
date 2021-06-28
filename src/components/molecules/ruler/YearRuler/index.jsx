@@ -54,18 +54,11 @@ const YearRuler = ({
 
   function createDates(dates) {
     const length = dates - 1978;
-    console.log(length);
     return new Array(length).map((item, index) => ({
       value: dates - index,
       // label: `${dates - index}`,
     }));
   }
-
-  // useEffect(() => {
-  //   if (year > maxYear + range) {
-  //     setYear(maxYear);
-  //   }
-  // }, [year]);
 
   return (
     <div className={classes.container}>
@@ -80,8 +73,6 @@ const YearRuler = ({
         title=""
         defaultValue={maxYear}
         step={1}
-        // min={year - range > maxYear ? maxYear - 10 : maxYear - range - 10}
-        // max={year - range > maxYear ? maxYear : maxYear - range}
         min={maxYear - range - 10}
         max={maxYear - range}
         labelFunction={labelFunction}
