@@ -12,8 +12,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: { backgroundColor: 'white', padding: 15 },
+  body: {
+    backgroundColor: 'white',
+    padding: 15,
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
 }));
 
 const WeatherTemplate = () => {
@@ -23,13 +32,40 @@ const WeatherTemplate = () => {
   const [variables, setVariables] = useState(0);
   const [region, setRegion] = useState('mjo');
   const [phase, setPhase] = useState(0);
+  const [check, setChecked] = React.useState({
+    global: true,
+    brasil: true,
+  });
+
+  const toggleGlobal = (event) => {
+    if (check.global && check.brasil) {
+      setChecked({ ...check, [event.target.name]: event.target.checked });
+    }
+    if (check.brasil && !check.global) {
+      setChecked({ ...check, global: true });
+    }
+  };
+  const toggleBrasil = (event) => {
+    if (check.global && check.brasil) {
+      setChecked({ ...check, [event.target.name]: event.target.checked });
+    }
+    if (!check.brasil && check.global) {
+      setChecked({ ...check, brasil: true });
+    }
+  };
 
   const renderTab = (selection) => {
     switch (selection) {
       case 0:
         return <IndexTemplate />;
       case 1:
-        return <HistoryTemplate />;
+        return (
+          <HistoryTemplate
+            toggleGlobal={toggleGlobal}
+            checked={check}
+            toggleBrasil={toggleBrasil}
+          />
+        );
       case 2:
         return <h1>No page yet</h1>;
       case 3:
@@ -72,8 +108,10 @@ const WeatherTemplate = () => {
           setPhase={setPhase}
         />
       </Paper>
-      {renderTab(analysis)}
-      <RulerControls />
+      <Paper className={classes.body}>
+        {renderTab(analysis)}
+        <RulerControls />
+      </Paper>
     </Box>
   );
 };

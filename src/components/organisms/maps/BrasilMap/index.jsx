@@ -7,16 +7,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
-    width: 600,
+    backgroundColor: 'blue',
+    width: 300,
     height: 300,
     margin: 7,
   },
 }));
 
-function GlobalMap() {
+function BrasilMap() {
   const classes = useStyles();
   return <div className={classes.map} />;
 }
 
-export default GlobalMap;
+export default BrasilMap;
