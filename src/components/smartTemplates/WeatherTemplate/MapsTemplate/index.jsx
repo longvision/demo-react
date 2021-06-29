@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GlobalMap from '../../../organisms/maps/GlobalMap';
 import BrasilMap from '../../../organisms/maps/BrasilMap';
+import Shapes from '../../../molecules/selectors/Shapes';
 import Checkbox from '../../../atoms/checkbox';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,11 +21,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     width: '100%',
+    marginBottom: 20,
   },
 }));
 
-const HistoryTemplate = ({
-  checked, toggleGlobal, toggleBrasil,
+const MapsTemplate = ({
+  checked,
+  toggleGlobal,
+  toggleBrasil,
+  shape,
+  setShape,
 }) => {
   const classes = useStyles();
   return (
@@ -46,9 +52,12 @@ const HistoryTemplate = ({
           checked={checked.brasil}
           handleCheck={toggleBrasil}
         />
+        <Grid>
+          <Shapes shape={shape} setShape={setShape} />
+        </Grid>
       </Grid>
     </>
   );
 };
 
-export default HistoryTemplate;
+export default MapsTemplate;

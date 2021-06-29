@@ -1,21 +1,21 @@
 import React from 'react';
-import {
-  makeStyles,
+import { makeStyles,
   FormControl,
   InputLabel,
   Select,
-  MenuItem,
-} from '@material-ui/core';
+  MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 100,
   },
   selectEmpty: { marginTop: theme.spacing(2) },
 }));
 
-const SelectorFilter = ({ title, label, state, setState, data }) => {
+const SelectorFilter = ({
+  title, label, state, setState, data,
+}) => {
   const classes = useStyles();
 
   const handleChange = (event) => {

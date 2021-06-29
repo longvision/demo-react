@@ -8,9 +8,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'red',
-    width: 600,
     height: 300,
     margin: 7,
+    width: '100%',
+    [theme.breakpoints.up('tablet')]: { height: 300, width: 600 },
   },
 }));
 

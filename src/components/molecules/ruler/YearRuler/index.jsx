@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   rightIcon: {
-    [theme.breakpoints.down('sm')]: { width: 44 },
+    [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
     width: 95,
     display: 'flex',
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   leftIcon: {
-    [theme.breakpoints.down('sm')]: { width: 44 },
+    [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
     width: 95,
     display: 'flex',

@@ -3,7 +3,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Slider, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  root: { width: '100%' },
+  root: { width: '100%', marginTop: 10, marginBottom: 5 },
   button: {
     // border: 'none',
 
