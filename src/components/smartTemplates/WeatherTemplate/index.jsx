@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: 15,
     justifyContent: 'center',
+
     flexWrap: 'wrap',
     [theme.breakpoints.up('laptop')]: {
       width: '100%',
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: 'white',
     padding: 15,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     [theme.breakpoints.up('desktop')]: { padding: 15 },
   },
   textBox: {
