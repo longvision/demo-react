@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
@@ -79,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
 const WeatherTemplate = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [analysis, setAnalysis] = useState(1);
   const [statistics, setStatistics] = useState(0);
   const [variables, setVariables] = useState(0);
@@ -89,6 +91,16 @@ const WeatherTemplate = () => {
     global: true,
     brasil: true,
   });
+
+  useEffect(() => {
+    dispatch.images.getImagesAsync({
+      analise: analysis,
+      estatistica: statistics,
+      variavel: variables,
+      periodo: '2021',
+      zoom: 'brasil',
+    });
+  }, []);
 
   const toggleGlobal = (event) => {
     if (check.global && check.brasil) {
