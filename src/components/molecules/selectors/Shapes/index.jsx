@@ -2,7 +2,9 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
 
-const Shapes = ({ shape, setShape }) => {
+const Shapes = ({
+  shape, setShape, ...props
+}) => {
   return (
     <>
       <SelectorFilter
@@ -11,6 +13,7 @@ const Shapes = ({ shape, setShape }) => {
         state={shape}
         setState={setShape}
         data={data}
+        {...props}
       />
     </>
   );

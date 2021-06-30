@@ -6,13 +6,13 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MUICheckbox from '@material-ui/core/Checkbox';
 
-const GreenCheckbox = withStyles({
+const GreenCheckbox = withStyles((theme) => ({
   root: {
-    color: green[400],
-    '&$checked': { color: green[600] },
+    color: theme.palette.secondary.main,
+    '&$checked': { color: theme.palette.secondary.main },
   },
   checked: {},
-})((props) => <MUICheckbox color="default" {...props} />);
+}))((props) => <MUICheckbox color="default" {...props} />);
 
 const Checkbox = ({
   handleCheck, checked, name, label,

@@ -31,7 +31,7 @@ export const theme = createMuiTheme({
   breakpoints: {
     values: {
       mobile: 380,
-      tablet: 640,
+      tablet: 1024,
       laptop: 1290,
       desktop: 1920,
     },

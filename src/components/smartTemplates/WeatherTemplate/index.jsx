@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   body: {
     backgroundColor: 'white',
     padding: 15,
+    margin: 15,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',

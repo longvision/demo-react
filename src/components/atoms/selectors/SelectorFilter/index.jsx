@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 150,
   },
   selectEmpty: { marginTop: theme.spacing(2) },
+  select: { height: 44 },
 }));
 
 const SelectorFilter = ({
-  title, label, state, setState, data,
+  title, label, state, setState, data, ...props
 }) => {
   const classes = useStyles();
 
@@ -24,7 +25,7 @@ const SelectorFilter = ({
   };
 
   return (
-    <FormControl variant="outlined" className={classes.formControl}>
+    <FormControl variant="outlined" className={classes.formControl} {...props}>
       <InputLabel id="simple-select-outlined-label">{title}</InputLabel>
       <Select
         labelId="simple-select-outlined-label"
@@ -32,6 +33,7 @@ const SelectorFilter = ({
         value={state}
         onChange={handleChange}
         label={label}
+        className={classes.select}
       >
         {data.map((item) => (
           <MenuItem key={item.label} value={item.value}>

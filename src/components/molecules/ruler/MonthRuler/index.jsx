@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import Ruler from '../../../atoms/ruler/Ruler';
 import { setMonthName } from '../../../../utils/dates.js';
 
@@ -11,22 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  leftLabel: {
-    height: 44,
-    width: 105,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  rightLabel: {
-    height: 44,
-    width: 105,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   button: { border: 'none' },
 }));
 const MonthRuler = ({
@@ -35,25 +20,27 @@ const MonthRuler = ({
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Box className={classes.leftLabel}>
+      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
         <h2>JAN</h2>
-      </Box>
-      <Ruler
-        title=""
-        defaultValue={0}
-        step={1}
-        min={0}
-        max={11}
-        labelFunction={setMonthName}
-        disabled={disabled}
-        handleChange={setMonth}
-        value={month}
-        marks
-        handleToggle={handleClick}
-      />
-      <Box className={classes.rightLabel}>
+      </Grid>
+      <Grid item md={10} lg={10} sm={10} xl={10} xs={8} align="center">
+        <Ruler
+          title=""
+          defaultValue={0}
+          step={1}
+          min={0}
+          max={11}
+          labelFunction={setMonthName}
+          disabled={disabled}
+          handleChange={setMonth}
+          value={month}
+          marks
+          handleToggle={handleClick}
+        />
+      </Grid>
+      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
         <h2>DEZ</h2>
-      </Box>
+      </Grid>
     </div>
   );
 };

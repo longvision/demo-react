@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '../../button/IconButton';
@@ -17,20 +17,24 @@ const useStyles = makeStyles((theme) => ({
   rightIcon: {
     [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
-    width: 95,
+    width: 44,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.light,
   },
   leftIcon: {
     [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
-    width: 95,
+    width: 44,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.light,
   },
 }));
 
@@ -61,35 +65,39 @@ const YearRuler = ({
   }
 
   return (
-    <div className={classes.container}>
-      <IconButton
-        className={classes.leftIcon}
-        icon={<RemoveIcon />}
-        handle={handleDecrement}
-        disabled={disableDecrement}
-      />
-
-      <Ruler
-        title=""
-        defaultValue={maxYear}
-        step={1}
-        min={maxYear - range - 10}
-        max={maxYear - range}
-        labelFunction={labelFunction}
-        disabled={false}
-        handleChange={setYear}
-        value={year}
-        marks
-        handleToggle={handleClick}
-      />
-
-      <IconButton
-        icon={<AddIcon />}
-        className={classes.rightIcon}
-        disabled={disableIncrement}
-        handle={handleIncrement}
-      />
-    </div>
+    <Grid container className={classes.container}>
+      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <IconButton
+          icon={<RemoveIcon />}
+          className={classes.leftIcon}
+          handleclick={handleDecrement}
+          disabled={disableDecrement}
+        />
+      </Grid>
+      <Grid item md={10} lg={10} sm={10} xl={10} xs={8} align="center">
+        <Ruler
+          title=""
+          defaultValue={maxYear}
+          step={1}
+          min={maxYear - range - 10}
+          max={maxYear - range}
+          labelFunction={labelFunction}
+          disabled={false}
+          handleChange={setYear}
+          value={year}
+          marks
+          handleToggle={handleClick}
+        />
+      </Grid>
+      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <IconButton
+          icon={<AddIcon />}
+          className={classes.rightIcon}
+          disabled={disableIncrement}
+          handleclick={handleIncrement}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
