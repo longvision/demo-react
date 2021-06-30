@@ -82,7 +82,7 @@ const WeatherTemplate = () => {
   const [analysis, setAnalysis] = useState(1);
   const [statistics, setStatistics] = useState(0);
   const [variables, setVariables] = useState(0);
-  const [region, setRegion] = useState('mjo');
+  const [region, setRegion] = useState(0);
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
   const [check, setChecked] = React.useState({
@@ -151,12 +151,12 @@ const WeatherTemplate = () => {
       setStatistics(0);
       setVariables(0);
       setPhase(0);
-      setRegion('mjo');
+      setRegion(0);
     }
   }, [analysis]);
 
   useEffect(() => {
-    if (region !== 'mjo') {
+    if (region !== 0) {
       setStatistics(0);
       setVariables(0);
       setPhase(0);

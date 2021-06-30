@@ -1,3 +1,3 @@
-import { history } from './history';
+import { images } from './images';
 
-export const models = { history };
+export const models = { images };

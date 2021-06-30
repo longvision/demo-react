@@ -1,14 +1,14 @@
 export const data = [
   {
-    value: 'mjo',
+    value: 0,
     label: 'MJO',
   },
   {
-    value: 'pdo',
+    value: 1,
     label: 'PDO',
   },
   {
-    value: 'aao',
+    value: 2,
     label: 'AAO',
   },
 ];

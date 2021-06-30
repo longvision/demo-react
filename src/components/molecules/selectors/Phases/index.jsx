@@ -7,11 +7,11 @@ const Phases = ({
 }) => {
   const selectData = (selectedRegion) => {
     switch (selectedRegion) {
-      case 'mjo':
+      case 0:
         return mjo;
-      case 'pdo':
+      case 1:
         return pdo;
-      case 'aao':
+      case 2:
         return aao;
       default:
         return mjo;
