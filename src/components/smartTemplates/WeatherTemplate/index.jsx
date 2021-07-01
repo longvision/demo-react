@@ -79,12 +79,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexWrap: 'wrap',
     width: '100%',
-
-    // [theme.breakpoints.up('sm')]: {
-    //   width: '100%',
-    //   justifyContent: 'center',
-    //   flexWrap: 'nowrap',
-    // },
   },
   top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
