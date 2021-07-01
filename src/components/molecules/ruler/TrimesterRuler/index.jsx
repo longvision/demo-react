@@ -19,7 +19,7 @@ const MonthRuler = ({
 }) => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <Grid container className={classes.container}>
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
         <h2>DJF</h2>
       </Grid>
@@ -41,7 +41,7 @@ const MonthRuler = ({
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
         <h2>NDJ</h2>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

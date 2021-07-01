@@ -26,24 +26,24 @@ export const images = {
         contorno = 0,
       } = payload;
 
-      const analysisValue = config.analysis[analise];
-      const statisticValue = config.statistics[estatistica];
-      const variableValue = config.variables[variavel];
-      const indexValue = config.index[indice];
-      const regionValue = config.region[regiao];
-      const phaseValue = analise === 0 && config.phases[regiao][fase];
-      const shapeValue = config.shapes[contorno];
+      // const analysisValue = config.analysis[analise];
+      // const statisticValue = config.statistics[estatistica];
+      // const variableValue = config.variables[variavel];
+      // const indexValue = config.index[indice];
+      // const regionValue = config.region[regiao];
+      // const phaseValue = analise === 0 && config.phases[regiao][fase];
+      // const shapeValue = config.shapes[contorno];
 
-      const res = await api.post('/tokclima/imagelinks', {
-        session_id: '8978d76440e44ebbbed7c2c04784cedf',
-        analise: analysisValue,
-        estatistica: statisticValue,
-        variavel: variableValue,
-        periodo: '2021',
-        zoom,
-      });
+      // const res = await api.post('/tokclima/imagelinks', {
+      //   session_id: '8978d76440e44ebbbed7c2c04784cedf',
+      //   analise: analysisValue,
+      //   estatistica: statisticValue,
+      //   variavel: variableValue,
+      //   periodo: '2021',
+      //   zoom,
+      // });
 
-      await this.setImages(res.data);
+      // await this.setImages(res.data);
     },
   }),
 };

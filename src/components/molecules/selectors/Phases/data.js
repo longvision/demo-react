@@ -47,10 +47,10 @@ export const pdo = [
 export const aao = [
   {
     value: 0,
-    label: 'Positivo',
+    label: 'Quente',
   },
   {
     value: 1,
-    label: 'Negativo',
+    label: 'Fria',
   },
 ];

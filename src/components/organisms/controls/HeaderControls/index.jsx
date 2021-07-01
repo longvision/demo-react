@@ -4,7 +4,7 @@ import Analysis from '../../../molecules/selectors/Analysis';
 import HistoryStatistics from '../../../molecules/selectors/HistoryStatistics';
 import HistoryVariables from '../../../molecules/selectors/HistoryVariables';
 import IndexStatistics from '../../../molecules/selectors/IndexStatistics';
-import Region from '../../../molecules/selectors/Region';
+import Region from '../../../molecules/selectors/IndexRegions';
 import IndexVariables from '../../../molecules/selectors/IndexVariables';
 import Phases from '../../../molecules/selectors/Phases';
 

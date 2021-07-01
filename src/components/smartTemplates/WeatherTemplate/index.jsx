@@ -14,13 +14,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 15,
+    margin: 15,
     justifyContent: 'center',
-
     flexWrap: 'wrap',
-    [theme.breakpoints.up('laptop')]: {
+    width: '100%',
+    [theme.breakpoints.up('xl')]: {
       width: '100%',
       justifyContent: 'center',
-      flexWrap: 'flex',
+      flexWrap: 'nowrap',
+      alignItems: 'flex-start',
     },
   },
   container: {
@@ -28,16 +30,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-
-    [theme.breakpoints.up('laptop')]: { height: '100%', width: 'auto' },
   },
   sideBox: {
-    width: '100%',
     // height: 500
     display: 'flex',
-
-    [theme.breakpoints.up('laptop')]: { width: 300, height: '100%' },
+    heihgt: '100%',
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: 'white',
@@ -45,18 +48,29 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    [theme.breakpoints.up('desktop')]: { padding: 15 },
+    width: '50%',
+    [theme.breakpoints.up('lg')]: { padding: 15 },
   },
   textBox: {
     backgroundColor: 'white',
     padding: 15,
-    height: 600,
-    margin: 15,
+    height: '100%',
     width: '100%',
-    [theme.breakpoints.up('laptop')]: {
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'center',
+      margin: 15,
+    },
+    [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
+      margin: 15,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 290,
+      justifyContent: 'center',
       marginTop: 95,
+      margin: 15,
+      height: 600,
     },
   },
   body: {
@@ -69,13 +83,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexWrap: 'wrap',
     width: '100%',
-    [theme.breakpoints.up('laptop')]: {
-      width: '100%',
-      justifyContent: 'center',
-      flexWrap: 'flex',
-    },
+
+    // [theme.breakpoints.up('sm')]: {
+    //   width: '100%',
+    //   justifyContent: 'center',
+    //   flexWrap: 'nowrap',
+    // },
   },
-  top: { height: 10, [theme.breakpoints.up('tablet')]: { height: 65 } },
+  top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
 
 const WeatherTemplate = () => {
@@ -178,24 +193,26 @@ const WeatherTemplate = () => {
   return (
     <Box className={classes.page}>
       <Box className={classes.container}>
-        <Paper className={classes.paper}>
-          <HeaderControls
-            analysis={analysis}
-            statistics={statistics}
-            variables={variables}
-            region={region}
-            phase={phase}
-            setAnalysis={setAnalysis}
-            setStatistics={setStatistics}
-            setVariables={setVariables}
-            setRegion={setRegion}
-            setPhase={setPhase}
-          />
-        </Paper>
-        <Paper className={classes.body}>
-          {renderTab(analysis)}
-          <RulerControls />
-        </Paper>
+        <Box className={classes.main}>
+          <Paper className={classes.paper}>
+            <HeaderControls
+              analysis={analysis}
+              statistics={statistics}
+              variables={variables}
+              region={region}
+              phase={phase}
+              setAnalysis={setAnalysis}
+              setStatistics={setStatistics}
+              setVariables={setVariables}
+              setRegion={setRegion}
+              setPhase={setPhase}
+            />
+          </Paper>
+          <Paper className={classes.body}>
+            {renderTab(analysis)}
+            <RulerControls />
+          </Paper>
+        </Box>
       </Box>
       <Box className={classes.sideBox}>
         <Paper className={classes.textBox}>

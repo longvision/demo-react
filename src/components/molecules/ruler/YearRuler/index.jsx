@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   rightIcon: {
-    [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
     width: 44,
     display: 'flex',
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.light,
   },
   leftIcon: {
-    [theme.breakpoints.down('tablet')]: { width: 44 },
     height: 44,
     width: 44,
     display: 'flex',

@@ -1,28 +1,18 @@
-export const mjo = [
+export const data = [
   {
     value: 0,
     label: 'OLR',
   },
   {
     value: 1,
-    label: 'Vento',
+    label: 'Fluxo de umidade',
   },
   {
     value: 2,
-    label: 'GEOP',
+    label: 'Geop. (500 hPa)',
   },
-];
-
-export const pdo = [
   {
-    value: 0,
-    label: 'Temp. do mar',
-  },
-];
-
-export const aao = [
-  {
-    value: 0,
-    label: 'GEOP',
+    value: 3,
+    label: 'Precipitação',
   },
 ];

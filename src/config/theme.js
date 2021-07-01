@@ -28,14 +28,6 @@ export const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ].join(','),
   },
-  breakpoints: {
-    values: {
-      mobile: 380,
-      tablet: 1024,
-      laptop: 1290,
-      desktop: 1920,
-    },
-  },
   props: {
     // Name of the component
     MuiButtonBase: {
