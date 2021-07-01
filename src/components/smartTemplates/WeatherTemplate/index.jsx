@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '50%',
+    width: '100%',
     [theme.breakpoints.up('lg')]: { padding: 15 },
   },
   textBox: {

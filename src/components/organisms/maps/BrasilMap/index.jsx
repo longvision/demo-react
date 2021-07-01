@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     padding: 5,
     height: 310,
+
     backgroundSize: 'cover',
     [theme.breakpoints.up('sm')]: {
       padding: 5,
