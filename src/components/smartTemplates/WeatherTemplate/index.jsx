@@ -89,9 +89,12 @@ const WeatherTemplate = () => {
   const [analysis, setAnalysis] = useState(1);
   const [statistics, setStatistics] = useState(0);
   const [variables, setVariables] = useState(0);
-  const [region, setRegion] = useState(0);
+  const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
+  const [display, setDisplay] = useState(0);
+  const [map, setMap] = useState(0);
+
   const [check, setChecked] = React.useState({
     global: true,
     brasil: true,
@@ -168,17 +171,19 @@ const WeatherTemplate = () => {
       setStatistics(0);
       setVariables(0);
       setPhase(0);
-      setRegion(0);
+      setIndexType(0);
+      setShape(0);
     }
   }, [analysis]);
 
   useEffect(() => {
-    if (region !== 0) {
+    if (indexType !== 0) {
       setStatistics(0);
       setVariables(0);
       setPhase(0);
+      setShape(0);
     }
-  }, [region]);
+  }, [indexType]);
 
   return (
     <Box className={classes.page}>
@@ -189,13 +194,19 @@ const WeatherTemplate = () => {
               analysis={analysis}
               statistics={statistics}
               variables={variables}
-              region={region}
+              indexType={indexType}
               phase={phase}
               setAnalysis={setAnalysis}
               setStatistics={setStatistics}
               setVariables={setVariables}
-              setRegion={setRegion}
+              setIndexType={setIndexType}
               setPhase={setPhase}
+              shape={shape}
+              setShape={setShape}
+              setDisplay={setDisplay}
+              display={display}
+              setMap={setMap}
+              map={map}
             />
           </Paper>
           <Paper className={classes.body}>

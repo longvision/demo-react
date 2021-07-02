@@ -2,18 +2,18 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
 
-const Region = ({ region, setRegion }) => {
+const IndexTypes = ({ indexType, setIndexType }) => {
   return (
     <>
       <SelectorFilter
-        title="Região"
-        label="Região"
-        state={region}
-        setState={setRegion}
+        title="Índices'"
+        label="Índices"
+        state={indexType}
+        setState={setIndexType}
         data={data}
       />
     </>
   );
 };
 
-export default Region;
+export default IndexTypes;

@@ -29,15 +29,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginBottom: 20,
   },
-  shapes: { width: 'auto' },
 }));
 
 const MapsTemplate = ({
-  checked,
-  toggleGlobal,
-  toggleBrasil,
-  shape,
-  setShape,
+  checked, toggleGlobal, toggleBrasil,
 }) => {
   const classes = useStyles();
   return (
@@ -59,7 +54,6 @@ const MapsTemplate = ({
           checked={checked.brasil}
           handleCheck={toggleBrasil}
         />
-        <Shapes shape={shape} setShape={setShape} className={classes.shapes} />
       </Grid>
     </>
   );
