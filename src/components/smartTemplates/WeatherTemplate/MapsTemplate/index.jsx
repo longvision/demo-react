@@ -31,29 +31,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MapsTemplate = ({
-  checked, toggleGlobal, toggleBrasil,
-}) => {
+const MapsTemplate = ({ checked }) => {
   const classes = useStyles();
   return (
     <>
       <Grid container className={classes.maps}>
-        {checked.global && <GlobalMap />}
-        {checked.brasil && <BrasilMap />}
-      </Grid>
-      <Grid className={classes.checkboxes}>
-        <Checkbox
-          label="Global"
-          name="global"
-          checked={checked.global}
-          handleCheck={toggleGlobal}
-        />
-        <Checkbox
-          label="Brasil"
-          name="brasil"
-          checked={checked.brasil}
-          handleCheck={toggleBrasil}
-        />
+        {checked === 'global' && <GlobalMap />}
+        {checked === 'brasil' && <BrasilMap />}
+        {checked === 'todas' && (
+          <>
+            <GlobalMap />
+            <BrasilMap />
+          </>
+        )}
       </Grid>
     </>
   );

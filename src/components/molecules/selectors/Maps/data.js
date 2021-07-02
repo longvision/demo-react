@@ -1,14 +1,14 @@
 export const data = [
   {
-    value: 0,
+    value: 'todas',
     label: 'Global e Brasil',
   },
   {
-    value: 1,
+    value: 'global',
     label: 'Global',
   },
   {
-    value: 1,
+    value: 'brasil',
     label: 'Brasil',
   },
 ];

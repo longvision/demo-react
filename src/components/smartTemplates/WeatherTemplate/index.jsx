@@ -93,12 +93,7 @@ const WeatherTemplate = () => {
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
   const [display, setDisplay] = useState(0);
-  const [map, setMap] = useState(0);
-
-  const [check, setChecked] = React.useState({
-    global: true,
-    brasil: true,
-  });
+  const [map, setMap] = useState('todas');
 
   useEffect(() => {
     dispatch.images.getImagesAsync({
@@ -110,59 +105,18 @@ const WeatherTemplate = () => {
     });
   }, []);
 
-  const toggleGlobal = (event) => {
-    if (check.global && check.brasil) {
-      setChecked({ ...check, [event.target.name]: event.target.checked });
-    }
-    if (check.brasil && !check.global) {
-      setChecked({ ...check, global: true });
-    }
-  };
-  const toggleBrasil = (event) => {
-    if (check.global && check.brasil) {
-      setChecked({ ...check, [event.target.name]: event.target.checked });
-    }
-    if (!check.brasil && check.global) {
-      setChecked({ ...check, brasil: true });
-    }
-  };
-
   const renderTab = (selection) => {
     switch (selection) {
       case 0:
-        return (
-          <MapsTemplate
-            toggleGlobal={toggleGlobal}
-            checked={check}
-            toggleBrasil={toggleBrasil}
-            shape={shape}
-            setShape={setShape}
-          />
-        );
+        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
       case 1:
-        return (
-          <MapsTemplate
-            toggleGlobal={toggleGlobal}
-            checked={check}
-            toggleBrasil={toggleBrasil}
-            shape={shape}
-            setShape={setShape}
-          />
-        );
+        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
       case 2:
         return <h1>No page yet</h1>;
       case 3:
         return <h1>No page yet</h1>;
       default:
-        return (
-          <MapsTemplate
-            toggleGlobal={toggleGlobal}
-            checked={check}
-            toggleBrasil={toggleBrasil}
-            shape={shape}
-            setShape={setShape}
-          />
-        );
+        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
     }
   };
 

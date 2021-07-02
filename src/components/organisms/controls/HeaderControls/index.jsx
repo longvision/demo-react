@@ -38,7 +38,6 @@ const HeaderControls = ({
             <IndexVariables setVariables={setVariables} variables={variables} />
             <Display setDisplay={setDisplay} display={display} />
             <Phases setPhase={setPhase} phase={phase} indexType={indexType} />
-            <Maps setMap={setMap} map={map} />
           </>
         );
       case 1:
@@ -62,6 +61,7 @@ const HeaderControls = ({
     <div>
       <Analysis analysis={analysis} setAnalysis={setAnalysis} />
       {renderStats(analysis)}
+      <Maps setMap={setMap} map={map} />
       <Shapes shape={shape} setShape={setShape} />
     </div>
   );
