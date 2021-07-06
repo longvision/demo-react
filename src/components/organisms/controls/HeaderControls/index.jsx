@@ -61,7 +61,7 @@ const HeaderControls = ({
     <div>
       <Analysis analysis={analysis} setAnalysis={setAnalysis} />
       {renderStats(analysis)}
-      <Maps setMap={setMap} map={map} />
+      <Maps map={map} setMap={setMap} />
       <Shapes shape={shape} setShape={setShape} />
     </div>
   );

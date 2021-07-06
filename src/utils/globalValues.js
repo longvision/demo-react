@@ -22,15 +22,24 @@ export default {
     },
   },
   ind: { 0: 'clim' },
-  region: {
+  indexType: {
     0: 'mjo',
     1: 'pdo',
     2: 'aao',
-    3: 'nino1-2',
-    4: 'nino3-4',
+    3: 'nino1+2',
+    4: 'nino3.4',
   },
   phases: {
-    mjo: { 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6', 6: '7', 7: '8' },
+    mjo: {
+      0: 'clim-fase1',
+      1: 'clim-fase2',
+      2: 'clim-fase3',
+      3: 'clim-fase4',
+      4: 'clim-fase5',
+      5: 'clim-fase6',
+      6: 'clim-fase7',
+      7: 'clim-fase8',
+    },
     pdo: { 0: 'pos', 1: 'neg' },
     aao: { 0: 'pos', 1: 'neg' },
   },

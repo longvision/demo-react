@@ -3,10 +3,9 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 import GlobalMap from '../../../organisms/maps/GlobalMap';
 import BrasilMap from '../../../organisms/maps/BrasilMap';
-import Shapes from '../../../molecules/selectors/Shapes';
-import Checkbox from '../../../atoms/checkbox';
 
 const useStyles = makeStyles((theme) => ({
   maps: {
@@ -31,8 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MapsTemplate = ({ checked }) => {
+const MapsTemplate = ({
+  checked, shape = false, setShape = false,
+}) => {
   const classes = useStyles();
+
   return (
     <>
       <Grid container className={classes.maps}>

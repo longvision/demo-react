@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Box, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
@@ -94,50 +94,80 @@ const WeatherTemplate = () => {
   const [shape, setShape] = useState(0);
   const [display, setDisplay] = useState(0);
   const [map, setMap] = useState('todas');
+  const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [trimester, setTrimester] = useState(0);
+  const [month, setMonth] = useState(0);
+  const [range, setRange] = useState(0);
 
-  useEffect(() => {
-    dispatch.images.getImagesAsync({
-      analise: analysis,
-      estatistica: statistics,
-      variavel: variables,
-      periodo: '2021',
-      zoom: 'brasil',
-    });
-  }, []);
+  const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
-  const renderTab = (selection) => {
-    switch (selection) {
-      case 0:
-        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
-      case 1:
-        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
-      case 2:
-        return <h1>No page yet</h1>;
-      case 3:
-        return <h1>No page yet</h1>;
-      default:
-        return <MapsTemplate checked={map} shape={shape} setShape={setShape} />;
+  const getImage = useCallback(async () => {
+    if (analysis === 1) {
+      await dispatch.images.getImagesAsync({
+        analise: analysis,
+        estatistica: statistics,
+        variavel: variables,
+        periodo: year,
+        indice: indexType,
+        web: 'web',
+      });
     }
-  };
-
-  useEffect(() => {
     if (analysis === 0) {
-      setStatistics(0);
-      setVariables(0);
-      setPhase(0);
-      setIndexType(0);
-      setShape(0);
+      await dispatch.images.getImagesAsync({
+        analise: analysis,
+        estatistica: statistics,
+        variavel: variables,
+        periodo: year,
+        indice: indexType,
+        fases: phase,
+        web: 'web',
+      });
     }
-  }, [analysis]);
+    if (isTrimesterSearch) {
+      dispatch.images.selectMapAsync({ month: null, year, trimester });
+    } else {
+      dispatch.images.selectMapAsync({ month, year, trimester: null });
+    }
+  }, [
+    year,
+    month,
+    trimester,
+    isTrimesterSearch,
+    analysis,
+    statistics,
+    variables,
+    indexType,
+    range,
+  ]);
 
   useEffect(() => {
-    if (indexType !== 0) {
-      setStatistics(0);
-      setVariables(0);
-      setPhase(0);
-      setShape(0);
+    getImage();
+  }, [
+    year,
+    month,
+    trimester,
+    isTrimesterSearch,
+    analysis,
+    statistics,
+    variables,
+    indexType,
+    map,
+    range,
+  ]);
+
+  function handleDecrement() {
+    if (year > 1979 && year <= maxYear && range >= 0) {
+      setRange(range + 1);
+      setYear(year - 1);
     }
-  }, [indexType]);
+  }
+  function handleIncrement() {
+    if (year < maxYear && range > 0) {
+      setRange(range - 1);
+      setYear(year + 1);
+    }
+  }
 
   return (
     <Box className={classes.page}>
@@ -164,8 +194,21 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
-            {renderTab(analysis)}
-            <RulerControls />
+            <MapsTemplate checked={map} shape={shape} setShape={setShape} />
+            <RulerControls
+              handleDecrement={handleDecrement}
+              handleIncrement={handleIncrement}
+              setIsTrimesterSearch={setIsTrimesterSearch}
+              isTrimesterSearch={isTrimesterSearch}
+              setMonth={setMonth}
+              month={month}
+              setTrimester={setTrimester}
+              trimester={trimester}
+              year={year}
+              maxYear={maxYear}
+              range={range}
+              setYear={setYear}
+            />
           </Paper>
         </Box>
       </Box>

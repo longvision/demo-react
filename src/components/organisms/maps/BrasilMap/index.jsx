@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { requirePropFactory } from '@material-ui/core';
-import brasil from '../../../../assets/images/web_brasil_hist_clim_t2m_Mar_layer1.png';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   map: {
@@ -50,9 +49,21 @@ const useStyles = makeStyles((theme) => ({
 
 function BrasilMap() {
   const classes = useStyles();
+
+  const selectedBrasilMap = useSelector(
+    (state) => state.images.selectedBrasilMap,
+  );
   return (
     <div className={classes.map}>
-      <img className={classes.image} alt="mapa_brasil" src={brasil} />
+      {selectedBrasilMap && selectedBrasilMap.length ? (
+        <img
+          className={classes.image}
+          alt="mapa_brasil"
+          src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedBrasilMap[0]}`}
+        />
+      ) : (
+        <h3>No image available</h3>
+      )}
     </div>
   );
 }

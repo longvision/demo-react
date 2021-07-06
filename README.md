@@ -6,6 +6,8 @@
 # Base_URL da imagem:
 
 <!-- https://storage.googleapis.com/imagens.clima.tempook.com/web/global/hist/med/pnmm/web_global_hist_med_pnmm_2020-Jan_layer1_5e1fd2bf.png -->
+<!-- https://storage.googleapis.com/imagens.clima.tempook.com/web/brasil/hist/anom/variavel/web_brasil_hist_anom_variavel_2021-Jul_layer4_695a2d8f.png
+ -->
 
 # Organizacao de pastas: Atomic Design Pattern:
 

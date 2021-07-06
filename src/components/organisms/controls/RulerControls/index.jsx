@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Box } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
 import MonthRuler from '../../../molecules/ruler/MonthRuler';
 import TrimesterRuler from '../../../molecules/ruler/TrimesterRuler';
 import YearRuler from '../../../molecules/ruler/YearRuler';
@@ -15,27 +16,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RulerControls = () => {
+const RulerControls = ({
+  setIsTrimesterSearch,
+  isTrimesterSearch,
+  setMonth,
+  month,
+  setTrimester,
+  trimester,
+  handleDecrement,
+  handleIncrement,
+  year,
+  maxYear,
+  range,
+  setYear,
+}) => {
   const classes = useStyles();
-  const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
-  const [year, setYear] = useState(new Date().getFullYear());
-  const [trimester, setTrimester] = useState(0);
-  const [month, setMonth] = useState(0);
-  const [range, setRange] = useState(0);
-  const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
-  function handleDecrement() {
-    if (year > 1979 && year <= maxYear && range >= 0) {
-      setRange(range + 1);
-      setYear(year - 1);
-    }
-  }
-  function handleIncrement() {
-    if (year < maxYear && range > 0) {
-      setRange(range - 1);
-      setYear(year + 1);
-    }
-  }
   return (
     <Box className={classes.container}>
       <MonthRuler
