@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
@@ -14,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: 370,
 
     margin: 7,
-    height: 150,
+    height: 151,
     // 1920
     // 1080
     [theme.breakpoints.up('sm')]: { height: 300 },
     [theme.breakpoints.up('md')]: { height: 250 },
-    [theme.breakpoints.up('lg')]: { height: 310 },
-    [theme.breakpoints.up('xl')]: { height: 310 },
+    [theme.breakpoints.up('lg')]: { height: 318 },
+    [theme.breakpoints.up('xl')]: { height: 318 },
   },
   image: {
     height: 150,
@@ -44,13 +45,13 @@ function GlobalMap() {
 
   useEffect(() => {}, [loading, selectedGlobalMap]);
   return (
-    <div className={classes.map}>
+    <Box className={classes.map} border={2}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
         <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
       ) : (
         <h3>Sem imagem disponível</h3>
       )}
-    </div>
+    </Box>
   );
 }
 

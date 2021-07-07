@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: { width: 450, height: '100%' },
     [theme.breakpoints.up('md')]: { width: 250, height: '100%' },
 
-    [theme.breakpoints.up('lg')]: { width: 310, height: '100%' },
-    [theme.breakpoints.up('xl')]: { width: 310, height: '100%' },
+    [theme.breakpoints.up('lg')]: { height: 318 },
+    [theme.breakpoints.up('xl')]: { height: 318 },
   },
   image: {
     padding: 5,
@@ -55,13 +56,13 @@ function BrasilMap() {
     (state) => state.images.selectedBrasilMap,
   );
   return (
-    <div className={classes.map}>
+    <Box className={classes.map} border={2}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <Map style={classes.image} selectedMap={selectedBrasilMap[0]} />
       ) : (
         <h3>Sem imagem disponível</h3>
       )}
-    </div>
+    </Box>
   );
 }
 
