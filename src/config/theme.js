@@ -19,6 +19,7 @@ export const theme = createMuiTheme({
     },
   },
   typography: {
+    fontSize: '1.4rem',
     fontFamily: [
       '-apple-system',
       'IBM Plex Sans',

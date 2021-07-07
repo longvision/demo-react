@@ -21,7 +21,7 @@ const MonthRuler = ({
   return (
     <Grid container className={classes.container}>
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <Typography variant="h6" color={disabled ? 'textSecondary' : 'primary'}>
+        <Typography variant="h4" color={disabled ? 'textSecondary' : 'primary'}>
           <strong>DJF</strong>
         </Typography>
       </Grid>
@@ -41,7 +41,7 @@ const MonthRuler = ({
         />
       </Grid>
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <Typography variant="h6" color={disabled ? 'textSecondary' : 'primary'}>
+        <Typography variant="h4" color={disabled ? 'textSecondary' : 'primary'}>
           <strong>NDJ</strong>
         </Typography>
       </Grid>
