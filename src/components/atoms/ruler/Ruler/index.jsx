@@ -45,11 +45,11 @@ const CustomSlider = withStyles({
   valueLabel: {
     left: 'calc(-50% + 12px)',
     top: -30,
-    background: 'grey',
+    background: 'black',
     // visibility: 'hidden',
     '&:focus, &:hover, &$inactive': { display: 'none' },
     '& *': {
-      background: 'grey',
+      background: 'black',
       color: 'white',
     },
   },

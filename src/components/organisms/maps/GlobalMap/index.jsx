@@ -46,7 +46,7 @@ function GlobalMap() {
           src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedGlobalMap[0]}`}
         />
       ) : (
-        <h3>No image available</h3>
+        <h3>Sem imagem disponível</h3>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import Ruler from '../../../atoms/ruler/Ruler';
 import { setMonthName } from '../../../../utils/dates.js';
 
@@ -21,7 +21,9 @@ const MonthRuler = ({
   return (
     <Grid container className={classes.container}>
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <h2>JAN</h2>
+        <Typography variant="h6" color={disabled ? 'textSecondary' : 'primary'}>
+          <strong>JAN</strong>
+        </Typography>
       </Grid>
       <Grid item md={10} lg={10} sm={10} xl={10} xs={8} align="center">
         <Ruler
@@ -39,7 +41,9 @@ const MonthRuler = ({
         />
       </Grid>
       <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <h2>DEZ</h2>
+        <Typography variant="h6" color={disabled ? 'textSecondary' : 'primary'}>
+          <strong>DEZ</strong>
+        </Typography>
       </Grid>
     </Grid>
   );

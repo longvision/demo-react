@@ -38,13 +38,7 @@ export const images = {
   effects: (dispatch) => ({
     async getImagesAsync(payload) {
       const {
-        analise,
-        estatistica,
-        variavel,
-        periodo,
-        indice,
-        fase = 0,
-        contorno = 0,
+        analise, estatistica, variavel, periodo, indice, fase,
       } = payload;
 
       console.log({
@@ -56,13 +50,18 @@ export const images = {
         fase: 0,
         contorno: 0,
       });
-      const analysisValue = config.analysis[analise];
-      const statisticValue = config.statistics[estatistica];
-      const variableValue = await config.variables[analysisValue][analise];
-      const indexValue = config.indexType[indice];
 
-      // const phaseValue = analise === 0 && config.phases[regiao][fase];
-      // const shapeValue = config.shapes[contorno];
+      const analysisValue = config.analysis[analise];
+      const variableValue = await config.variables[analysisValue][variavel];
+      const indexValue = config.indexType[indice];
+      let statisticValue;
+
+      if (analise === 0) {
+        statisticValue = config.phases.mjo[fase];
+      }
+      if (analise === 1) {
+        statisticValue = config.statistics[estatistica];
+      }
 
       console.log({
         session_id: '8978d76440e44ebbbed7c2c04784cedf',
@@ -72,6 +71,7 @@ export const images = {
         indice: indexValue,
         periodo,
       });
+
       const res = await api.post('/tokclima/imagelinks', {
         session_id: '8978d76440e44ebbbed7c2c04784cedf',
         analise: analysisValue,

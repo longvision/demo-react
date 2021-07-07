@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+
     margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
-    width: '100%',
+    width: '92%',
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
@@ -34,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
   sideBox: {
     // height: 500
     display: 'flex',
-    heihgt: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   main: {
     display: 'flex',
@@ -45,40 +47,47 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: 'white',
     padding: 15,
+    margin: 15,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    [theme.breakpoints.up('lg')]: { padding: 15 },
+    flexWrap: 'wrap',
+    [theme.breakpoints.up('lg')]: { padding: 15, width: '100%' },
   },
   textBox: {
     backgroundColor: 'white',
     padding: 15,
-    height: '100%',
+    marginTop: 15,
     width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 531,
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       margin: 15,
+      width: '100%',
     },
 
     [theme.breakpoints.up('lg')]: {
       width: 290,
       justifyContent: 'center',
-      marginTop: 95,
+      marginTop: 111,
       margin: 15,
-      height: 600,
+      height: 531,
     },
   },
   body: {
     backgroundColor: 'white',
     padding: 15,
-    margin: 15,
+    // margin: 15,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
     flexWrap: 'wrap',
     width: '100%',
+    [theme.breakpoints.up('md')]: { width: '100%' },
   },
   top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
@@ -120,7 +129,7 @@ const WeatherTemplate = () => {
         variavel: variables,
         periodo: year,
         indice: indexType,
-        fases: phase,
+        fase: phase,
         web: 'web',
       });
     }

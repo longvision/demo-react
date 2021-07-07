@@ -8,7 +8,7 @@ const persistPlugin = createPersistPlugin({
   key: 'root',
   storage,
   version: 2,
-  whitelist: ['images'],
+  whitelist: ['images', 'info'],
 });
 
 const store = init({
