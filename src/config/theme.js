@@ -20,7 +20,7 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontSize: '1.4rem',
-    fontFamily: ['IBM Plex Sans'].join(','),
+    fontFamily: ['IBM Plex Sans', 'sans-serif'].join(','),
   },
   props: {
     // Name of the component
