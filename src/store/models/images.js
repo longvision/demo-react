@@ -82,7 +82,7 @@ export const images = {
         estatistica: statisticValue,
         variavel: variableValue,
         indice: indexValue,
-        period,
+        periodo: period,
       });
 
       this.setImages(res.data);
