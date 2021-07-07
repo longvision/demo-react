@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: 370,
 
     margin: 7,
-    height: 151,
+    height: 158,
     // 1920
     // 1080
-    [theme.breakpoints.up('sm')]: { height: 300 },
-    [theme.breakpoints.up('md')]: { height: 250 },
+    [theme.breakpoints.up('sm')]: { height: 308 },
+    [theme.breakpoints.up('md')]: { height: 258 },
     [theme.breakpoints.up('lg')]: { height: 318 },
     [theme.breakpoints.up('xl')]: { height: 318 },
   },

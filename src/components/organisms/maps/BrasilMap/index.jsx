@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 7,
 
     [theme.breakpoints.up('sm')]: { width: 450, height: '100%' },
-    [theme.breakpoints.up('md')]: { width: 250, height: '100%' },
+    [theme.breakpoints.up('md')]: { width: 254, height: '100%' },
 
     [theme.breakpoints.up('lg')]: { height: 318 },
     [theme.breakpoints.up('xl')]: { height: 318 },
