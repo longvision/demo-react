@@ -1,4 +1,4 @@
-export const mjo = [
+export const fases = [
   {
     value: 0,
     label: 'Fase 1',
@@ -33,18 +33,7 @@ export const mjo = [
   },
 ];
 
-export const pdo = [
-  {
-    value: 0,
-    label: 'Quente',
-  },
-  {
-    value: 1,
-    label: 'Fria',
-  },
-];
-
-export const aao = [
+export const temp = [
   {
     value: 0,
     label: 'Quente',

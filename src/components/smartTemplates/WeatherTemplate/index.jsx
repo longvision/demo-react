@@ -96,8 +96,8 @@ const WeatherTemplate = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [analysis, setAnalysis] = useState(1);
-  const [statistics, setStatistics] = useState(0);
-  const [variables, setVariables] = useState(0);
+  const [statistic, setStatistic] = useState(0);
+  const [variable, setVariable] = useState(1);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
@@ -114,22 +114,23 @@ const WeatherTemplate = () => {
   const getImage = useCallback(async () => {
     if (analysis === 1) {
       await dispatch.images.getImagesAsync({
-        analise: analysis,
-        estatistica: statistics,
-        variavel: variables,
-        periodo: year,
-        indice: indexType,
+        analysis,
+        statistic,
+        variable,
+        period: year,
+        indexType,
+        phase: null,
         web: 'web',
       });
     }
     if (analysis === 0) {
       await dispatch.images.getImagesAsync({
-        analise: analysis,
-        estatistica: statistics,
-        variavel: variables,
-        periodo: year,
-        indice: indexType,
-        fase: phase,
+        analysis,
+        statistic,
+        variable,
+        period: year,
+        indexType,
+        phase,
         web: 'web',
       });
     }
@@ -144,10 +145,12 @@ const WeatherTemplate = () => {
     trimester,
     isTrimesterSearch,
     analysis,
-    statistics,
-    variables,
+    statistic,
+    variable,
     indexType,
+    map,
     range,
+    phase,
   ]);
 
   useEffect(() => {
@@ -158,11 +161,12 @@ const WeatherTemplate = () => {
     trimester,
     isTrimesterSearch,
     analysis,
-    statistics,
-    variables,
+    statistic,
+    variable,
     indexType,
     map,
     range,
+    phase,
   ]);
 
   function handleDecrement() {
@@ -185,13 +189,13 @@ const WeatherTemplate = () => {
           <Paper className={classes.paper}>
             <HeaderControls
               analysis={analysis}
-              statistics={statistics}
-              variables={variables}
+              statistic={statistic}
+              variable={variable}
               indexType={indexType}
               phase={phase}
               setAnalysis={setAnalysis}
-              setStatistics={setStatistics}
-              setVariables={setVariables}
+              setStatistic={setStatistic}
+              setVariable={setVariable}
               setIndexType={setIndexType}
               setPhase={setPhase}
               shape={shape}

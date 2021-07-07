@@ -30,7 +30,7 @@ export default {
     4: 'nino3.4',
   },
   phases: {
-    mjo: {
+    fases: {
       0: 'clim-fase1',
       1: 'clim-fase2',
       2: 'clim-fase3',
@@ -40,8 +40,7 @@ export default {
       6: 'clim-fase7',
       7: 'clim-fase8',
     },
-    pdo: { 0: 'pos', 1: 'neg' },
-    aao: { 0: 'pos', 1: 'neg' },
+    temp: { 0: 'pos', 1: 'neg' },
   },
   shapes: { 0: 'estados' },
 };

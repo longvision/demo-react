@@ -38,38 +38,42 @@ export const images = {
   effects: (dispatch) => ({
     async getImagesAsync(payload) {
       const {
-        analise, estatistica, variavel, periodo, indice, fase,
-      } = payload;
+        analysis, statistic, variable, period, indexType, phase,
+      } =
+        payload;
 
       console.log({
-        analise,
-        estatistica,
-        variavel,
-        periodo,
-        indice,
-        fase: 0,
+        analysis,
+        statistic,
+        variable,
+        period,
+        indexType,
+        phase,
         contorno: 0,
       });
 
-      const analysisValue = config.analysis[analise];
-      const variableValue = await config.variables[analysisValue][variavel];
-      const indexValue = config.indexType[indice];
+      const analysisValue = config.analysis[analysis];
+      const variableValue = await config.variables[analysisValue][variable];
+      const indexValue = config.indexType[indexType];
       let statisticValue;
 
-      if (analise === 0) {
-        statisticValue = config.phases.mjo[fase];
+      if (analysis === 0 && indexType === 0) {
+        statisticValue = config.phases.fases[phase];
       }
-      if (analise === 1) {
-        statisticValue = config.statistics[estatistica];
+      if (analysis === 0 && [1, 2, 3, 4].includes(indexType)) {
+        statisticValue = config.phases.temp[phase];
+      }
+      if (analysis === 1) {
+        statisticValue = config.statistics[statistic];
       }
 
       console.log({
         session_id: '8978d76440e44ebbbed7c2c04784cedf',
-        analise: analysisValue,
-        estatistica: statisticValue,
-        variavel: variableValue,
-        indice: indexValue,
-        periodo,
+        analysis: analysisValue,
+        statistic: statisticValue,
+        variable: variableValue,
+        indexType: indexValue,
+        period,
       });
 
       const res = await api.post('/tokclima/imagelinks', {
@@ -78,7 +82,7 @@ export const images = {
         estatistica: statisticValue,
         variavel: variableValue,
         indice: indexValue,
-        periodo,
+        period,
       });
 
       this.setImages(res.data);

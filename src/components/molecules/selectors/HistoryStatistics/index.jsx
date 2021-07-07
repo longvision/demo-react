@@ -2,14 +2,14 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
 
-const HistoryStatistics = ({ statistics, setStatistics }) => {
+const HistoryStatistics = ({ statistic, setStatistic }) => {
   return (
     <>
       <SelectorFilter
         title="Estatística"
         label="Estatística"
-        state={statistics}
-        setState={setStatistics}
+        state={statistic}
+        setState={setStatistic}
         data={data}
       />
     </>

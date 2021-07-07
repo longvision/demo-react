@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
+import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
   map: {
@@ -33,18 +34,19 @@ const useStyles = makeStyles((theme) => ({
 
 function GlobalMap() {
   const classes = useStyles();
+  const loading = useSelector(
+    (state) => state.loading.effects.images.getImageAsync,
+  );
 
   const selectedGlobalMap = useSelector(
     (state) => state.images.selectedGlobalMap,
   );
+
+  useEffect(() => {}, [loading, selectedGlobalMap]);
   return (
     <div className={classes.map}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <img
-          className={classes.image}
-          alt="mapa_global"
-          src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedGlobalMap[0]}`}
-        />
+        <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
       ) : (
         <h3>Sem imagem disponível</h3>
       )}

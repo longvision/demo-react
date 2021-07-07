@@ -1,20 +1,24 @@
 import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
-import { mjo, pdo, aao } from './data.js';
+import { fases, temp } from './data.js';
 
 const Phases = ({
-  phase, setPhase, region,
+  phase, setPhase, indexType,
 }) => {
-  const selectData = (selectedRegion) => {
-    switch (selectedRegion) {
+  const selectData = (type) => {
+    switch (type) {
       case 0:
-        return mjo;
+        return fases;
       case 1:
-        return pdo;
+        return temp;
       case 2:
-        return aao;
+        return temp;
+      case 3:
+        return temp;
+      case 4:
+        return temp;
       default:
-        return mjo;
+        return temp;
     }
   };
   return (
@@ -24,7 +28,7 @@ const Phases = ({
         label="Fase"
         state={phase}
         setState={setPhase}
-        data={selectData(region)}
+        data={selectData(indexType)}
       />
     </>
   );

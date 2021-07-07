@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
+import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
   map: {
@@ -56,11 +57,7 @@ function BrasilMap() {
   return (
     <div className={classes.map}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
-        <img
-          className={classes.image}
-          alt="mapa_brasil"
-          src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedBrasilMap[0]}`}
-        />
+        <Map style={classes.image} selectedMap={selectedBrasilMap[0]} />
       ) : (
         <h3>Sem imagem disponível</h3>
       )}

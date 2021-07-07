@@ -13,13 +13,13 @@ import Maps from '../../../molecules/selectors/Maps';
 
 const HeaderControls = ({
   analysis,
-  statistics,
-  variables,
+  statistic,
+  variable,
   indexType,
   phase,
   setAnalysis,
-  setStatistics,
-  setVariables,
+  setStatistic,
+  setVariable,
   setIndexType,
   setPhase,
   shape,
@@ -35,7 +35,11 @@ const HeaderControls = ({
         return (
           <>
             <IndexTypes setIndexType={setIndexType} indexType={indexType} />
-            <IndexVariables setVariables={setVariables} variables={variables} />
+            <IndexVariables
+              setVariable={setVariable}
+              variable={variable}
+              indexType={indexType}
+            />
             <Display setDisplay={setDisplay} display={display} />
             <Phases setPhase={setPhase} phase={phase} indexType={indexType} />
           </>
@@ -44,13 +48,10 @@ const HeaderControls = ({
         return (
           <>
             <HistoryStatistics
-              statistics={statistics}
-              setStatistics={setStatistics}
+              statistic={statistic}
+              setStatistic={setStatistic}
             />
-            <HistoryVariables
-              setVariables={setVariables}
-              variables={variables}
-            />
+            <HistoryVariables setVariable={setVariable} variable={variable} />
           </>
         );
       default:
