@@ -20,14 +20,7 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontSize: '1.4rem',
-    // fontFamily: [
-    //   '-apple-system',
-    //   'IBM Plex Sans',
-    //   'sans-serif',
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(','),
+    fontFamily: ['IBM Plex Sans'].join(','),
   },
   props: {
     // Name of the component
