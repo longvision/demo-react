@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     height: 158,
     // 1920
     // 1080
-    [theme.breakpoints.up('sm')]: { height: 308 },
+    [theme.breakpoints.up('sm')]: { height: 258 },
     [theme.breakpoints.up('md')]: { height: 258 },
     [theme.breakpoints.up('lg')]: { height: 318 },
     [theme.breakpoints.up('xl')]: { height: 318 },
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     height: 150,
     backgroundSize: 'cover',
-    [theme.breakpoints.up('sm')]: { height: 300 },
+    [theme.breakpoints.up('sm')]: { height: 250 },
     [theme.breakpoints.up('md')]: { height: 250 },
     [theme.breakpoints.up('lg')]: { height: 310 },
     [theme.breakpoints.up('xl')]: { height: 310 },
