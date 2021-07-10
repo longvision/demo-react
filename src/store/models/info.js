@@ -14,10 +14,10 @@ export const info = {
   },
   effects: (dispatch) => ({
     async getDescriptionAsync(payload) {
-      const { analise, variavel } = payload;
+      const { analysis, variable } = payload;
 
-      const analysisValue = config.analysis[analise];
-      const variableValue = await config.variables[analysisValue][variavel];
+      const analysisValue = config.analysis[analysis];
+      const variableValue = await config.variables[analysisValue][variable];
 
       console.log({
         session_id: '8978d76440e44ebbbed7c2c04784cedf',

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-
+    borderColor: '#BFBFBF',
     // minHeight: 161.55,
     // minWidth: 370,
 

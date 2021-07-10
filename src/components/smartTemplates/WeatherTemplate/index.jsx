@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     width: '100%',
     [theme.breakpoints.up('md')]: { width: '100%' },
+    [theme.breakpoints.up('lg')]: { minWidth: 1080 },
   },
   top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
@@ -105,13 +106,21 @@ const WeatherTemplate = () => {
   const [map, setMap] = useState('todas');
   const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
-  const [trimester, setTrimester] = useState(0);
+  const [trimester, setTrimester] = useState(null);
   const [month, setMonth] = useState(0);
   const [range, setRange] = useState(0);
 
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
-  const getImage = useCallback(async () => {
+  const changeImage = useCallback(async () => {
+    if (isTrimesterSearch) {
+      await dispatch.images.selectMapAsync({ month: null, year, trimester });
+    } else {
+      await dispatch.images.selectMapAsync({ month, year, trimester: null });
+    }
+  }, [year, month, trimester, isTrimesterSearch]);
+
+  const getImageAPI = useCallback(async () => {
     if (analysis === 1) {
       await dispatch.images.getImagesAsync({
         analysis,
@@ -134,40 +143,20 @@ const WeatherTemplate = () => {
         web: 'web',
       });
     }
-    if (isTrimesterSearch) {
-      dispatch.images.selectMapAsync({ month: null, year, trimester });
-    } else {
-      dispatch.images.selectMapAsync({ month, year, trimester: null });
-    }
-  }, [
-    year,
-    month,
-    trimester,
-    isTrimesterSearch,
-    analysis,
-    statistic,
-    variable,
-    indexType,
-    map,
-    range,
-    phase,
-  ]);
+    changeImage();
+  }, [year, analysis, statistic, variable, indexType, map, range, phase]);
 
   useEffect(() => {
-    getImage();
-  }, [
-    year,
-    month,
-    trimester,
-    isTrimesterSearch,
-    analysis,
-    statistic,
-    variable,
-    indexType,
-    map,
-    range,
-    phase,
-  ]);
+    getImageAPI();
+  }, [year, analysis, statistic, variable, indexType, map, range, phase]);
+
+  useEffect(() => {
+    changeImage();
+  }, [year, month, trimester, isTrimesterSearch]);
+
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable });
+  }, [variable]);
 
   function handleDecrement() {
     if (year > 1979 && year <= maxYear && range >= 0) {

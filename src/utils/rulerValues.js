@@ -19,7 +19,7 @@ export default {
     2: 'FMA',
     3: 'MAM',
     4: 'AMJ',
-    5: 'AJJ',
+    5: 'MJJ',
     6: 'JJA',
     7: 'JAS',
     8: 'ASO',

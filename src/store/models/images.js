@@ -17,16 +17,7 @@ export const images = {
       };
     },
     selectedMap(state, payload) {
-      const {
-        month, year, trimester,
-      } = payload;
-
-      const selectedPeriod = () => (trimester
-        ? state.images.filter((item) => item.includes(ruler.trimesters[trimester]))
-        : state.images.filter((item) => item.includes(ruler.months[month])));
-
-      const globalMap = selectedPeriod().filter((item) => item.includes('global'));
-      const brasilMap = selectedPeriod().filter((item) => item.includes('brasil'));
+      const { globalMap, brasilMap } = payload;
 
       return {
         ...state,
@@ -87,12 +78,21 @@ export const images = {
 
       this.setImages(res.data);
     },
-    async selectMapAsync(payload) {
+    async selectMapAsync(payload, rootState) {
       const {
         month, trimester, year,
       } = payload;
 
-      this.selectedMap({ month, year, trimester });
+      const selectedPeriod = () => (trimester !== null
+        ? rootState.images.images.filter((item) => item.includes(ruler.trimesters[trimester]))
+        : rootState.images.images.filter((item) => item.includes(ruler.months[month])));
+
+      const selectedYear = () => selectedPeriod().filter((item) => item.includes(year));
+
+      const globalMap = selectedYear().filter((item) => item.includes('global'));
+      const brasilMap = selectedYear().filter((item) => item.includes('brasil'));
+
+      this.selectedMap({ globalMap, brasilMap });
     },
   }),
 };

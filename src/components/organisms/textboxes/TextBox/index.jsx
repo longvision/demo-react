@@ -1,9 +1,11 @@
-import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 import React from 'react';
+
+import { useSelector } from 'react-redux';
+import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   container: {
-    height: '95%',
+    height: '90%',
     textAlign: 'left',
     overflow: 'auto',
   },
@@ -18,6 +20,22 @@ const useStyles = makeStyles(() => ({
 
 function TextBox({ variable, source }) {
   const classes = useStyles();
+  const description = useSelector((state) => state.info.selectedDescription);
+
+  function getURLHost(url) {
+    let hostname;
+    if (url.indexOf('//') > -1) {
+      hostname = url.split('/')[2];
+    } else {
+      hostname = url.split('/')[0];
+    }
+    // find & remove port number
+    hostname = hostname.split(':')[0];
+    // find & remove "?"
+    hostname = hostname.split('?')[0];
+    return hostname;
+  }
+
   return (
     <>
       <Box>
@@ -27,10 +45,7 @@ function TextBox({ variable, source }) {
           align="justify"
           gutterBottom
         >
-          <strong>
-            Descrição da
-            {variable}
-          </strong>
+          <strong>{description.header}</strong>
         </Typography>
       </Box>
       <Container className={classes.container}>
@@ -41,34 +56,21 @@ function TextBox({ variable, source }) {
             align="justify"
             gutterBottom
           >
-            Interactive message templates expand the content you can send
-            recipients beyond the standard message template and media messages
-            template types to include interactive buttons using the components
-            object. There are two types of predefined buttons offered:
-            Call-to-Action — Allows your customer to call a phone number and
-            visit a website Quick Reply — Allows your customer to return a
-            simple text message These buttons can be attached to text messages
-            or media messages. Once your interactive message templates have been
-            created and approved, you can use them in notification messages as
-            well as customer service/care messages.
+            {description.body}
           </Typography>
           <Box />
           <Typography variant="body1" component="body1" gutterBottom>
-            <strong>
-              Fonte:
-              {source}
-            </strong>
+            <strong>Fonte:</strong>
           </Typography>
-          <Typography
-            variant="subtitle1"
-            component="p"
-            align="justify"
-            gutterBottom
-          >
-            Interactive message templates expand the content you can send
-            recipients beyond the standard message template and media messages
-            template types to include interactive buttons using the components
-            object. There are two types of predefined buttons offered:
+          <Typography variant="subtitle1" component="p" align="justify" />
+          <Typography gutterBottom>
+            <a
+              href={`${description.source.match(/href="([^"]*)/)[1]}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {getURLHost(description.source.match(/href="([^"]*)/)[1])}
+            </a>
           </Typography>
           <Box />
           <Typography variant="body1" component="body1" gutterBottom>
@@ -80,16 +82,7 @@ function TextBox({ variable, source }) {
             align="justify"
             gutterBottom
           >
-            Interactive message templates expand the content you can send
-            recipients beyond the standard message template and media messages
-            template types to include interactive buttons using the components
-            object. There are two types of predefined buttons offered:
-            Call-to-Action — Allows your customer to call a phone number and
-            visit a website Quick Reply — Allows your customer to return a
-            simple text message These buttons can be attached to text messages
-            or media messages. Once your interactive message templates have been
-            created and approved, you can use them in notification messages as
-            well as customer service/care messages.
+            {description.reference}
           </Typography>
         </Box>
       </Container>

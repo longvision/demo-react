@@ -7,7 +7,7 @@ export default {
       1: 'tsm',
       2: 't2m',
       3: 'pnmm',
-      4: 'geop500',
+      4: 'geop500-200',
       5: 'div-umid850',
       6: 'psi700-200',
       7: 'vento10',
@@ -17,7 +17,7 @@ export default {
     ind: {
       0: 'olr',
       1: 'flux-umid850',
-      2: 'geop500',
+      2: 'geop500-200',
       3: 'prec',
     },
   },

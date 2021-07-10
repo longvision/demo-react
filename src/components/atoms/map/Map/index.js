@@ -5,7 +5,7 @@ const Map = ({ style, selectedMap }) => {
     <div>
       <img
         className={style}
-        alt="mapa_brasil"
+        alt="mapa"
         src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedMap}`}
       />
     </div>

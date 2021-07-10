@@ -27,8 +27,8 @@ const CustomSlider = withStyles({
   markLabelActive: { display: 'block' },
   thumb: {
     boxShadow,
-    height: 28,
-    width: 28,
+    height: 22,
+    width: 22,
     marginTop: -14,
     // marginLeft: -14,
     backgroundColor: '#68E3EE',
@@ -43,14 +43,17 @@ const CustomSlider = withStyles({
     },
   },
   valueLabel: {
-    left: 'calc(-50% + 12px)',
+    left: 'calc(-50%+6px)',
     top: -30,
+    width: 58,
+
     background: 'black',
     // visibility: 'hidden',
-    '&:focus, &:hover, &$inactive': { display: 'none' },
+    '&:focus, &:hover, &$inactive': { display: 'block' },
     '& *': {
       background: 'black',
       color: 'white',
+      marginLeft: 10,
     },
   },
   track: { height: 2, backgroundColor: '#bfbfbf' },
@@ -65,7 +68,7 @@ const CustomSlider = withStyles({
     width: 5,
     marginTop: -3,
     bottom: -2,
-    marginLeft: 5,
+    marginLeft: 2,
   },
   markActive: {
     opacity: 1,
