@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: '90%',
+    height: 50,
     borderColor: '#BFBFBF',
     borderRadius: 15,
     '&:hover': { backgroundColor: 'transparent' },
@@ -85,7 +86,7 @@ const YearRuler = ({
         onClick={handleClick}
         variant="outlined"
       >
-        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="left">
           <Typography
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
@@ -108,7 +109,7 @@ const YearRuler = ({
             handleToggle={handleClick}
           />
         </Grid>
-        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="right">
           <Typography
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}

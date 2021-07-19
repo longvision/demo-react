@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
     width: '90%',
     borderColor: '#BFBFBF',
     borderRadius: 15,
+    height: 50,
     '&:hover': { backgroundColor: 'transparent' },
   },
 }));
@@ -32,7 +33,7 @@ const MonthRuler = ({
         onClick={handleClick}
         variant="outlined"
       >
-        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="left">
           <Typography
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
@@ -54,7 +55,7 @@ const MonthRuler = ({
             marks
           />
         </Grid>
-        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="right">
           <Typography
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
