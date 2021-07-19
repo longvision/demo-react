@@ -44,14 +44,15 @@ const CustomSlider = withStyles({
   },
   valueLabel: {
     left: 'calc(-95%)',
-    top: -30,
+    top: -25,
+    height: 30,
     width: 58,
-
-    background: 'black',
+    marginTop: 3,
+    background: 'gray',
     // visibility: 'hidden',
     '&:focus, &:hover, &$inactive': { display: 'block' },
     '& *': {
-      background: 'black',
+      background: 'gray',
       color: 'white',
       marginLeft: 0,
     },

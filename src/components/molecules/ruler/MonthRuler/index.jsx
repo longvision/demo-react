@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 15,
+    marginTop: 10,
   },
 
   button: {

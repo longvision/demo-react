@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 15,
+    marginTop: 10,
   },
   button: {
     width: '90%',
