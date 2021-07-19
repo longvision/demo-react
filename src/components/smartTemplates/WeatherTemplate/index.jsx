@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
-    width: '92%',
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
@@ -74,7 +73,14 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       marginTop: 111,
       margin: 15,
-      height: 531,
+      height: 555,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 290,
+      justifyContent: 'center',
+      marginTop: 111,
+      margin: 15,
+      height: 651,
     },
   },
   body: {
