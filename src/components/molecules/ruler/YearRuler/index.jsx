@@ -39,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: '90%',
-    height: 50,
+    height: 40,
     borderColor: '#BFBFBF',
-    borderRadius: 15,
+    borderRadius: 10,
     '&:hover': { backgroundColor: 'transparent' },
   },
 }));

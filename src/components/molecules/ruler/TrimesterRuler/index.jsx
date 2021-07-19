@@ -15,8 +15,8 @@ const useStyles = makeStyles(() => ({
   button: {
     width: '90%',
     borderColor: '#BFBFBF',
-    borderRadius: 15,
-    height: 50,
+    borderRadius: 10,
+    height: 40,
     '&:hover': { backgroundColor: 'transparent' },
   },
 }));
