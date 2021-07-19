@@ -19,13 +19,14 @@ export const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: [
-      '-apple-system',
-      'IBM Plex Sans',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    fontSize: '1.4rem',
+    fontFamily: ['IBM Plex Sans', 'sans-serif'].join(','),
+  },
+  props: {
+    // Name of the component
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true, // No more ripple, on the whole application!
+    },
   },
 });

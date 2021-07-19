@@ -2,18 +2,18 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
 
-const HistoryVariables = ({ variables, setVariables }) => {
+const IndexTypes = ({ indexType, setIndexType }) => {
   return (
     <>
       <SelectorFilter
-        title="Variável"
-        label="Variável"
-        state={variables}
-        setState={setVariables}
+        title="Índices'"
+        label="Índices"
+        state={indexType}
+        setState={setIndexType}
         data={data}
       />
     </>
   );
 };
 
-export default HistoryVariables;
+export default IndexTypes;

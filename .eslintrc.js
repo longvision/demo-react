@@ -5,9 +5,7 @@ module.exports = {
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 12,
     sourceType: 'module',
   },
@@ -19,17 +17,21 @@ module.exports = {
     'arrow-body-style': 0,
     'react/jsx-filename-extension': 0,
     'no-unused-vars': 'warn',
+    'max-len': ['warn', { code: 200 }],
     'no-console': 'off',
-    'import/no-unresolved': [
-      2,
-      {
-        commonjs: true,
-      },
-    ],
+    'import/no-unresolved': [2, { commonjs: true }],
     'import/named': 2,
     'import/namespace': 2,
     'import/default': 2,
     'import/export': 2,
+    'prefer-destructuring': [
+      'warn',
+      {
+        array: false,
+        object: false,
+      },
+      { enforceForRenamedProperties: false },
+    ],
     'import/extensions': [
       0,
       {
@@ -41,14 +43,18 @@ module.exports = {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'no-process-exit': 'off',
-    'object-shorthand': 'off',
+    'object-shorthand': 2,
+    'object-property-newline': 'error',
+    'react/jsx-props-no-spreading': 0,
     'object-curly-newline': [
-      'error',
+      'warn',
       {
-        ObjectExpression: 'always',
+        ObjectExpression: { multiline: true },
         ObjectPattern: {
           multiline: true,
+          minProperties: 3,
         },
+        ImportDeclaration: 'never',
         ExportDeclaration: {
           multiline: true,
           minProperties: 3,

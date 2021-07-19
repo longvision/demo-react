@@ -2,18 +2,19 @@ import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
 
-const HistoryStatistics = ({ statistics, setStatistics }) => {
+const Display = ({ map, setMap }) => {
   return (
     <>
       <SelectorFilter
-        title="Estatística"
-        label="Estatística"
-        state={statistics}
-        setState={setStatistics}
+        title="Visualização"
+        label="Visualização"
+        state={map}
+        setState={setMap}
         data={data}
+        style={{ minWidth: 150 }}
       />
     </>
   );
 };
 
-export default HistoryStatistics;
+export default Display;

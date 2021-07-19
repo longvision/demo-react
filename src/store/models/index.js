@@ -1,5 +1,4 @@
-import { auth } from './auth';
+import { images } from './images';
+import { info } from './info';
 
-export const models = {
-  auth,
-};
+export const models = { images, info };

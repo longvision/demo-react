@@ -1,0 +1,6 @@
+{
+  "body": "Os dados mensais de TSM foram obtidos a partir do NOAA Extended Reconstructed Sea Surface Temperature (ERSST) V5, que abrange toda a superfície oceânica global em uma resolução espacial de 2º de latitude e longitude no período de janeiro de 1980 até o presente. A climatologia compreende o período de 1991-2020 e foi utilizada como referência para o cálculo das anomalias mensais e trimestrais.",
+  "header": "Descrição da temperatura da superfície do mar (TSM):",
+  "reference": "Boyin Huang, Peter W. Thorne, Viva F. Banzon, Tim Boyer, Gennady Chepurin, Jay H. Lawrimore, Matthew J. Menne, Thomas M. Smith, Russell S. Vose, and Huai-Min Zhang (2017): NOAA Extended Reconstructed Sea Surface Temperature (ERSST), Version 5. Monthly mean. NOAA National Centers for Environmental Information. doi:10.7289/V5T72FNM",
+  "source": "<a href=\"https://psl.noaa.gov/data/gridded/data.noaa.ersst.v5.html\">psl.noaa.gov</a>"
+}
