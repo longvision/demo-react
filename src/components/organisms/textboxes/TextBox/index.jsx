@@ -64,13 +64,15 @@ function TextBox({ variable, source }) {
           </Typography>
           <Typography variant="subtitle1" component="p" align="justify" />
           <Typography gutterBottom>
-            <a
-              href={`${description.source.match(/href="([^"]*)/)[1]}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {getURLHost(description.source.match(/href="([^"]*)/)[1])}
-            </a>
+            {description.source && (
+              <a
+                href={`${description.source.match(/href="([^"]*)/)[1]}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {getURLHost(description.source.match(/href="([^"]*)/)[1])}
+              </a>
+            )}
           </Typography>
           <Box />
           <Typography variant="body1" component="body1" gutterBottom>

@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#BFBFBF',
+
     // minHeight: 161.55,
     // minWidth: 370,
 
@@ -21,15 +22,51 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: { height: 258 },
     [theme.breakpoints.up('md')]: { height: 258 },
     [theme.breakpoints.up('lg')]: { height: 318 },
-    [theme.breakpoints.up('xl')]: { height: 318 },
+    [theme.breakpoints.up('xl')]: { height: 418 },
+  },
+  subtitle: {
+    width: '53%',
+    zIndex: 1,
+    position: 'absolute',
+    top: 368,
+    left: 120,
+    [theme.breakpoints.up('sm')]: {
+      width: '33%',
+      zIndex: 1,
+      position: 'absolute',
+      top: 400,
+      left: 100,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '13%',
+      zIndex: 1,
+      position: 'absolute',
+      top: 368,
+      left: 85,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '13%',
+      zIndex: 1,
+      position: 'absolute',
+      top: 420,
+      left: 200,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '13%',
+      zIndex: 1,
+      position: 'absolute',
+      top: 420,
+      left: 200,
+    },
   },
   image: {
     height: 150,
     backgroundSize: 'cover',
+
     [theme.breakpoints.up('sm')]: { height: 250 },
     [theme.breakpoints.up('md')]: { height: 250 },
     [theme.breakpoints.up('lg')]: { height: 310 },
-    [theme.breakpoints.up('xl')]: { height: 310 },
+    [theme.breakpoints.up('xl')]: { height: 410 },
   },
 }));
 
@@ -38,6 +75,7 @@ function GlobalMap() {
   const loading = useSelector(
     (state) => state.loading.effects.images.getImageAsync,
   );
+  const subtitle = useSelector((state) => state.images.subtitle);
 
   const selectedGlobalMap = useSelector(
     (state) => state.images.selectedGlobalMap,
@@ -47,7 +85,12 @@ function GlobalMap() {
   return (
     <Box className={classes.map} border={2}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
+        <>
+          <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
+          {subtitle && (
+            <img src={subtitle} alt="label" className={classes.subtitle} />
+          )}
+        </>
       ) : (
         <h3>Sem imagem disponível</h3>
       )}

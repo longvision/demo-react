@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: { width: 254, height: '100%' },
 
     [theme.breakpoints.up('lg')]: { height: 318 },
-    [theme.breakpoints.up('xl')]: { height: 318 },
+    [theme.breakpoints.up('xl')]: { height: 418, width: 418 },
   },
   image: {
     padding: 5,
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('xl')]: {
       padding: 5,
-      height: 310,
+      height: 418,
       backgroundSize: 'cover',
     },
   },

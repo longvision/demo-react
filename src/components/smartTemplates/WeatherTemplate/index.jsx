@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-
     margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
@@ -53,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
     flexWrap: 'wrap',
-    [theme.breakpoints.up('lg')]: { padding: 15, width: '100%' },
+    [theme.breakpoints.up('lg')]: { padding: 15, width: '75%' },
+    [theme.breakpoints.up('xl')]: { padding: 15, width: '55%' },
   },
   textBox: {
     backgroundColor: 'white',
@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: { width: '100%' },
     [theme.breakpoints.up('lg')]: { minWidth: 1080 },
+    [theme.breakpoints.up('xl')]: { minWidth: 1580 },
   },
   top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
@@ -148,6 +149,7 @@ const WeatherTemplate = () => {
 
   useEffect(() => {
     getImageAPI();
+    dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
 
   useEffect(() => {
@@ -157,6 +159,10 @@ const WeatherTemplate = () => {
   useEffect(() => {
     dispatch.info.getDescriptionAsync({ analysis, variable });
   }, [variable]);
+
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable });
+  }, []);
 
   function handleDecrement() {
     if (year > 1979 && year <= maxYear && range >= 0) {
