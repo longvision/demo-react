@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
@@ -56,11 +56,11 @@ function BrasilMap() {
     (state) => state.images.selectedBrasilMap,
   );
   return (
-    <Box className={classes.map} border={2}>
+    <Box className={classes.map} border={selectedBrasilMap[0] ? 2 : 0}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <Map style={classes.image} selectedMap={selectedBrasilMap[0]} />
       ) : (
-        <h3>Sem imagem disponível</h3>
+        <CircularProgress color="secondary" />
       )}
     </Box>
   );
