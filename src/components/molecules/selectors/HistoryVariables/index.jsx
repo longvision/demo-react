@@ -1,16 +1,40 @@
 import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
-import { data } from './data.js';
+import { data1, data2 } from './data.js';
 
-const HistoryVariables = ({ variable, setVariable }) => {
+const HistoryVariables = ({
+  variable, setVariable, statistic,
+}) => {
+  const selectData = (type) => {
+    switch (type) {
+      case 0:
+        return data2;
+      case 1:
+        return data1;
+      case 2:
+        return data1;
+      default:
+        return data1;
+    }
+  };
+
+  function handleEmptyValue() {
+    if (
+      selectData(statistic).filter((item) => item.value === variable).length ===
+      0
+    ) {
+      return selectData(statistic)[0].value;
+    }
+    return variable;
+  }
   return (
     <>
       <SelectorFilter
         title="Variável"
         label="Variável"
-        state={variable}
+        state={handleEmptyValue()}
         setState={setVariable}
-        data={data}
+        data={selectData(statistic)}
       />
     </>
   );

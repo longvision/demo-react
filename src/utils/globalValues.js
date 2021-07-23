@@ -12,7 +12,7 @@ export default {
       6: 'psi700-200',
       7: 'vento10',
       8: 'vento100',
-      9: 'chi70-200',
+      9: 'chi700-200',
     },
     ind: {
       0: 'olr',

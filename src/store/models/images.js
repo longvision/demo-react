@@ -105,7 +105,10 @@ export const images = {
         ? rootState.images.images.filter((item) => item.includes(ruler.trimesters[trimester]))
         : rootState.images.images.filter((item) => item.includes(ruler.months[month])));
 
-      const selectedYear = () => selectedPeriod().filter((item) => item.includes(year));
+      console.log(selectedPeriod());
+      const selectedYear = () => (year
+        ? selectedPeriod().filter((item) => item.includes(year))
+        : selectedPeriod());
 
       const globalMap = selectedYear().filter((item) => item.includes('global'));
       const brasilMap = selectedYear().filter((item) => item.includes('brasil'));

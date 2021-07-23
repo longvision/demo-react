@@ -30,6 +30,7 @@ const RulerControls = ({
   maxYear,
   range,
   setYear,
+  statistic,
 }) => {
   const classes = useStyles();
 
@@ -48,18 +49,20 @@ const RulerControls = ({
         setTrimester={setTrimester}
         trimester={trimester}
       />
-      <YearRuler
-        handleDecrement={handleDecrement}
-        handleIncrement={handleIncrement}
-        disableDecrement={year > maxYear || (year <= 1988 && range === 33)}
-        disableIncrement={year >= maxYear || range === 0}
-        handleClick={() => {}}
-        disabled={year > maxYear}
-        year={year}
-        setYear={setYear}
-        range={range}
-        maxYear={maxYear}
-      />
+      {statistic !== 1 && (
+        <YearRuler
+          handleDecrement={handleDecrement}
+          handleIncrement={handleIncrement}
+          disableDecrement={year > maxYear || (year <= 1988 && range === 33)}
+          disableIncrement={year >= maxYear || range === 0}
+          handleClick={() => {}}
+          disabled={year > maxYear}
+          year={year}
+          setYear={setYear}
+          range={range}
+          maxYear={maxYear}
+        />
+      )}
     </Box>
   );
 };
