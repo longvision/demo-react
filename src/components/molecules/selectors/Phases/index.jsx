@@ -21,12 +21,22 @@ const Phases = ({
         return temp;
     }
   };
+
+  function handleEmptyValue() {
+    if (
+      selectData(indexType).filter((item) => item.value === phase).length === 0
+    ) {
+      return selectData(indexType)[0].value;
+    }
+    return phase;
+  }
+
   return (
     <>
       <SelectorFilter
         title="Fase"
         label="Fase"
-        state={phase}
+        state={handleEmptyValue()}
         setState={setPhase}
         data={selectData(indexType)}
       />

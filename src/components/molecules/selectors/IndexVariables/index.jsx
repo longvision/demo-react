@@ -21,12 +21,23 @@ const IndexVariables = ({
         return data2;
     }
   };
+
+  function handleEmptyValue() {
+    if (
+      selectData(indexType).filter((item) => item.value === variable).length ===
+      0
+    ) {
+      return selectData(indexType)[0].value;
+    }
+    return variable;
+  }
+
   return (
     <>
       <SelectorFilter
         title="Variável"
         label="Variável"
-        state={variable}
+        state={handleEmptyValue()}
         setState={setVariable}
         data={selectData(indexType)}
       />
