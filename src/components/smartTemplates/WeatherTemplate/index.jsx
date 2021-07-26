@@ -197,6 +197,8 @@ const WeatherTemplate = () => {
       (analysis === 0 && variable === 3)
     ) {
       setMap('brasil');
+    } else {
+      setMap('todas');
     }
   }, [variable]);
 
