@@ -105,7 +105,7 @@ const WeatherTemplate = () => {
   const dispatch = useDispatch();
   const [analysis, setAnalysis] = useState(1);
   const [statistic, setStatistic] = useState(0);
-  const [variable, setVariable] = useState(1);
+  const [variable, setVariable] = useState(0);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
