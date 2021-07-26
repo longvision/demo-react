@@ -64,6 +64,7 @@ export const images = {
       const analysisValue = config.analysis[analysis];
       const variableValue = await config.variables[analysisValue][variable];
       const indexValue = config.indexType[indexType];
+
       let statisticValue;
 
       if (analysis === 0 && indexType === 0) {
@@ -101,16 +102,35 @@ export const images = {
         month, trimester, year,
       } = payload;
 
-      const selectedPeriod = () => (trimester !== null
-        ? rootState.images.images.filter((item) => item.includes(ruler.trimesters[trimester]))
-        : rootState.images.images.filter((item) => item.includes(ruler.months[month])));
+      function selectedTrimester() {
+        if (trimester !== null) {
+          const trimesterImage = rootState.images.images.filter((item) => item.includes(ruler.trimesters[trimester]));
+          if (year) {
+            return trimesterImage.filter((item) => item.includes(year));
+          }
+          return trimesterImage;
+        }
+      }
+      function selectedMonth() {
+        if (month !== null) {
+          const monthImage = rootState.images.images.filter((item) => item.includes(ruler.months[month]));
+          if (year) {
+            return monthImage.filter((item) => item.includes(year));
+          }
+          return monthImage;
+        }
+      }
 
-      const selectedYear = () => selectedPeriod().filter((item) => item.includes(year));
-
-      const globalMap = selectedYear().filter((item) => item.includes('global'));
-      const brasilMap = selectedYear().filter((item) => item.includes('brasil'));
-
-      this.selectedMap({ globalMap, brasilMap });
+      if (month !== null && trimester === null) {
+        const globalMap = selectedMonth().filter((item) => item.includes('global'));
+        const brasilMap = selectedMonth().filter((item) => item.includes('brasil'));
+        this.selectedMap({ globalMap, brasilMap });
+      }
+      if (month === null && trimester !== null) {
+        const globalMap = selectedTrimester().filter((item) => item.includes('global'));
+        const brasilMap = selectedTrimester().filter((item) => item.includes('brasil'));
+        this.selectedMap({ globalMap, brasilMap });
+      }
     },
     async setSubtitle(payload, rootState) {
       const {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '../../button/IconButton';
@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 10,
   },
 
   rightIcon: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft: 5,
     justifyContent: 'center',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.light,
@@ -29,10 +31,18 @@ const useStyles = makeStyles((theme) => ({
     width: 44,
     display: 'flex',
     flexDirection: 'row',
+    marginRight: 5,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.light,
+  },
+  button: {
+    width: '90%',
+    height: 40,
+    borderColor: '#BFBFBF',
+    borderRadius: 10,
+    '&:hover': { backgroundColor: 'transparent' },
   },
 }));
 
@@ -64,37 +74,56 @@ const YearRuler = ({
 
   return (
     <Grid container className={classes.container}>
-      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <IconButton
-          icon={<RemoveIcon />}
-          className={classes.leftIcon}
-          handleclick={handleDecrement}
-          disabled={disableDecrement}
-        />
-      </Grid>
-      <Grid item md={10} lg={10} sm={10} xl={10} xs={8} align="center">
-        <Ruler
-          title=""
-          defaultValue={maxYear}
-          step={1}
-          min={maxYear - range - 10}
-          max={maxYear - range}
-          labelFunction={labelFunction}
-          disabled={false}
-          handleChange={setYear}
-          value={year}
-          marks
-          handleToggle={handleClick}
-        />
-      </Grid>
-      <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="center">
-        <IconButton
-          icon={<AddIcon />}
-          className={classes.rightIcon}
-          disabled={disableIncrement}
-          handleclick={handleIncrement}
-        />
-      </Grid>
+      <IconButton
+        icon={<RemoveIcon />}
+        className={classes.leftIcon}
+        handleclick={handleDecrement}
+        disabled={disableDecrement}
+      />
+      <Button
+        type="button"
+        className={classes.button}
+        onClick={handleClick}
+        variant="outlined"
+      >
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="left">
+          <Typography
+            variant="h3"
+            color={disabled ? 'textSecondary' : 'primary'}
+          >
+            <strong>{maxYear - range - 10}</strong>
+          </Typography>
+        </Grid>
+        <Grid item md={10} lg={10} sm={10} xl={10} xs={8} align="center">
+          <Ruler
+            title=""
+            defaultValue={maxYear}
+            step={1}
+            min={maxYear - range - 10}
+            max={maxYear - range}
+            labelFunction={labelFunction}
+            disabled={false}
+            handleChange={setYear}
+            value={year}
+            marks
+            handleToggle={handleClick}
+          />
+        </Grid>
+        <Grid item md={1} lg={1} sm={1} xl={1} xs={2} align="right">
+          <Typography
+            variant="h3"
+            color={disabled ? 'textSecondary' : 'primary'}
+          >
+            <strong>{maxYear - range}</strong>
+          </Typography>
+        </Grid>
+      </Button>
+      <IconButton
+        icon={<AddIcon />}
+        className={classes.rightIcon}
+        disabled={disableIncrement}
+        handleclick={handleIncrement}
+      />
     </Grid>
   );
 };

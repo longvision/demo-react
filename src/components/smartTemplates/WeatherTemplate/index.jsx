@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
-    width: '92%',
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
     flexWrap: 'wrap',
-    [theme.breakpoints.up('lg')]: { padding: 15, width: '75%' },
+    [theme.breakpoints.up('lg')]: { padding: 15, width: '80%' },
     [theme.breakpoints.up('xl')]: { padding: 15, width: '55%' },
   },
   textBox: {
@@ -74,7 +73,14 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       marginTop: 111,
       margin: 15,
-      height: 531,
+      height: 555,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 290,
+      justifyContent: 'center',
+      marginTop: 111,
+      margin: 15,
+      height: 651,
     },
   },
   body: {
@@ -99,7 +105,7 @@ const WeatherTemplate = () => {
   const dispatch = useDispatch();
   const [analysis, setAnalysis] = useState(1);
   const [statistic, setStatistic] = useState(0);
-  const [variable, setVariable] = useState(1);
+  const [variable, setVariable] = useState(0);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
   const [shape, setShape] = useState(0);
@@ -114,10 +120,28 @@ const WeatherTemplate = () => {
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
   const changeImage = useCallback(async () => {
-    if (isTrimesterSearch) {
-      await dispatch.images.selectMapAsync({ month: null, year, trimester });
+    if (statistic === 1) {
+      if (isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({
+          month: null,
+          year: null,
+          trimester,
+        });
+      }
+      if (!isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({
+          month,
+          year: null,
+          trimester: null,
+        });
+      }
     } else {
-      await dispatch.images.selectMapAsync({ month, year, trimester: null });
+      if (isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({ month: null, year, trimester });
+      }
+      if (!isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({ month, year, trimester: null });
+      }
     }
   }, [year, month, trimester, isTrimesterSearch]);
 
@@ -145,7 +169,17 @@ const WeatherTemplate = () => {
       });
     }
     changeImage();
-  }, [year, analysis, statistic, variable, indexType, map, range, phase]);
+  }, [
+    year,
+    analysis,
+    statistic,
+    variable,
+    indexType,
+    map,
+    range,
+    phase,
+    isTrimesterSearch,
+  ]);
 
   useEffect(() => {
     getImageAPI();
@@ -158,6 +192,12 @@ const WeatherTemplate = () => {
 
   useEffect(() => {
     dispatch.info.getDescriptionAsync({ analysis, variable });
+    if (
+      (analysis === 1 && variable === 0) ||
+      (analysis === 0 && variable === 3)
+    ) {
+      setMap('brasil');
+    }
   }, [variable]);
 
   useEffect(() => {
@@ -216,6 +256,7 @@ const WeatherTemplate = () => {
               maxYear={maxYear}
               range={range}
               setYear={setYear}
+              statistic={statistic}
             />
           </Paper>
         </Box>

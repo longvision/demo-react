@@ -21,9 +21,11 @@ module.exports = {
     'no-console': 'off',
     'import/no-unresolved': [2, { commonjs: true }],
     'import/named': 2,
+    'consistent-return': 0,
     'import/namespace': 2,
     'import/default': 2,
     'import/export': 2,
+    'no-useless-return': 1,
     'prefer-destructuring': [
       'warn',
       {

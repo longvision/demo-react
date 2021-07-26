@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
@@ -12,19 +12,20 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     borderColor: '#BFBFBF',
     // minHeight: 370,
+    // essa imagem nao eh quadrada, por isso da borda.
     minWidth: 310,
+
     margin: 7,
 
     [theme.breakpoints.up('sm')]: { width: 450, height: '100%' },
     [theme.breakpoints.up('md')]: { width: 254, height: '100%' },
-
     [theme.breakpoints.up('lg')]: { height: 318 },
     [theme.breakpoints.up('xl')]: { height: 418, width: 418 },
   },
   image: {
-    padding: 5,
-    height: 310,
-
+    padding: 0,
+    height: 315,
+    marginTop: 5,
     backgroundSize: 'cover',
     [theme.breakpoints.up('sm')]: {
       padding: 5,
@@ -56,11 +57,11 @@ function BrasilMap() {
     (state) => state.images.selectedBrasilMap,
   );
   return (
-    <Box className={classes.map} border={2}>
+    <Box className={classes.map} border={selectedBrasilMap[0] ? 2 : 0}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <Map style={classes.image} selectedMap={selectedBrasilMap[0]} />
       ) : (
-        <h3>Sem imagem disponível</h3>
+        <CircularProgress color="secondary" />
       )}
     </Box>
   );

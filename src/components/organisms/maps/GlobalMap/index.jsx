@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
@@ -83,7 +83,7 @@ function GlobalMap() {
 
   useEffect(() => {}, [loading, selectedGlobalMap]);
   return (
-    <Box className={classes.map} border={2}>
+    <Box className={classes.map} border={selectedGlobalMap[0] ? 2 : 0}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
         <>
           <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
@@ -92,7 +92,7 @@ function GlobalMap() {
           )}
         </>
       ) : (
-        <h3>Sem imagem disponível</h3>
+        <CircularProgress color="secondary" />
       )}
     </Box>
   );

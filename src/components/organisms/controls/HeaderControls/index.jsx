@@ -51,7 +51,11 @@ const HeaderControls = ({
               statistic={statistic}
               setStatistic={setStatistic}
             />
-            <HistoryVariables setVariable={setVariable} variable={variable} />
+            <HistoryVariables
+              setVariable={setVariable}
+              variable={variable}
+              statistic={statistic}
+            />
           </>
         );
       default:
@@ -62,7 +66,7 @@ const HeaderControls = ({
     <div>
       <Analysis analysis={analysis} setAnalysis={setAnalysis} />
       {renderStats(analysis)}
-      <Maps map={map} setMap={setMap} />
+      <Maps map={map} setMap={setMap} variable={variable} analysis={analysis} />
       <Shapes shape={shape} setShape={setShape} />
     </div>
   );

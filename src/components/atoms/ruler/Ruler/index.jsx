@@ -27,8 +27,8 @@ const CustomSlider = withStyles({
   markLabelActive: { display: 'block' },
   thumb: {
     boxShadow,
-    height: 22,
-    width: 22,
+    height: 20,
+    width: 20,
     marginTop: -14,
     // marginLeft: -14,
     backgroundColor: '#68E3EE',
@@ -43,17 +43,18 @@ const CustomSlider = withStyles({
     },
   },
   valueLabel: {
-    left: 'calc(-50%+6px)',
-    top: -30,
+    left: 'calc(-95%)',
+    top: -25,
+    height: 30,
     width: 58,
-
-    background: 'black',
+    marginTop: 3,
+    background: 'gray',
     // visibility: 'hidden',
     '&:focus, &:hover, &$inactive': { display: 'block' },
     '& *': {
-      background: 'black',
+      background: 'gray',
       color: 'white',
-      marginLeft: 10,
+      marginLeft: 0,
     },
   },
   track: { height: 2, backgroundColor: '#bfbfbf' },
@@ -65,14 +66,14 @@ const CustomSlider = withStyles({
   mark: {
     backgroundColor: '#bfbfbf',
     height: 8,
-    width: 5,
+    width: 3,
     marginTop: -3,
     bottom: -2,
     marginLeft: 2,
   },
   markActive: {
     opacity: 1,
-    width: 5,
+    width: 3,
     backgroundColor: '#bfbfbf',
   },
 })(Slider);
@@ -98,33 +99,26 @@ const Ruler = ({
   }
   return (
     <div className={classes.root}>
-      <Button
-        type="button"
-        className={classes.button}
-        onClick={handleToggle}
-        variant="outlined"
-      >
-        <Typography id="discrete-slider" gutterBottom>
-          {title}
-        </Typography>
-        <CustomSlider
-          disabled={disabled}
-          defaultValue={defaultValue}
-          getAriaValueText={valuetext}
-          aria-label="ios slider"
-          valueLabelDisplay={!disabled ? 'on' : 'off'}
-          classes={{ thumb: { display: disabled && 'none' } }}
-          valueLabelFormat={valuetext}
-          onChange={(e, v) => handleChange(v)}
-          value={value}
-          step={step}
-          marks={marks}
-          aria-labelledby="discrete-slider-small-steps"
-          min={min}
-          max={max}
-          {...props}
-        />
-      </Button>
+      <Typography id="discrete-slider" gutterBottom>
+        {title}
+      </Typography>
+      <CustomSlider
+        disabled={disabled}
+        defaultValue={defaultValue}
+        getAriaValueText={valuetext}
+        aria-label="ios slider"
+        valueLabelDisplay={!disabled ? 'on' : 'off'}
+        classes={{ thumb: { display: disabled && 'none' } }}
+        valueLabelFormat={valuetext}
+        onChange={(e, v) => handleChange(v)}
+        value={value}
+        step={step}
+        marks={marks}
+        aria-labelledby="discrete-slider-small-steps"
+        min={min}
+        max={max}
+        {...props}
+      />
     </div>
   );
 };

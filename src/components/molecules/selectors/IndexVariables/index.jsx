@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
-import { var1, var2 } from './data.js';
+import { data1, data2 } from './data.js';
 
 const IndexVariables = ({
   variable, setVariable, indexType,
@@ -8,25 +8,36 @@ const IndexVariables = ({
   const selectData = (type) => {
     switch (type) {
       case 0:
-        return var1;
+        return data1;
       case 1:
-        return var2;
+        return data2;
       case 2:
-        return var2;
+        return data2;
       case 3:
-        return var2;
+        return data2;
       case 4:
-        return var2;
+        return data2;
       default:
-        return var2;
+        return data2;
     }
   };
+
+  function handleEmptyValue() {
+    if (
+      selectData(indexType).filter((item) => item.value === variable).length ===
+      0
+    ) {
+      return selectData(indexType)[0].value;
+    }
+    return variable;
+  }
+
   return (
     <>
       <SelectorFilter
         title="Variável"
         label="Variável"
-        state={variable}
+        state={handleEmptyValue()}
         setState={setVariable}
         data={selectData(indexType)}
       />
