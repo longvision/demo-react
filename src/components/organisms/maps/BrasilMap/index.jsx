@@ -14,9 +14,7 @@ const useStyles = makeStyles((theme) => ({
     // minHeight: 370,
     // essa imagem nao eh quadrada, por isso da borda.
     minWidth: 310,
-
     margin: 7,
-
     [theme.breakpoints.up('sm')]: { width: 450, height: '100%' },
     [theme.breakpoints.up('md')]: { width: 254, height: '100%' },
     [theme.breakpoints.up('lg')]: { height: 318 },
