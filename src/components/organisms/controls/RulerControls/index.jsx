@@ -31,6 +31,7 @@ const RulerControls = ({
   range,
   setYear,
   statistic,
+  analysis,
 }) => {
   const classes = useStyles();
 
@@ -51,7 +52,7 @@ const RulerControls = ({
         trimester={trimester}
         year={year}
       />
-      {statistic !== 1 && (
+      {statistic !== 1 && analysis !== 0 && (
         <YearRuler
           handleDecrement={handleDecrement}
           handleIncrement={handleIncrement}

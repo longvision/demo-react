@@ -94,9 +94,9 @@ export const images = {
         indice: indexValue,
         periodo: period,
       });
-
       this.setImages(res.data);
     },
+
     async selectMapAsync(payload, rootState) {
       const {
         month, trimester, year,

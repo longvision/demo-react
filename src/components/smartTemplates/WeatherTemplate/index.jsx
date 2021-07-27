@@ -135,12 +135,27 @@ const WeatherTemplate = () => {
           trimester: null,
         });
       }
-    } else {
+    } else if (analysis === 1) {
       if (isTrimesterSearch) {
         await dispatch.images.selectMapAsync({ month: null, year, trimester });
       }
       if (!isTrimesterSearch) {
         await dispatch.images.selectMapAsync({ month, year, trimester: null });
+      }
+    } else if (analysis === 0) {
+      if (isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({
+          month: null,
+          year: null,
+          trimester,
+        });
+      }
+      if (!isTrimesterSearch) {
+        await dispatch.images.selectMapAsync({
+          month,
+          year: null,
+          trimester: null,
+        });
       }
     }
   }, [year, month, trimester, isTrimesterSearch]);
@@ -162,7 +177,7 @@ const WeatherTemplate = () => {
         analysis,
         statistic,
         variable,
-        period: year,
+        period: null,
         indexType,
         phase,
         web: 'web',
@@ -259,6 +274,7 @@ const WeatherTemplate = () => {
               range={range}
               setYear={setYear}
               statistic={statistic}
+              analysis={analysis}
             />
           </Paper>
         </Box>

@@ -26,8 +26,8 @@ export default {
     0: 'mjo',
     1: 'pdo',
     2: 'aao',
-    3: 'nino1+2',
-    4: 'nino3.4',
+    3: 'nino1-2',
+    4: 'nino3-4',
   },
   phases: {
     fases: {
@@ -40,7 +40,7 @@ export default {
       6: 'clim-fase7',
       7: 'clim-fase8',
     },
-    temp: { 0: 'pos', 1: 'neg' },
+    temp: { 0: 'clim-fasePositiva', 1: 'clim-faseNegativa' },
   },
   shapes: { 0: 'estados' },
 };
