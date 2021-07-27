@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
-
+import { variableDictionary } from '../../../utils/imageTitles.js';
 import TextBox from '../../organisms/textboxes/TextBox';
 
 const useStyles = makeStyles((theme) => ({
@@ -233,7 +233,7 @@ const WeatherTemplate = () => {
       setYear(year + 1);
     }
   }
-
+  console.log(variableDictionary(0)[0]);
   return (
     <Box className={classes.page}>
       <Box className={classes.container}>
@@ -259,6 +259,11 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
+            <h3>
+              {` ${variableDictionary(analysis)[variable]} (${year - 10}-${
+                maxYear - range
+              }) ${month + 1}/${year} `}
+            </h3>
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
             <RulerControls
               handleDecrement={handleDecrement}
