@@ -22,3 +22,12 @@ export const variableDictionary = (analysis) => {
     };
   }
 };
+export const indexDictionary = () => {
+  return {
+    0: 'MJO',
+    1: 'PDO',
+    2: 'AAO',
+    3: 'Nino 1+2',
+    4: 'Nino 3.4',
+  };
+};

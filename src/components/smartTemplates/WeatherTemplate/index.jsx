@@ -1,11 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Box, Paper } from '@material-ui/core';
+import { Box, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
-import { variableDictionary } from '../../../utils/imageTitles.js';
+import { variableDictionary,
+  indexDictionary } from '../../../utils/imageTitles.js';
+
 import TextBox from '../../organisms/textboxes/TextBox';
 
 const useStyles = makeStyles((theme) => ({
@@ -259,11 +261,13 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
-            <h3>
-              {` ${variableDictionary(analysis)[variable]} (${year - 10}-${
-                maxYear - range
-              }) ${month + 1}/${year} `}
-            </h3>
+            <Typography>
+              {` ${variableDictionary(analysis)[variable]} ${
+                analysis === 0 ? indexDictionary()[indexType] : ''
+              } (${year - 10}-${maxYear - range}) ${
+                isTrimesterSearch ? trimester + 1 : month + 1
+              }/${year} `}
+            </Typography>
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
             <RulerControls
               handleDecrement={handleDecrement}
