@@ -22,9 +22,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 const MonthRuler = ({
-  disabled, setTrimester, trimester, handleClick,
+  disabled,
+  setTrimester,
+  trimester,
+  handleClick,
+  year,
 }) => {
   const classes = useStyles();
+  const currentYear = new Date().getFullYear();
+  const currentYearLastMonth = new Date().getMonth();
+
   return (
     <Grid container className={classes.container}>
       <Button
@@ -47,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={11}
+            max={year !== currentYear ? 11 : 12 - currentYearLastMonth}
             labelFunction={setTrimesterName}
             disabled={disabled}
             handleChange={setTrimester}
@@ -60,7 +67,12 @@ const MonthRuler = ({
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
           >
-            <strong>NDJ</strong>
+            <strong>
+              {' '}
+              {year !== currentYear
+                ? 'NDJ'
+                : setTrimesterName(currentYearLastMonth)}
+            </strong>
           </Typography>
         </Grid>
       </Button>

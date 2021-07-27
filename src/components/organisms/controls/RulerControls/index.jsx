@@ -49,6 +49,7 @@ const RulerControls = ({
         handleClick={() => setIsTrimesterSearch(true)}
         setTrimester={setTrimester}
         trimester={trimester}
+        year={year}
       />
       {statistic !== 1 && (
         <YearRuler
