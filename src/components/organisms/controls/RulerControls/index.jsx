@@ -41,6 +41,7 @@ const RulerControls = ({
         disabled={isTrimesterSearch}
         setMonth={setMonth}
         month={month}
+        year={year}
       />
 
       <TrimesterRuler
