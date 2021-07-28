@@ -8,8 +8,8 @@ const Shapes = ({
   return (
     <>
       <SelectorFilter
-        title="Contornos"
-        label="Contornos"
+        title="Camadas"
+        label="Camadas"
         state={shape}
         setState={setShape}
         data={data}

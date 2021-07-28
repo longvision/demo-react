@@ -50,7 +50,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== currentYear ? 11 : 12 - currentYearLastMonth}
+            max={year !== currentYear ? 11 : 12 - currentYearLastMonth - 1}
             labelFunction={setMonthName}
             disabled={disabled}
             handleChange={setMonth}
@@ -67,7 +67,7 @@ const MonthRuler = ({
             <strong>
               {year !== currentYear
                 ? 'DEZ'
-                : setMonthName(currentYearLastMonth)}
+                : setMonthName(currentYearLastMonth - 1)}
             </strong>
           </Typography>
         </Grid>

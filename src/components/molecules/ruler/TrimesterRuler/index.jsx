@@ -54,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== currentYear ? 11 : 12 - currentYearLastMonth}
+            max={year !== currentYear ? 11 : 11 - currentYearLastMonth - 1}
             labelFunction={setTrimesterName}
             disabled={disabled}
             handleChange={setTrimester}
@@ -71,7 +71,7 @@ const MonthRuler = ({
               {' '}
               {year !== currentYear
                 ? 'NDJ'
-                : setTrimesterName(currentYearLastMonth)}
+                : setTrimesterName(currentYearLastMonth - 2)}
             </strong>
           </Typography>
         </Grid>

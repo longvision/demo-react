@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Box, Paper, Typography } from '@material-ui/core';
+import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   sideBox: {
-    // height: 500
     display: 'flex',
     height: '100%',
     justifyContent: 'center',
@@ -58,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     backgroundColor: 'white',
-    padding: 15,
+    padding: '10px 0px 0px 10px',
     marginTop: 15,
     width: '100%',
     justifyContent: 'center',
@@ -66,25 +65,26 @@ const useStyles = makeStyles((theme) => ({
     height: 531,
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
-      margin: 15,
+      marginLeft: 15,
       width: '100%',
     },
-
     [theme.breakpoints.up('lg')]: {
-      width: 290,
+      width: 320,
       justifyContent: 'center',
       marginTop: 111,
-      margin: 15,
-      height: 555,
+      marginLeft: 15,
+      height: 540,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 290,
+      width: 320,
       justifyContent: 'center',
       marginTop: 111,
-      margin: 15,
-      height: 651,
+      marginLeft: 15,
+      height: 645,
     },
   },
+  title: { fontWeight: 'bold' },
+
   body: {
     backgroundColor: 'white',
     padding: 15,
@@ -199,6 +199,21 @@ const WeatherTemplate = () => {
   ]);
 
   useEffect(() => {
+    if (analysis === 0) {
+      // year is set to zero to set months and trimesters bars to full size
+      setYear(maxYear - 1);
+      setStatistic(1);
+    }
+  }, [analysis]);
+
+  useEffect(() => {
+    if (statistic === 1) {
+      // year is set to zero to set months and trimesters bars to full size
+      setYear(maxYear - 1);
+    }
+  }, [statistic]);
+
+  useEffect(() => {
     getImageAPI();
     dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
@@ -261,13 +276,14 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
-            <Typography>
+            <Typography className={classes.title}>
               {` ${variableDictionary(analysis)[variable]} ${
                 analysis === 0 ? indexDictionary()[indexType] : ''
               } (${year - 10}-${maxYear - range}) ${
                 isTrimesterSearch ? trimester + 1 : month + 1
               }/${year} `}
             </Typography>
+
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
             <RulerControls
               handleDecrement={handleDecrement}
