@@ -21,7 +21,7 @@ export default {
       3: 'prec',
     },
   },
-  ind: { 0: 'clim' },
+  ind: { 1: 'clim' },
   indexType: {
     0: 'mjo',
     1: 'pdo',

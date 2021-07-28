@@ -103,8 +103,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const WeatherTemplate = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const classes = useStyles();
   const [analysis, setAnalysis] = useState(1);
   const [statistic, setStatistic] = useState(0);
   const [variable, setVariable] = useState(0);
@@ -118,7 +118,6 @@ const WeatherTemplate = () => {
   const [trimester, setTrimester] = useState(null);
   const [month, setMonth] = useState(0);
   const [range, setRange] = useState(0);
-
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
   const changeImage = useCallback(async () => {
@@ -201,14 +200,17 @@ const WeatherTemplate = () => {
   useEffect(() => {
     if (analysis === 0) {
       // year is set to zero to set months and trimesters bars to full size
-      setYear(maxYear - 1);
+      if (year === maxYear) setYear(maxYear - 1);
       setStatistic(1);
+    }
+    if (analysis === 1) {
+      if (statistic === 1) setMap('brasil');
     }
   }, [analysis]);
 
   useEffect(() => {
-    if (statistic === 1) {
-      // year is set to zero to set months and trimesters bars to full size
+    if (statistic === 1 && analysis === 1) {
+      // year is set to zero to set months and trimesters bars to full size when statistic is "Clima"
       setYear(maxYear - 1);
     }
   }, [statistic]);
