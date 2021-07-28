@@ -120,6 +120,53 @@ const WeatherTemplate = () => {
   const [range, setRange] = useState(0);
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
 
+  useEffect(() => {
+    if (analysis === 0) {
+      // year is set to zero to set months and trimesters bars to full size
+      if (year === maxYear) setYear(maxYear - 1);
+      setStatistic(1);
+    }
+    if (analysis === 1) {
+      if (statistic === 1) setMap('brasil');
+    }
+  }, [analysis]);
+
+  useEffect(() => {
+    if (statistic === 1 && analysis === 1) {
+      // year is set to zero to set months and trimesters bars to full size when statistic is "Clima"
+      setYear(maxYear - 1);
+    }
+  }, [statistic]);
+
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable });
+    if (
+      (analysis === 1 && variable === 0) ||
+      (analysis === 0 && variable === 3)
+    ) {
+      setMap('brasil');
+    } else {
+      setMap('todas');
+    }
+  }, [variable]);
+
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable });
+  }, []);
+
+  function handleDecrement() {
+    if (year > 1979 && year <= maxYear && range >= 0) {
+      setRange(range + 1);
+      setYear(year - 1);
+    }
+  }
+  function handleIncrement() {
+    if (year < maxYear && range > 0) {
+      setRange(range - 1);
+      setYear(year + 1);
+    }
+  }
+
   const changeImage = useCallback(async () => {
     if (statistic === 1) {
       if (isTrimesterSearch) {
@@ -161,6 +208,9 @@ const WeatherTemplate = () => {
     }
   }, [year, month, trimester, isTrimesterSearch]);
 
+  useEffect(() => {
+    changeImage();
+  }, [year, month, trimester, isTrimesterSearch]);
   const getImageAPI = useCallback(async () => {
     if (analysis === 1) {
       await dispatch.images.getImagesAsync({
@@ -198,60 +248,10 @@ const WeatherTemplate = () => {
   ]);
 
   useEffect(() => {
-    if (analysis === 0) {
-      // year is set to zero to set months and trimesters bars to full size
-      if (year === maxYear) setYear(maxYear - 1);
-      setStatistic(1);
-    }
-    if (analysis === 1) {
-      if (statistic === 1) setMap('brasil');
-    }
-  }, [analysis]);
-
-  useEffect(() => {
-    if (statistic === 1 && analysis === 1) {
-      // year is set to zero to set months and trimesters bars to full size when statistic is "Clima"
-      setYear(maxYear - 1);
-    }
-  }, [statistic]);
-
-  useEffect(() => {
     getImageAPI();
     dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
 
-  useEffect(() => {
-    changeImage();
-  }, [year, month, trimester, isTrimesterSearch]);
-
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
-    if (
-      (analysis === 1 && variable === 0) ||
-      (analysis === 0 && variable === 3)
-    ) {
-      setMap('brasil');
-    } else {
-      setMap('todas');
-    }
-  }, [variable]);
-
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
-  }, []);
-
-  function handleDecrement() {
-    if (year > 1979 && year <= maxYear && range >= 0) {
-      setRange(range + 1);
-      setYear(year - 1);
-    }
-  }
-  function handleIncrement() {
-    if (year < maxYear && range > 0) {
-      setRange(range - 1);
-      setYear(year + 1);
-    }
-  }
   console.log(variableDictionary(0)[0]);
   return (
     <Box className={classes.page}>
