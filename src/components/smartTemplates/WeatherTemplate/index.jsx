@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     backgroundColor: 'white',
-    padding: '10px 0px 0px 10px',
+    padding: '10px 0px 0px 5px',
     marginTop: 15,
     width: '100%',
     justifyContent: 'center',
@@ -122,7 +122,7 @@ const WeatherTemplate = () => {
 
   useEffect(() => {
     if (analysis === 0) {
-      // year is set to zero to set months and trimesters bars to full size
+      // year is set to other than current one in order to set months and trimesters bars to full size
       if (year === maxYear) setYear(maxYear - 1);
       setStatistic(1);
     }
@@ -133,7 +133,7 @@ const WeatherTemplate = () => {
 
   useEffect(() => {
     if (statistic === 1 && analysis === 1) {
-      // year is set to zero to set months and trimesters bars to full size when statistic is "Clima"
+      // year is set to other than current one in order to set months and trimesters bars to full size when statistic is "Clima"
       setYear(maxYear - 1);
     }
   }, [statistic]);
@@ -148,11 +148,14 @@ const WeatherTemplate = () => {
     } else {
       setMap('todas');
     }
+    if (analysis === 0 && indexType !== 0) {
+      setPhase(0);
+    }
   }, [variable]);
 
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
-  }, []);
+  // useEffect(() => {
+  //   dispatch.info.getDescriptionAsync({ analysis, variable });
+  // }, []);
 
   function handleDecrement() {
     if (year > 1979 && year <= maxYear && range >= 0) {
@@ -168,29 +171,40 @@ const WeatherTemplate = () => {
   }
 
   const changeImage = useCallback(async () => {
-    if (statistic === 1) {
-      if (isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({
-          month: null,
-          year: null,
-          trimester,
-        });
+    if (analysis === 1) {
+      if (statistic !== 1) {
+        if (isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month: null,
+            year,
+            trimester,
+          });
+        }
+        if (!isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month,
+            year,
+            trimester: null,
+          });
+        }
+      } else {
+        if (isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month: null,
+            year: null,
+            trimester,
+          });
+        }
+        if (!isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month,
+            year: null,
+            trimester: null,
+          });
+        }
       }
-      if (!isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({
-          month,
-          year: null,
-          trimester: null,
-        });
-      }
-    } else if (analysis === 1) {
-      if (isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({ month: null, year, trimester });
-      }
-      if (!isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({ month, year, trimester: null });
-      }
-    } else if (analysis === 0) {
+    }
+    if (analysis === 0) {
       if (isTrimesterSearch) {
         await dispatch.images.selectMapAsync({
           month: null,
@@ -211,6 +225,7 @@ const WeatherTemplate = () => {
   useEffect(() => {
     changeImage();
   }, [year, month, trimester, isTrimesterSearch]);
+
   const getImageAPI = useCallback(async () => {
     if (analysis === 1) {
       await dispatch.images.getImagesAsync({
