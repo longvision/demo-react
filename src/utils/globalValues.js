@@ -19,6 +19,7 @@ export default {
       1: 'flux-umid850',
       2: 'geop500-200',
       3: 'prec',
+      4: 'div-umid850',
     },
   },
   ind: { 1: 'clim' },

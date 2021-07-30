@@ -5,46 +5,55 @@ import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
-  map: {
+  container: {
     display: 'flex',
-    flexDirection: 'column',
+    // flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#BFBFBF',
     // minHeight: 370,
     // essa imagem nao eh quadrada, por isso da borda.
-    minWidth: 310,
-    margin: 7,
-    [theme.breakpoints.up('sm')]: { width: 450, height: '100%' },
-    [theme.breakpoints.up('md')]: { width: 254, height: '100%' },
-    [theme.breakpoints.up('lg')]: { height: 318 },
-    [theme.breakpoints.up('xl')]: { height: 418, width: 418 },
+    minWidth: 254,
+    // margin: 7,
+    [theme.breakpoints.up('sm')]: { width: 454, height: 454 },
+    [theme.breakpoints.up('md')]: { width: 256, height: 256 },
+    [theme.breakpoints.up('lg')]: { width: 384, height: 385 },
+    [theme.breakpoints.up('xl')]: { width: 505, height: 505 },
   },
   image: {
-    padding: 0,
-    height: 315,
-    marginTop: 5,
+    // marginTop: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundSize: 'cover',
     [theme.breakpoints.up('sm')]: {
-      padding: 5,
+      width: 450,
       height: 450,
-      backgroundSize: 'cover',
     },
     [theme.breakpoints.up('md')]: {
-      padding: 5,
+      width: 250,
       height: 250,
-      backgroundSize: 'cover',
     },
     [theme.breakpoints.up('lg')]: {
-      padding: 5,
-      height: 310,
-      backgroundSize: 'cover',
+      width: 380,
+      height: 380,
     },
     [theme.breakpoints.up('xl')]: {
-      padding: 5,
-      height: 418,
-      backgroundSize: 'cover',
+      width: 500,
+      height: 500,
     },
+  },
+  message: {
+    height: 150,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    width: '100%',
+    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
+    [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
+    [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
+    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
   },
 }));
 
@@ -55,11 +64,13 @@ function BrasilMap() {
     (state) => state.images.selectedBrasilMap,
   );
   return (
-    <Box className={classes.map} border={selectedBrasilMap[0] ? 2 : 0}>
+    <Box className={classes.container} border={selectedBrasilMap[0] ? 2 : 0}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
-        <Map style={classes.image} selectedMap={selectedBrasilMap[0]} />
+        <Map className={classes.image} selectedMap={selectedBrasilMap[0]} />
       ) : (
-        <CircularProgress color="secondary" />
+        <div className={classes.message}>
+          <CircularProgress color="primary" />
+        </div>
       )}
     </Box>
   );

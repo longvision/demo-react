@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
   },
   button: {
-    width: '90%',
+    width: '80%',
     borderColor: '#BFBFBF',
     borderRadius: 10,
     height: 40,

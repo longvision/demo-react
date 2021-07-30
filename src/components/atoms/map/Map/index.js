@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Map = ({ style, selectedMap }) => {
+const Map = ({ className, selectedMap }) => {
   return (
     <div>
       <img
-        className={style}
+        className={className}
         alt=""
         src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedMap}`}
       />

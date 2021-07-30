@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    width: '90%',
+    width: '80%',
     borderRadius: 10,
     height: 40,
     borderColor: '#BFBFBF',

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
-  map: {
+  container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -20,53 +20,34 @@ const useStyles = makeStyles((theme) => ({
     // 1920
     // 1080
     [theme.breakpoints.up('sm')]: { height: 258 },
-    [theme.breakpoints.up('md')]: { height: 258 },
-    [theme.breakpoints.up('lg')]: { height: 318 },
-    [theme.breakpoints.up('xl')]: { height: 418 },
-  },
-  subtitle: {
-    width: '50%',
-    zIndex: 0,
-    position: 'absolute',
-    top: 120,
-    left: 0,
-    [theme.breakpoints.up('sm')]: {
-      width: '33%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 220,
-      left: 0,
-    },
-    [theme.breakpoints.up('md')]: {
-      width: '30%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 220,
-      left: 0,
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '30%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 270,
-      left: 0,
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '30%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 360,
-      left: 0,
-    },
+    [theme.breakpoints.up('md')]: { height: 256 },
+    [theme.breakpoints.up('lg')]: { height: 384 },
+    [theme.breakpoints.up('xl')]: { height: 505 },
   },
   image: {
     height: 150,
     backgroundSize: 'cover',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'relative',
-    [theme.breakpoints.up('sm')]: { height: 250 },
-    [theme.breakpoints.up('md')]: { height: 250 },
-    [theme.breakpoints.up('lg')]: { height: 310 },
-    [theme.breakpoints.up('xl')]: { height: 410 },
+    width: '100%',
+    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
+    [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
+    [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
+    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
+  },
+  message: {
+    height: 150,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    width: '100%',
+    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
+    [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
+    [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
+    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
   },
 }));
 
@@ -75,7 +56,6 @@ function GlobalMap() {
   const loading = useSelector(
     (state) => state.loading.effects.images.getImageAsync,
   );
-  const subtitle = useSelector((state) => state.images.subtitle);
 
   const selectedGlobalMap = useSelector(
     (state) => state.images.selectedGlobalMap,
@@ -83,16 +63,13 @@ function GlobalMap() {
 
   useEffect(() => {}, [loading, selectedGlobalMap]);
   return (
-    <Box className={classes.map} border={selectedGlobalMap[0] ? 2 : 0}>
+    <Box className={classes.container} border={selectedGlobalMap[0] ? 2 : 0}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <>
-          <Map style={classes.image} selectedMap={selectedGlobalMap[0]} />
-          {subtitle && (
-            <img src={subtitle} alt="label" className={classes.subtitle} />
-          )}
-        </>
+        <Map className={classes.image} selectedMap={selectedGlobalMap[0]} />
       ) : (
-        <CircularProgress color="secondary" />
+        <div className={classes.message}>
+          <CircularProgress color="primary" />
+        </div>
       )}
     </Box>
   );

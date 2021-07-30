@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   button: {
-    width: '90%',
+    width: '80%',
     height: 40,
     borderColor: '#BFBFBF',
     borderRadius: 10,
