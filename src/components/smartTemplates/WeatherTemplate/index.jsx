@@ -125,6 +125,7 @@ const WeatherTemplate = () => {
       // year is set to other than current one in order to set months and trimesters bars to full size
       if (year === maxYear) setYear(maxYear - 1);
       setStatistic(1);
+      setVariable(0);
     }
     if (analysis === 1) {
       if (statistic === 1) setMap('brasil');
