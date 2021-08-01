@@ -27,10 +27,10 @@ const MonthRuler = ({
   trimester,
   handleClick,
   year,
+  maxMonth,
+  maxYear,
 }) => {
   const classes = useStyles();
-  const currentYear = new Date().getFullYear();
-  const currentYearLastMonth = new Date().getMonth();
 
   return (
     <Grid container className={classes.container}>
@@ -54,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== currentYear ? 11 : 11 - currentYearLastMonth - 1}
+            max={year !== maxYear ? 11 : 11 - maxMonth - 1}
             labelFunction={setTrimesterName}
             disabled={disabled}
             handleChange={setTrimester}
@@ -68,10 +68,7 @@ const MonthRuler = ({
             color={disabled ? 'textSecondary' : 'primary'}
           >
             <strong>
-              {' '}
-              {year !== currentYear
-                ? 'NDJ'
-                : setTrimesterName(currentYearLastMonth - 2)}
+              {year !== maxYear ? 'NDJ' : setTrimesterName(maxMonth - 2)}
             </strong>
           </Typography>
         </Grid>

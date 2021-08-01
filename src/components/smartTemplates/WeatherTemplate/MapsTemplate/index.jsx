@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-
     // [theme.breakpoints.up('md')]: { flexWrap: 'nowrap' },
     [theme.breakpoints.up('xl')]: {
       justifyContent: 'space-evenly',

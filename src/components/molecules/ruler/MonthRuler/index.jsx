@@ -22,11 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const MonthRuler = ({
-  disabled, setMonth, month, handleClick, year,
+  disabled,
+  setMonth,
+  month,
+  handleClick,
+  year,
+  maxMonth,
+  maxYear,
 }) => {
   const classes = useStyles();
-  const currentYear = new Date().getFullYear();
-  const currentYearLastMonth = new Date().getMonth();
 
   return (
     <Grid container className={classes.container}>
@@ -50,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== currentYear ? 11 : 12 - currentYearLastMonth - 1}
+            max={year !== maxYear ? 11 : 12 - maxMonth - 1}
             labelFunction={setMonthName}
             disabled={disabled}
             handleChange={setMonth}
@@ -65,9 +69,7 @@ const MonthRuler = ({
             color={disabled ? 'textSecondary' : 'primary'}
           >
             <strong>
-              {year !== currentYear
-                ? 'DEZ'
-                : setMonthName(currentYearLastMonth - 1)}
+              {year !== maxYear ? 'DEZ' : setMonthName(maxMonth - 1)}
             </strong>
           </Typography>
         </Grid>

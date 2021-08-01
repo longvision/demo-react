@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
-import { variableDictionary,
-  indexDictionary } from '../../../utils/imageTitles.js';
+import { composeTitle } from '../../../utils/imageTitles.js';
 
 import TextBox from '../../organisms/textboxes/TextBox';
+import { setMonthName, setTrimesterName } from '../../../utils/dates.js';
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -115,10 +115,14 @@ const WeatherTemplate = () => {
   const [map, setMap] = useState('todas');
   const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
-  const [trimester, setTrimester] = useState(null);
+  const [trimester, setTrimester] = useState(0);
   const [month, setMonth] = useState(0);
   const [range, setRange] = useState(0);
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
+  const [maxMonth, setMaxMonth] = useState(new Date().getMonth() - 1);
+
+  const latestReportMonth = -1;
+  const latestReportTrimester = -2;
 
   useEffect(() => {
     if (analysis === 0) {
@@ -154,10 +158,6 @@ const WeatherTemplate = () => {
     }
   }, [variable]);
 
-  // useEffect(() => {
-  //   dispatch.info.getDescriptionAsync({ analysis, variable });
-  // }, []);
-
   function handleDecrement() {
     if (year > 1979 && year <= maxYear && range >= 0) {
       setRange(range + 1);
@@ -170,6 +170,18 @@ const WeatherTemplate = () => {
       setYear(year + 1);
     }
   }
+  useEffect(() => {
+    // sets month and trimester to the correspondent mark in the ruler if the year is the current year (maxYear).
+    // if month and trimester does not exists in the ruler, set to the latest month and trimester.
+    if (year === maxYear) {
+      if (month > maxMonth) {
+        setMonth(maxMonth + latestReportMonth);
+      }
+      if (trimester > maxMonth) {
+        setTrimester(maxMonth - latestReportTrimester);
+      }
+    }
+  }, [year]);
 
   const changeImage = useCallback(async () => {
     if (analysis === 1) {
@@ -268,7 +280,6 @@ const WeatherTemplate = () => {
     dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
 
-  console.log(variableDictionary(0)[0]);
   return (
     <Box className={classes.page}>
       <Box className={classes.container}>
@@ -295,10 +306,16 @@ const WeatherTemplate = () => {
           </Paper>
           <Paper className={classes.body}>
             <Typography className={classes.title}>
-              {` ${variableDictionary(analysis)[variable]} ${
-                analysis === 0 ? indexDictionary()[indexType] : ''
-              } (${year - 10}-${maxYear - range}) ${
-                isTrimesterSearch ? trimester + 1 : month + 1
+              {` ${composeTitle(
+                analysis,
+                indexType,
+                variable,
+                statistic,
+                phase,
+              )} - ${
+                isTrimesterSearch
+                  ? setTrimesterName(trimester)
+                  : setMonthName(month)
               }/${year} `}
             </Typography>
 
@@ -314,6 +331,7 @@ const WeatherTemplate = () => {
               trimester={trimester}
               year={year}
               maxYear={maxYear}
+              maxMonth={maxMonth}
               range={range}
               setYear={setYear}
               statistic={statistic}
