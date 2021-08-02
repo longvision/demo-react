@@ -38,11 +38,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   button: {
-    width: '80%',
+    width: '60%',
     height: 40,
     borderColor: '#BFBFBF',
     borderRadius: 10,
     '&:hover': { backgroundColor: 'transparent' },
+    [theme.breakpoints.up('sm')]: { width: '80%' },
   },
 }));
 

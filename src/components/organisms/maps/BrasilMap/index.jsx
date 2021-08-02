@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
+    width: 254,
     [theme.breakpoints.up('sm')]: {
       width: 450,
       height: 450,
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     position: 'relative',
     width: '100%',
-    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
+    [theme.breakpoints.up('sm')]: { width: 255, height: 255 },
     [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
     [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
     [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },

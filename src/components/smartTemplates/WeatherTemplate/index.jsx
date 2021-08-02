@@ -234,6 +234,7 @@ const WeatherTemplate = () => {
       }
     }
   }, [year, month, trimester, isTrimesterSearch]);
+  console.log({ teste: 'nao' });
 
   useEffect(() => {
     changeImage();
