@@ -1,7 +1,7 @@
 export const data1 = [
   {
     value: 0,
-    label: 'Precipitação',
+    label: 'Precipitação (CHIRPS)',
   },
   {
     value: 1,
@@ -43,7 +43,7 @@ export const data1 = [
 export const data2 = [
   {
     value: 0,
-    label: 'Precipitação',
+    label: 'Precipitação (CHIRPS)',
   },
   {
     value: 1,

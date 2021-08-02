@@ -27,8 +27,8 @@ export default {
     0: 'mjo',
     1: 'pdo',
     2: 'aao',
-    3: 'nino1-2',
-    4: 'nino3-4',
+    3: 'nino12',
+    4: 'nino34',
   },
   phases: {
     fases: {
