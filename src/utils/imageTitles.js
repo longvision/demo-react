@@ -1,3 +1,5 @@
+import { setMonthName, setTrimesterName } from './dates.js';
+
 const analysisDictionary = (analysis) => {
   if (analysis === 0) {
     return 'Índice';
@@ -60,14 +62,14 @@ const phaseDictionary = (analysis, indexType, phase) => {
   if (analysis === 0) {
     if (indexType === 0) {
       const dict = {
-        0: 'Fase1',
-        1: 'Fase2',
-        2: 'Fase3',
-        3: 'Fase4',
-        4: 'Fase5',
-        5: 'Fase6',
-        6: 'Fase7',
-        7: 'Fase8',
+        0: 'na Fase1',
+        1: 'na Fase2',
+        2: 'na Fase3',
+        3: 'na Fase4',
+        4: 'na Fase5',
+        5: 'na Fase6',
+        6: 'na Fase7',
+        7: 'na Fase8',
       };
       return dict[phase];
     }
@@ -87,17 +89,25 @@ export const composeTitle = (
   variable,
   statistic,
   phase,
+  isTrimesterSearch,
+  trimester,
+  month,
+  year,
 ) => {
   if (analysis === 0) {
     return `${analysisDictionary(analysis)} 
   ${indexDictionary(indexType)} 
-  ${statisticDictionary(analysis, statistic)} 
+
   ${variableDictionary(analysis, variable)} 
-  ${phaseDictionary(analysis, indexType, phase)}`;
+  ${phaseDictionary(analysis, indexType, phase)}
+  - ${isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)}`;
   }
   if (analysis === 1) {
     return `${analysisDictionary(analysis)} 
   ${statisticDictionary(analysis, statistic)} 
-  ${variableDictionary(analysis, variable)}`;
+  ${variableDictionary(analysis, variable)}
+  - ${
+  isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)
+}/${year}`;
   }
 };

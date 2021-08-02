@@ -54,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== maxYear ? 11 : 12 - maxMonth - 1}
+            max={year !== maxYear ? 11 : 12 - maxMonth}
             labelFunction={setMonthName}
             disabled={disabled}
             handleChange={setMonth}
@@ -68,9 +68,7 @@ const MonthRuler = ({
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
           >
-            <strong>
-              {year !== maxYear ? 'DEZ' : setMonthName(maxMonth - 1)}
-            </strong>
+            <strong>{year !== maxYear ? 'DEZ' : setMonthName(maxMonth)}</strong>
           </Typography>
         </Grid>
       </Button>

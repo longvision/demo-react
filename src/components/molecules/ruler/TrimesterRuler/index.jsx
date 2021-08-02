@@ -31,7 +31,7 @@ const MonthRuler = ({
   maxYear,
 }) => {
   const classes = useStyles();
-
+  const LASTREPORTEDMONTH = 1;
   return (
     <Grid container className={classes.container}>
       <Button
@@ -54,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== maxYear ? 11 : 11 - maxMonth - 1}
+            max={year !== maxYear ? 11 : 11 - maxMonth}
             labelFunction={setTrimesterName}
             disabled={disabled}
             handleChange={setTrimester}
@@ -68,7 +68,9 @@ const MonthRuler = ({
             color={disabled ? 'textSecondary' : 'primary'}
           >
             <strong>
-              {year !== maxYear ? 'NDJ' : setTrimesterName(maxMonth - 2)}
+              {year !== maxYear
+                ? 'NDJ'
+                : setTrimesterName(maxMonth - LASTREPORTEDMONTH)}
             </strong>
           </Typography>
         </Grid>

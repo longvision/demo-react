@@ -8,7 +8,6 @@ import RulerControls from '../../organisms/controls/RulerControls';
 import { composeTitle } from '../../../utils/imageTitles.js';
 
 import TextBox from '../../organisms/textboxes/TextBox';
-import { setMonthName, setTrimesterName } from '../../../utils/dates.js';
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -234,7 +233,6 @@ const WeatherTemplate = () => {
       }
     }
   }, [year, month, trimester, isTrimesterSearch]);
-  console.log({ teste: 'nao' });
 
   useEffect(() => {
     changeImage();
@@ -313,11 +311,11 @@ const WeatherTemplate = () => {
                 variable,
                 statistic,
                 phase,
-              )} - ${
-                isTrimesterSearch
-                  ? setTrimesterName(trimester)
-                  : setMonthName(month)
-              }/${year} `}
+                isTrimesterSearch,
+                trimester,
+                month,
+                year,
+              )}`}
             </Typography>
 
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
