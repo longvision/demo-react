@@ -25,12 +25,22 @@
 -Dividem-se em 5 pastas:
 
 1. pages: Sao cada aba do website: por exemplo: Mapas, Clima, Animacoes, Hidrica, Eolica, Estacoes, Arquivos
-2. smartTemplates: Sao os containers que contem a 'iteligencia' (chamadas a apis, actions do redux...) e repassam as informacoes para os componentes filhos mais burros.
+2. smartTemplates: Sao os containers que contem a 'inteligencia' (chamadas a apis, actions do redux...) e repassam as informacoes para os componentes filhos mais burros.
 3. organisms: Sao componentes intermediarios que contem estruturas vivas, com identidade composta por componentes mais genericos, simples e mais burros.
 4. molecules: Sao compoenentes simples compostos de pequenos atomos mais simples.
 5. atoms: Sao os compoentes mais simples de todos, apenas recebem informacao.
 
 - do 1 ao 5, o tamanho dos componentes sempre diminuira e se atomizará.
+
+# Arquivo globalValues.js
+
+1. É o arquivo que traduz os valores dos filtros para os respectivos valores em numeros. Ex: ( 0: 'ind', 1: 'hist').
+2. As strings desse 'de/para' estão definidas conforme a api do Heitor recebe no body da requisicao que devolve os links das imagens.
+
+# Arquivo data.js dos filtros ('./tempook-react/src/components/molecules/selectors/IndexTypes/data.js')
+
+1. Esse arquivo contem os dados que serão disponibilizados no filtro.
+2. Os números (values) de cada item representam os números no dicionário definido no arquivo globalValyes.js
 
 # Getting Started with Create React App
 
