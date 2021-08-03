@@ -113,7 +113,8 @@ export const images = {
       }
       function selectedMonth() {
         if (month !== null) {
-          const monthImage = rootState.images.images.filter((item) => item.includes(ruler.months[month]));
+          const correctMonth = month + 1;
+          const monthImage = rootState.images.images.filter((item) => item.includes(`0${correctMonth}_layer`.slice(-8)));
           if (year) {
             return monthImage.filter((item) => item.includes(year));
           }

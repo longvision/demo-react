@@ -36,10 +36,10 @@ export const fases = [
 export const temp = [
   {
     value: 0,
-    label: 'Positivo',
+    label: 'Positiva',
   },
   {
     value: 1,
-    label: 'Negativo',
+    label: 'Negativa',
   },
 ];

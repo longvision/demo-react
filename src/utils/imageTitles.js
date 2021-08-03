@@ -14,9 +14,9 @@ const statisticDictionary = (analysis, statistic) => {
   }
   if (analysis === 1) {
     const dict = {
-      0: 'de Anomalia',
-      1: 'de Climatologia',
-      2: 'de Média',
+      0: 'Anomalia',
+      1: 'Climatologia',
+      2: 'Média',
     };
     return dict[statistic];
   }
@@ -62,21 +62,21 @@ const phaseDictionary = (analysis, indexType, phase) => {
   if (analysis === 0) {
     if (indexType === 0) {
       const dict = {
-        0: 'na Fase1',
-        1: 'na Fase2',
-        2: 'na Fase3',
-        3: 'na Fase4',
-        4: 'na Fase5',
-        5: 'na Fase6',
-        6: 'na Fase7',
-        7: 'na Fase8',
+        0: 'Fase 1',
+        1: 'Fase 2',
+        2: 'Fase 3',
+        3: 'Fase 4',
+        4: 'Fase 5',
+        5: 'Fase 6',
+        6: 'Fase 7',
+        7: 'Fase 8',
       };
       return dict[phase];
     }
     if ([1, 2, 3, 4].includes(indexType)) {
       const dict = {
-        0: 'Positivo',
-        1: 'Negativo',
+        0: 'Positiva',
+        1: 'Negativa',
       };
       return dict[phase];
     }
@@ -95,16 +95,15 @@ export const composeTitle = (
   year,
 ) => {
   if (analysis === 0) {
-    return `${analysisDictionary(analysis)} 
-  ${indexDictionary(indexType)} 
-
-  ${variableDictionary(analysis, variable)} 
-  ${phaseDictionary(analysis, indexType, phase)}
+    return `Anomalia  
+    
+    ${variableDictionary(analysis, variable)} na fase 
+    ${phaseDictionary(analysis, indexType, phase)} -
+    ${indexDictionary(indexType)} 
   - ${isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)}`;
   }
   if (analysis === 1) {
-    return `${analysisDictionary(analysis)} 
-  ${statisticDictionary(analysis, statistic)} 
+    return ` ${statisticDictionary(analysis, statistic)} 
   ${variableDictionary(analysis, variable)}
   - ${
   isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)

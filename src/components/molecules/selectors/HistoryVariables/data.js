@@ -51,7 +51,7 @@ export const data2 = [
   },
   {
     value: 2,
-    label: 'Temp.do ar em 2 m',
+    label: 'Temp. do ar em 2 m',
   },
   {
     value: 3,
