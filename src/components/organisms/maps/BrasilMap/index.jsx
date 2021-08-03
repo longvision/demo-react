@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
-import Bacia from '../../../../assets/images/contornos/web_brasil_layer4.png';
-import Estado from '../../../../assets/images/contornos/web_brasil_layer3.png';
+import Bacias from '../../../../assets/images/contornos/web_brasil_layer3.png';
+import Estados from '../../../../assets/images/contornos/web_brasil_layer4.png';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -107,6 +107,51 @@ const useStyles = makeStyles((theme) => ({
       height: 500,
     },
   },
+  bacias: {
+    zIndex: 0,
+    position: 'absolute',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundSize: 'cover',
+    width: 254,
+    height: 260,
+    top: 0,
+    left: 0,
+
+    [theme.breakpoints.up('sm')]: {
+      width: 450,
+      height: 450,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 250,
+      height: 250,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 1,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 380,
+      height: 380,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: -4,
+      left: -5,
+      width: 500,
+      height: 500,
+    },
+  },
   subtitle: {
     width: '100%',
     zIndex: 0,
@@ -152,18 +197,7 @@ function BrasilMap({ shape }) {
   );
 
   const subtitle = useSelector((state) => state.images.subtitle);
-
-  function changeShape(shapes) {
-    switch (shapes) {
-      case '0':
-        return Bacia;
-      case 1:
-        return Estado;
-      default:
-        return Bacia;
-    }
-  }
-
+  console.log({ shape });
   return (
     <Box className={classes.container} border={selectedBrasilMap[0] ? 2 : 0}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
@@ -171,12 +205,10 @@ function BrasilMap({ shape }) {
           {subtitle && (
             <img src={subtitle} alt="label" className={classes.subtitle} />
           )}
-          {shape !== null && (
-            <img
-              className={classes.shapes}
-              src={changeShape(shape)}
-              alt="Contorno"
-            />
+
+          <img className={classes.shapes} src={Estados} alt="Estados" />
+          {shape && shape.includes('Bacias') && (
+            <img className={classes.bacias} src={Bacias} alt="Bacias" />
           )}
           <Map className={classes.image} selectedMap={selectedBrasilMap[0]} />
         </>

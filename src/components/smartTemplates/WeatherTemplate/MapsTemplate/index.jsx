@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MapsTemplate = ({
-  checked, shape, setShape = false,
+  checked, shape, setShape,
 }) => {
   const classes = useStyles();
 
@@ -42,7 +42,7 @@ const MapsTemplate = ({
         {checked === 'todas' && (
           <>
             <GlobalMap />
-            <BrasilMap />
+            <BrasilMap shape={shape} />
           </>
         )}
       </Grid>

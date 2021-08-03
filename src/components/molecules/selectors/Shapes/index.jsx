@@ -1,16 +1,20 @@
 import React from 'react';
-import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
+import CheckboxSelectorFilter from '../../../atoms/selectors/CheckboxSelectorFilter';
 import { data } from './data.js';
 
 const Shapes = ({
   shape, setShape, ...props
 }) => {
+  const handleChange = (event) => {
+    setShape(event.target.value);
+  };
   return (
     <>
-      <SelectorFilter
+      <CheckboxSelectorFilter
         title="Camadas"
         label="Camadas"
         state={shape}
+        handleChange={handleChange}
         setState={setShape}
         data={data}
         {...props}

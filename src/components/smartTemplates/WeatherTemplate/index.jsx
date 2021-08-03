@@ -109,7 +109,7 @@ const WeatherTemplate = () => {
   const [variable, setVariable] = useState(0);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
-  const [shape, setShape] = useState(0);
+  const [shape, setShape] = useState(['Estados']);
   const [display, setDisplay] = useState(0);
   const [map, setMap] = useState('todas');
   const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
