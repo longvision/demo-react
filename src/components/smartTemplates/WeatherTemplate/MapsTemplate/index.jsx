@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MapsTemplate = ({
-  checked, shape = false, setShape = false,
+  checked, shape, setShape = false,
 }) => {
   const classes = useStyles();
 
@@ -38,7 +38,7 @@ const MapsTemplate = ({
     <>
       <Grid container className={classes.maps}>
         {checked === 'global' && <GlobalMap />}
-        {checked === 'brasil' && <BrasilMap />}
+        {checked === 'brasil' && <BrasilMap shape={shape} />}
         {checked === 'todas' && (
           <>
             <GlobalMap />

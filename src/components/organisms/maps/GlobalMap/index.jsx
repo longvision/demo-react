@@ -49,6 +49,41 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
     [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
   },
+  subtitle: {
+    width: '50%',
+    zIndex: 0,
+    position: 'absolute',
+    top: 120,
+    left: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: '33%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 220,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '30%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 220,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '30%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 270,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '30%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 360,
+      left: 0,
+    },
+  },
 }));
 
 function GlobalMap() {
@@ -61,11 +96,18 @@ function GlobalMap() {
     (state) => state.images.selectedGlobalMap,
   );
 
+  const subtitle = useSelector((state) => state.images.subtitle);
+
   useEffect(() => {}, [loading, selectedGlobalMap]);
   return (
     <Box className={classes.container} border={selectedGlobalMap[0] ? 2 : 0}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <Map className={classes.image} selectedMap={selectedGlobalMap[0]} />
+        <>
+          <Map className={classes.image} selectedMap={selectedGlobalMap[0]} />
+          {subtitle && (
+            <img src={subtitle} alt="label" className={classes.subtitle} />
+          )}
+        </>
       ) : (
         <div className={classes.message}>
           <CircularProgress color="primary" />

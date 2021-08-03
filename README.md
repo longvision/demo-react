@@ -1,7 +1,5 @@
 <!-- desde 1978 -->
 <!-- slider sem contrste na barra. -->
-<!-- ano+mes ou ano+trimestre -->
-<!-- botao de mais e menos na Fase -->
 
 # Base_URL da imagem:
 
