@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     backgroundSize: 'cover',
     width: 254,
+    height: 254,
     [theme.breakpoints.up('sm')]: {
       width: 450,
       height: 450,
@@ -106,6 +107,41 @@ const useStyles = makeStyles((theme) => ({
       height: 500,
     },
   },
+  subtitle: {
+    width: '100%',
+    zIndex: 0,
+    position: 'absolute',
+    top: 190,
+    left: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: '100%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 390,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '100%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 210,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 310,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '100%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 410,
+      left: 0,
+    },
+  },
 }));
 
 function BrasilMap({ shape }) {
@@ -114,6 +150,8 @@ function BrasilMap({ shape }) {
   const selectedBrasilMap = useSelector(
     (state) => state.images.selectedBrasilMap,
   );
+
+  const subtitle = useSelector((state) => state.images.subtitle);
 
   function changeShape(shapes) {
     switch (shapes) {
@@ -130,6 +168,9 @@ function BrasilMap({ shape }) {
     <Box className={classes.container} border={selectedBrasilMap[0] ? 2 : 0}>
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <>
+          {subtitle && (
+            <img src={subtitle} alt="label" className={classes.subtitle} />
+          )}
           {shape !== null && (
             <img
               className={classes.shapes}
