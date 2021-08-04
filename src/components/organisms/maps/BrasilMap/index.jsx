@@ -101,8 +101,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('xl')]: {
       zIndex: 0,
       position: 'absolute',
-      top: -4,
-      left: -5,
+      top: 0,
+      left: 0,
       width: 500,
       height: 500,
     },
