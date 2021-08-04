@@ -7,33 +7,33 @@
 <!-- https://storage.googleapis.com/imagens.clima.tempook.com/web/brasil/hist/anom/variavel/web_brasil_hist_anom_variavel_2021-Jul_layer4_695a2d8f.png
  -->
 
-# Organizacao de pastas: Atomic Design Pattern:
+# Organizacao do projeto e pastas:
 
 - Todas as pastas comecam com letras minusculas, apenas as pastas que sao componentes react comecao com Maiuscula, pois o React exige que assim sejam declarados.
 
 1. Pasta src contem o fonte.
 2. os componentes react estao na pasta components
 3. as configuracoes na config
-4. a baseURL para e endpoints estao na services
+4. a baseURL para os endpoints estao na services
 5. o redux esta na pasta store
 6. e as funcoes auxiliares na pasta utils.
 
-# Pasta Components:
+# Pasta Components:Atomic Design Pattern:
 
 -Dividem-se em 5 pastas:
 
 1. pages: Sao cada aba do website: por exemplo: Mapas, Clima, Animacoes, Hidrica, Eolica, Estacoes, Arquivos
-2. smartTemplates: Sao os containers que contem a 'inteligencia' (chamadas a apis, actions do redux...) e repassam as informacoes para os componentes filhos mais burros.
-3. organisms: Sao componentes intermediarios que contem estruturas vivas, com identidade composta por componentes mais genericos, simples e mais burros.
+2. smartTemplates: Sao os containers que contem a 'inteligencia' (chamadas a apis, armazenam os estados dos componentes filhos, contem as actions do redux...) e repassam as informacoes para os componentes filhos mais burros.
+3. organisms: Sao componentes intermediarios que contem estruturas 'vivas', com identidade composta por componentes mais genericos, simples e mais burros.
 4. molecules: Sao compoenentes simples compostos de pequenos atomos mais simples.
 5. atoms: Sao os compoentes mais simples de todos, apenas recebem informacao.
 
-- do 1 ao 5, o tamanho dos componentes sempre diminuira e se atomizará.
+- do 1 ao 5, o tamanho dos componentes sempre diminuira e se atomizará. Assim como a inteligencia (armazenamento de estados) é maior nos componentes mais acima, e menor nos componentes menores.
 
 # Arquivo globalValues.js
 
 1. É o arquivo que traduz os valores dos filtros para os respectivos valores em numeros. Ex: ( 0: 'ind', 1: 'hist').
-2. As strings desse 'de/para' estão definidas conforme a api do Heitor recebe no body da requisicao que devolve os links das imagens.
+2. As strings desse 'de/para' estão definidas conforme a api do Heitor recebe no body da requisicao que devolve os links das imagens. Ou seja, as strings devem sempre obedecer à nomenclatura definida e exigida pela api.
 
 # Arquivo data.js dos filtros ('./tempook-react/src/components/molecules/selectors/IndexTypes/data.js')
 
