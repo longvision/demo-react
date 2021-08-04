@@ -15,12 +15,20 @@ import anomVento from '../../assets/images/legendas/anomalias/legenda_anom_vento
 export const images = {
   name: 'images',
   state: {
+    token: null,
     subtitle: '',
     images: [],
     selectedGlobalMap: [],
     selectedBrasilMap: [],
   },
   reducers: {
+    setToken(state, payload) {
+      console.log(`token chegando no reducer: ${payload}`);
+      return {
+        ...state,
+        token: payload ?? '8978d76440e44ebbbed7c2c04784cedf',
+      };
+    },
     setImages(state, payload) {
       return {
         ...state,
@@ -45,21 +53,30 @@ export const images = {
     },
   },
   effects: (dispatch) => ({
-    async getImagesAsync(payload) {
+    async getTokenAsync() {
+      const storedToken = localStorage.getItem('tokClimaSessionId');
+      const sessionToken = JSON.parse(storedToken);
+
+      this.setToken(sessionToken);
+    },
+    async getImagesAsync(payload, rootState) {
       const {
         analysis, statistic, variable, period, indexType, phase,
       } =
         payload;
 
-      console.log({
-        analysis,
-        statistic,
-        variable,
-        period,
-        indexType,
-        phase,
-        contorno: 0,
-      });
+      console.log(
+        `chagou no getImages effect ${{
+          analysis,
+          statistic,
+          variable,
+          period,
+          indexType,
+          phase,
+          contorno: 0,
+          token: rootState.images.token ?? '8978d76440e44ebbbed7c2c04784cedf',
+        }}`,
+      );
 
       const analysisValue = config.analysis[analysis];
       const variableValue = await config.variables[analysisValue][variable];
@@ -78,7 +95,8 @@ export const images = {
       }
 
       console.log({
-        session_id: '8978d76440e44ebbbed7c2c04784cedf',
+        session_id:
+          rootState.images.token ?? '8978d76440e44ebbbed7c2c04784cedf',
         analysis: analysisValue,
         statistic: statisticValue,
         variable: variableValue,
@@ -87,7 +105,8 @@ export const images = {
       });
 
       const res = await api.post('/tokclima/imagelinks', {
-        session_id: '8978d76440e44ebbbed7c2c04784cedf',
+        session_id:
+          rootState.images.token ?? '8978d76440e44ebbbed7c2c04784cedf',
         analise: analysisValue,
         estatistica: statisticValue,
         variavel: variableValue,

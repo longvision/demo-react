@@ -18,7 +18,12 @@
 5. o redux esta na pasta store
 6. e as funcoes auxiliares na pasta utils.
 
-# Pasta Components:Atomic Design Pattern:
+# Pasta Components => Atomic Design Pattern:
+
+A ideia é que o fluxo dos dados seja passado dos componentes pais para os filhos.
+Assim como nna biologia, a ideia é compor elementos a partir de outros elementos.
+As Pages viram Templates. Templates viram Organismos. Organismos viram Moleculas. Moleculas viram Atomos.
+Os pais (mais complexos e únicos) contêm os filhos (que sao mais simples e reutilizaveis.).
 
 -Dividem-se em 5 pastas:
 
