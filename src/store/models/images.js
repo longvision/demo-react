@@ -55,7 +55,7 @@ export const images = {
   effects: (dispatch) => ({
     async getTokenAsync() {
       const storedToken = localStorage.getItem('tokClimaSessionId');
-      const sessionToken = JSON.parse(storedToken);
+      const sessionToken = storedToken && JSON.parse(storedToken);
 
       this.setToken(sessionToken);
     },
