@@ -1,6 +1,6 @@
 export const data = [
   {
-    value: 0,
+    value: 1,
     label: 'Climatologia',
   },
 ];

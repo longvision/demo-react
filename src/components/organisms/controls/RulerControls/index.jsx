@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    marginTop: 20,
+    marginTop: 0,
   },
 }));
 
@@ -28,11 +28,15 @@ const RulerControls = ({
   handleIncrement,
   year,
   maxYear,
+  maxMonth,
   range,
   setYear,
   statistic,
+  analysis,
 }) => {
   const classes = useStyles();
+
+  const firstDataSetYear = 1988;
 
   return (
     <Box className={classes.container}>
@@ -41,6 +45,9 @@ const RulerControls = ({
         disabled={isTrimesterSearch}
         setMonth={setMonth}
         month={month}
+        year={year}
+        maxYear={maxYear}
+        maxMonth={maxMonth}
       />
 
       <TrimesterRuler
@@ -48,12 +55,18 @@ const RulerControls = ({
         handleClick={() => setIsTrimesterSearch(true)}
         setTrimester={setTrimester}
         trimester={trimester}
+        year={year}
+        maxMonth={maxMonth}
+        maxYear={maxYear}
       />
-      {statistic !== 1 && (
+      {statistic !== 1 && analysis !== 0 && (
         <YearRuler
           handleDecrement={handleDecrement}
           handleIncrement={handleIncrement}
-          disableDecrement={year > maxYear || (year <= 1988 && range === 33)}
+          disableDecrement={
+            year > maxYear ||
+            (year <= firstDataSetYear && range === maxYear - firstDataSetYear)
+          }
           disableIncrement={year >= maxYear || range === 0}
           handleClick={() => {}}
           disabled={year > maxYear}
@@ -61,6 +74,7 @@ const RulerControls = ({
           setYear={setYear}
           range={range}
           maxYear={maxYear}
+          maxMonth={maxMonth}
         />
       )}
     </Box>

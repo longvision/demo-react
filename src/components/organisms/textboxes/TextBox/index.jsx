@@ -5,9 +5,10 @@ import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   container: {
-    height: '90%',
+    height: '85%',
     textAlign: 'left',
     overflow: 'auto',
+    marginTop: 10,
   },
   box: {
     backgroundColor: 'white',
@@ -53,7 +54,7 @@ function TextBox({ variable, source }) {
           <Typography
             variant="subtitle1"
             component="p"
-            align="justify"
+            // align="justify"
             gutterBottom
           >
             {description.body}
@@ -62,7 +63,7 @@ function TextBox({ variable, source }) {
           <Typography variant="body1" component="body1" gutterBottom>
             <strong>Fonte:</strong>
           </Typography>
-          <Typography variant="subtitle1" component="p" align="justify" />
+          <Typography variant="subtitle1" component="p" />
           <Typography gutterBottom>
             {description.source && (
               <a
@@ -81,7 +82,7 @@ function TextBox({ variable, source }) {
           <Typography
             variant="body2"
             component="p"
-            align="justify"
+            // align="justify"
             gutterBottom
           >
             {description.reference}

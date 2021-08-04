@@ -1,10 +1,9 @@
 import React from 'react';
 import SelectorFilter from '../../../atoms/selectors/SelectorFilter';
 import { data } from './data.js';
-import config from '../../../../utils/globalValues.js';
 
 const Display = ({
-  map, setMap, variable, analysis,
+  map, setMap, variable, analysis, ...props
 }) => {
   function selectMap(variab, ana) {
     if ((ana === 1 && variab === 0) || (ana === 0 && variab === 3)) {
@@ -27,6 +26,7 @@ const Display = ({
         setState={setMap}
         data={selectMap(variable, analysis)}
         style={{ minWidth: 150 }}
+        {...props}
       />
     </>
   );

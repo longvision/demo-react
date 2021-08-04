@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-    width: '90%',
+    width: '80%',
     borderRadius: 10,
     height: 40,
     borderColor: '#BFBFBF',
@@ -22,9 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const MonthRuler = ({
-  disabled, setMonth, month, handleClick,
+  disabled,
+  setMonth,
+  month,
+  handleClick,
+  year,
+  maxMonth,
+  maxYear,
 }) => {
   const classes = useStyles();
+
   return (
     <Grid container className={classes.container}>
       <Button
@@ -47,7 +54,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={11}
+            max={year !== maxYear ? 11 : 12 - maxMonth}
             labelFunction={setMonthName}
             disabled={disabled}
             handleChange={setMonth}
@@ -61,7 +68,7 @@ const MonthRuler = ({
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
           >
-            <strong>DEZ</strong>
+            <strong>{year !== maxYear ? 'DEZ' : setMonthName(maxMonth)}</strong>
           </Typography>
         </Grid>
       </Button>

@@ -19,15 +19,16 @@ export default {
       1: 'flux-umid850',
       2: 'geop500-200',
       3: 'prec',
+      4: 'div-umid850',
     },
   },
-  ind: { 0: 'clim' },
+  ind: { 1: 'clim' },
   indexType: {
     0: 'mjo',
     1: 'pdo',
     2: 'aao',
-    3: 'nino1+2',
-    4: 'nino3.4',
+    3: 'nino12',
+    4: 'nino34',
   },
   phases: {
     fases: {
@@ -40,7 +41,7 @@ export default {
       6: 'clim-fase7',
       7: 'clim-fase8',
     },
-    temp: { 0: 'pos', 1: 'neg' },
+    temp: { 0: 'clim-fasePositiva', 1: 'clim-faseNegativa' },
   },
   shapes: { 0: 'estados' },
 };

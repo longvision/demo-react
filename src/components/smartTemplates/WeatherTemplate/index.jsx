@@ -1,10 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Box, Paper } from '@material-ui/core';
+import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
+import { composeTitle } from '../../../utils/imageTitles.js';
 
 import TextBox from '../../organisms/textboxes/TextBox';
 
@@ -30,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   sideBox: {
-    // height: 500
     display: 'flex',
     height: '100%',
     justifyContent: 'center',
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     backgroundColor: 'white',
-    padding: 15,
+    padding: '10px 0px 0px 5px',
     marginTop: 15,
     width: '100%',
     justifyContent: 'center',
@@ -64,25 +64,26 @@ const useStyles = makeStyles((theme) => ({
     height: 531,
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
-      margin: 15,
+      marginLeft: 15,
       width: '100%',
     },
-
     [theme.breakpoints.up('lg')]: {
-      width: 290,
+      width: 320,
       justifyContent: 'center',
       marginTop: 111,
-      margin: 15,
-      height: 555,
+      marginLeft: 15,
+      height: 540,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 290,
+      width: 320,
       justifyContent: 'center',
       marginTop: 111,
-      margin: 15,
-      height: 651,
+      marginLeft: 15,
+      height: 645,
     },
   },
+  title: { fontWeight: 'bold' },
+
   body: {
     backgroundColor: 'white',
     padding: 15,
@@ -101,26 +102,121 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const WeatherTemplate = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const classes = useStyles();
   const [analysis, setAnalysis] = useState(1);
   const [statistic, setStatistic] = useState(0);
   const [variable, setVariable] = useState(0);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
-  const [shape, setShape] = useState(0);
+  const [shape, setShape] = useState(['Estados']);
   const [display, setDisplay] = useState(0);
   const [map, setMap] = useState('todas');
   const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
-  const [trimester, setTrimester] = useState(null);
+  const [trimester, setTrimester] = useState(0);
   const [month, setMonth] = useState(0);
   const [range, setRange] = useState(0);
-
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
+  const [maxMonth, setMaxMonth] = useState(new Date().getMonth() - 1);
+
+  const latestReportMonth = -1;
+  const latestReportTrimester = -2;
+
+  useEffect(() => {
+    if (analysis === 0) {
+      // year is set to other than current one in order to set months and trimesters bars to full size
+      if (year === maxYear) setYear(maxYear - 1);
+      setStatistic(1);
+      setVariable(0);
+    }
+    if (analysis === 1) {
+      if (statistic === 1) setMap('brasil');
+    }
+  }, [analysis]);
+
+  useEffect(() => {
+    if (statistic === 1 && analysis === 1) {
+      // year is set to other than current one in order to set months and trimesters bars to full size when statistic is "Clima"
+      setYear(maxYear - 1);
+    }
+  }, [statistic]);
+
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable });
+    if (
+      (analysis === 1 && variable === 0) ||
+      (analysis === 0 && variable === 3)
+    ) {
+      setMap('brasil');
+    } else {
+      setMap('todas');
+    }
+    if (analysis === 0 && indexType !== 0) {
+      setPhase(0);
+    }
+  }, [variable]);
+
+  function handleDecrement() {
+    if (year > 1979 && year <= maxYear && range >= 0) {
+      setRange(range + 1);
+      setYear(year - 1);
+    }
+  }
+  function handleIncrement() {
+    if (year < maxYear && range > 0) {
+      setRange(range - 1);
+      setYear(year + 1);
+    }
+  }
+  useEffect(() => {
+    // sets month and trimester to the correspondent mark in the ruler if the year is the current year (maxYear).
+    // if month and trimester does not exists in the ruler, set to the latest month and trimester.
+    if (year === maxYear) {
+      if (month > maxMonth) {
+        setMonth(maxMonth + latestReportMonth);
+      }
+      if (trimester > maxMonth) {
+        setTrimester(maxMonth - latestReportTrimester);
+      }
+    }
+  }, [year]);
 
   const changeImage = useCallback(async () => {
-    if (statistic === 1) {
+    if (analysis === 1) {
+      if (statistic !== 1) {
+        if (isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month: null,
+            year,
+            trimester,
+          });
+        }
+        if (!isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month,
+            year,
+            trimester: null,
+          });
+        }
+      } else {
+        if (isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month: null,
+            year: null,
+            trimester,
+          });
+        }
+        if (!isTrimesterSearch) {
+          await dispatch.images.selectMapAsync({
+            month,
+            year: null,
+            trimester: null,
+          });
+        }
+      }
+    }
+    if (analysis === 0) {
       if (isTrimesterSearch) {
         await dispatch.images.selectMapAsync({
           month: null,
@@ -135,14 +231,11 @@ const WeatherTemplate = () => {
           trimester: null,
         });
       }
-    } else {
-      if (isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({ month: null, year, trimester });
-      }
-      if (!isTrimesterSearch) {
-        await dispatch.images.selectMapAsync({ month, year, trimester: null });
-      }
     }
+  }, [year, month, trimester, isTrimesterSearch]);
+
+  useEffect(() => {
+    changeImage();
   }, [year, month, trimester, isTrimesterSearch]);
 
   const getImageAPI = useCallback(async () => {
@@ -162,7 +255,7 @@ const WeatherTemplate = () => {
         analysis,
         statistic,
         variable,
-        period: year,
+        period: null,
         indexType,
         phase,
         web: 'web',
@@ -185,39 +278,6 @@ const WeatherTemplate = () => {
     getImageAPI();
     dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
-
-  useEffect(() => {
-    changeImage();
-  }, [year, month, trimester, isTrimesterSearch]);
-
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
-    if (
-      (analysis === 1 && variable === 0) ||
-      (analysis === 0 && variable === 3)
-    ) {
-      setMap('brasil');
-    } else {
-      setMap('todas');
-    }
-  }, [variable]);
-
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
-  }, []);
-
-  function handleDecrement() {
-    if (year > 1979 && year <= maxYear && range >= 0) {
-      setRange(range + 1);
-      setYear(year - 1);
-    }
-  }
-  function handleIncrement() {
-    if (year < maxYear && range > 0) {
-      setRange(range - 1);
-      setYear(year + 1);
-    }
-  }
 
   return (
     <Box className={classes.page}>
@@ -244,6 +304,20 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
+            <Typography className={classes.title}>
+              {` ${composeTitle(
+                analysis,
+                indexType,
+                variable,
+                statistic,
+                phase,
+                isTrimesterSearch,
+                trimester,
+                month,
+                year,
+              )}`}
+            </Typography>
+
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
             <RulerControls
               handleDecrement={handleDecrement}
@@ -256,9 +330,11 @@ const WeatherTemplate = () => {
               trimester={trimester}
               year={year}
               maxYear={maxYear}
+              maxMonth={maxMonth}
               range={range}
               setYear={setYear}
               statistic={statistic}
+              analysis={analysis}
             />
           </Paper>
         </Box>

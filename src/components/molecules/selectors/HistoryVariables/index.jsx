@@ -27,13 +27,23 @@ const HistoryVariables = ({
     }
     return variable;
   }
+  function handleEmptyState() {
+    if (
+      selectData(statistic).filter((item) => item.value === variable).length ===
+      0
+    ) {
+      return setVariable(selectData(statistic)[0].value);
+    }
+    return setVariable;
+  }
+
   return (
     <>
       <SelectorFilter
         title="Variável"
         label="Variável"
         state={handleEmptyValue()}
-        setState={setVariable}
+        setState={handleEmptyState()}
         data={selectData(statistic)}
       />
     </>

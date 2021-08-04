@@ -27,27 +27,27 @@ const CustomSlider = withStyles({
   markLabelActive: { display: 'block' },
   thumb: {
     boxShadow,
-    height: 20,
-    width: 20,
+    height: 15,
+    width: 15,
     marginTop: -14,
     // marginLeft: -14,
     backgroundColor: '#68E3EE',
-    right: 5,
-
-    '&:focus, &:hover, &$active': {
+    right: 10,
+    '&:focus, &:hover, &$inactive': {
       backgroundColor: '#68E3EE',
       boxShadow:
         '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': { boxShadow },
     },
+    '&$inactive': { display: 'none', backgroundColor: 'gray' },
   },
   valueLabel: {
-    left: 'calc(-95%)',
+    left: 'calc(-140%)',
     top: -25,
     height: 30,
     width: 58,
-    marginTop: 3,
+    marginTop: 5,
     background: 'gray',
     // visibility: 'hidden',
     '&:focus, &:hover, &$inactive': { display: 'block' },
@@ -108,7 +108,7 @@ const Ruler = ({
         getAriaValueText={valuetext}
         aria-label="ios slider"
         valueLabelDisplay={!disabled ? 'on' : 'off'}
-        classes={{ thumb: { display: disabled && 'none' } }}
+        classes={{}}
         valueLabelFormat={valuetext}
         onChange={(e, v) => handleChange(v)}
         value={value}

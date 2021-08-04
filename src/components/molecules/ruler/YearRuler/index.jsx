@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginLeft: 5,
     justifyContent: 'center',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.primary.main,
   },
   leftIcon: {
     height: 44,
@@ -34,15 +34,16 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.primary.main,
   },
   button: {
-    width: '90%',
+    width: '60%',
     height: 40,
     borderColor: '#BFBFBF',
     borderRadius: 10,
     '&:hover': { backgroundColor: 'transparent' },
+    [theme.breakpoints.up('sm')]: { width: '80%' },
   },
 }));
 

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Map = ({ style, selectedMap }) => {
+const Map = ({ selectedMap, ...props }) => {
   return (
     <div>
       <img
-        className={style}
-        alt="mapa"
+        alt="Imagem indisponível"
         src={`https://storage.googleapis.com/imagens.clima.tempook.com/${selectedMap}`}
+        {...props}
       />
     </div>
   );

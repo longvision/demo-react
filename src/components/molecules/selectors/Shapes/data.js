@@ -1,6 +1,1 @@
-export const data = [
-  {
-    value: 0,
-    label: 'Estados',
-  },
-];
+export const data = ['Bacias'];
