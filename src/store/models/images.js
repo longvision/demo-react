@@ -157,7 +157,7 @@ export const images = {
         analysis, statistic, variable,
       } = payload;
 
-      if (analysis === 1 && statistic === 0) {
+      if (analysis === 1) {
         const subtitle = {
           0: anomPrec,
           1: anomTsm,

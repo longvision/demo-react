@@ -283,37 +283,37 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitle: {
-    width: '100%',
+    width: '40%',
     zIndex: 0,
     position: 'absolute',
-    top: 190,
+    top: 235,
     left: 0,
     [theme.breakpoints.up('sm')]: {
-      width: '100%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 390,
-      left: 0,
-    },
-    [theme.breakpoints.up('md')]: {
-      width: '100%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 210,
-      left: 0,
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 310,
-      left: 0,
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '100%',
+      width: '40%',
       zIndex: 0,
       position: 'absolute',
       top: 410,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 220,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 350,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 450,
       left: 0,
     },
   },
@@ -362,7 +362,7 @@ function BrasilMap({ shape, checked }) {
   );
 
   const subtitle = useSelector((state) => state.images.subtitle);
-  console.log({ shape });
+
   return (
     <Box
       className={
