@@ -82,7 +82,14 @@ const useStyles = makeStyles((theme) => ({
       height: 645,
     },
   },
-  title: { fontWeight: 'bold' },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    [theme.breakpoints.up('sm')]: { fontSize: 20 },
+    [theme.breakpoints.up('md')]: { fontSize: 22 },
+    [theme.breakpoints.up('lg')]: { fontSize: 28 },
+    [theme.breakpoints.up('xl')]: { fontSize: 32 },
+  },
 
   body: {
     backgroundColor: 'white',
