@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, CircularProgress } from '@material-ui/core';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+
+import InfoIcon from '@material-ui/icons/Info';
 import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 import Bacias from '../../../../assets/images/contornos/web_brasil_layer3.png';
@@ -287,34 +290,34 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     top: 235,
-    left: 0,
+    left: 44,
     [theme.breakpoints.up('sm')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
       top: 403,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('md')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
       top: 225,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('lg')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
       top: 340,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('xl')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
       top: 448,
-      left: 0,
+      left: 44,
     },
   },
   singleSubtitle: {
@@ -322,33 +325,100 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     top: 310,
-    left: 0,
+    left: 44,
     [theme.breakpoints.up('sm')]: {
       width: '50%',
       zIndex: 0,
       position: 'absolute',
       top: 410,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('md')]: {
       width: '50%',
       zIndex: 0,
       position: 'absolute',
       top: 410,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('lg')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
       top: 520,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('xl')]: {
       width: '60%',
       zIndex: 0,
       position: 'absolute',
-      top: 750,
+      top: 755,
+      left: 44,
+    },
+  },
+  singleButton: {
+    top: 310,
+    left: 0,
+    width: 44,
+    height: 44,
+    backgroundColor: 'gray',
+    zIndex: 0,
+    position: 'absolute',
+    [theme.breakpoints.up('sm')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 405,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 410,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 520,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 758,
+      left: 0,
+    },
+  },
+
+  button: {
+    width: 44,
+    height: 44,
+    backgroundColor: 'gray',
+    zIndex: 0,
+    position: 'absolute',
+    left: 0,
+
+    [theme.breakpoints.up('sm')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 408,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 208,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 338,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 458,
       left: 0,
     },
   },
@@ -356,6 +426,8 @@ const useStyles = makeStyles((theme) => ({
 
 function BrasilMap({ shape, checked }) {
   const classes = useStyles();
+  const [show, setShow] = useState(false);
+  const [formats, setFormats] = React.useState(() => ['bold', 'italic']);
 
   const selectedBrasilMap = useSelector(
     (state) => state.images.selectedBrasilMap,
@@ -363,6 +435,10 @@ function BrasilMap({ shape, checked }) {
 
   const subtitle = useSelector((state) => state.images.subtitle);
 
+  const handleFormat = (event, newFormats) => {
+    setFormats(newFormats);
+    setShow(!show);
+  };
   return (
     <Box
       className={
@@ -372,7 +448,7 @@ function BrasilMap({ shape, checked }) {
     >
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <>
-          {subtitle && (
+          {subtitle && show && (
             <img
               src={subtitle}
               alt="label"
@@ -404,6 +480,21 @@ function BrasilMap({ shape, checked }) {
             }
             selectedMap={selectedBrasilMap[0]}
           />
+          <ToggleButtonGroup
+            value={formats}
+            onChange={handleFormat}
+            aria-label="text formatting"
+          >
+            <ToggleButton
+              value="bold"
+              aria-label="bold"
+              className={
+                checked === 'brasil' ? classes.singleButton : classes.button
+              }
+            >
+              <InfoIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
         </>
       ) : (
         <div className={classes.message}>

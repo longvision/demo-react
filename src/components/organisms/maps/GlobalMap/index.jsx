@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, CircularProgress, IconButton } from '@material-ui/core';
+import { Box, CircularProgress, Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import InfoIcon from '@material-ui/icons/Info';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,54 +56,76 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     top: 125,
-    left: 0,
+    left: 44,
     [theme.breakpoints.up('sm')]: {
       width: '48%',
       zIndex: 0,
       position: 'absolute',
       top: 205,
-      left: 0,
+      left: 44,
     },
     [theme.breakpoints.up('md')]: {
       width: '28%',
       zIndex: 0,
       position: 'absolute',
       top: 223,
-      left: 50,
+      left: 44,
     },
     [theme.breakpoints.up('lg')]: {
       width: '28%',
       zIndex: 0,
       position: 'absolute',
       top: 335,
-      left: 50,
+      left: 44,
     },
     [theme.breakpoints.up('xl')]: {
       width: '28%',
       zIndex: 0,
       position: 'absolute',
       top: 440,
+      left: 44,
+    },
+  },
+
+  button: {
+    width: 44,
+    height: 44,
+    backgroundColor: 'gray',
+    zIndex: 0,
+    position: 'absolute',
+    left: 0,
+    top: 110,
+    [theme.breakpoints.up('sm')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 212,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 210,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 338,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 458,
       left: 0,
     },
   },
-  toggleBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    zIndex: 1,
-    position: 'absolute',
-    top: 125,
-    left: 0,
-  },
-  button: {
-    width: 44,
-    heigth: 44,
-  },
-  main: { position: 'relative' },
 }));
 
 function GlobalMap() {
   const classes = useStyles();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [formats, setFormats] = React.useState(() => ['bold', 'italic']);
   const loading = useSelector(
     (state) => state.loading.effects.images.getImageAsync,
   );
@@ -113,27 +136,34 @@ function GlobalMap() {
 
   const subtitle = useSelector((state) => state.images.subtitle);
 
+  const handleFormat = (event, newFormats) => {
+    setFormats(newFormats);
+    setShow(!show);
+  };
   useEffect(() => {}, [loading, selectedGlobalMap]);
 
-  function handleToggle() {
-    setShow(!show);
-  }
   return (
     <Box className={classes.container} border={selectedGlobalMap[0] ? 2 : 0}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <div className={classes.main}>
+        <>
           <Map className={classes.image} selectedMap={selectedGlobalMap[0]} />
-          <div className={classes.subtitle}>
-            <IconButton
-              icon={<InfoIcon />}
+          <ToggleButtonGroup
+            value={formats}
+            onChange={handleFormat}
+            aria-label="text formatting"
+          >
+            <ToggleButton
+              value="bold"
+              aria-label="bold"
               className={classes.button}
-              handleclick={handleToggle}
-            />
-            {subtitle && show && (
-              <img src={subtitle} alt="label" className={classes.subtitle} />
-            )}
-          </div>
-        </div>
+            >
+              <InfoIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
+          {subtitle && show && (
+            <img src={subtitle} alt="label" className={classes.subtitle} />
+          )}
+        </>
       ) : (
         <div className={classes.message}>
           <CircularProgress color="primary" />

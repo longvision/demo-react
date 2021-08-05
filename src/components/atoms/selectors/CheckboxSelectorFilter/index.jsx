@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles,
   FormControl,
   InputLabel,
-  Input,
   Select,
   MenuItem,
   Checkbox,
