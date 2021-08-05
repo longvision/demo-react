@@ -30,6 +30,9 @@ const trimesters = {
 export function setMonthName(number) {
   return months[number].slice(0, 3);
 }
+export function setMonthCompleteName(number) {
+  return months[number];
+}
 export function setTrimesterName(number) {
   return trimesters[number].slice(0, 3);
 }

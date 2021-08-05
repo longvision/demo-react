@@ -1,4 +1,4 @@
-import { setMonthName, setTrimesterName } from './dates.js';
+import { setMonthCompleteName, setTrimesterName } from './dates.js';
 
 const analysisDictionary = (analysis) => {
   if (analysis === 0) {
@@ -27,23 +27,23 @@ const variableDictionary = (analysis, variable) => {
     const dict = {
       0: 'de Radiação de Onda Longa',
       1: 'de Divergência de Umidade ',
-      2: 'de Geopotencial ',
-      3: 'de Precipitação',
+      2: 'de Geopotencial em 200 (contorno) e 500 hPa (sombreado)',
+      3: 'de Precipitação (CHIRPS)',
     };
     return dict[variable];
   }
   if (analysis === 1) {
     const dict = {
-      0: 'de Precipitação',
+      0: 'de Precipitação (CHIRPS)',
       1: 'de Temperatura da Superfície do Mar',
-      2: 'de Temperatua do Ar',
+      2: 'de Temperatura do Ar em 2 metros',
       3: 'de Pressão ao Nível Médio do Mar',
-      4: 'de Geopotencial',
+      4: 'de Geopotencial em 200 (contorno) e 500 hPa (sombreado)',
       5: 'de Divergência de Umidade',
-      6: 'de PSI',
+      6: 'de Função Corrente em 200 (contorno) e 700 hPa (sombreado)',
       7: 'de Vento10',
       8: 'de Magnitude do Vento',
-      9: 'de CHI',
+      9: 'de Velocidade Potencial em 200 (contorno) e 700 hPa (sombreado)',
     };
     return dict[variable];
   }
@@ -75,8 +75,8 @@ const phaseDictionary = (analysis, indexType, phase) => {
     }
     if ([1, 2, 3, 4].includes(indexType)) {
       const dict = {
-        0: 'Positiva',
-        1: 'Negativa',
+        0: 'Fase Positiva',
+        1: 'Fase Negativa',
       };
       return dict[phase];
     }
@@ -97,16 +97,22 @@ export const composeTitle = (
   if (analysis === 0) {
     return `Anomalia  
     
-    ${variableDictionary(analysis, variable)} na fase 
-    ${phaseDictionary(analysis, indexType, phase)} -
-    ${indexDictionary(indexType)} 
-  - ${isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)}`;
+    ${variableDictionary(analysis, variable)} - 
+    ${indexDictionary(indexType)} (
+    ${phaseDictionary(analysis, indexType, phase)} )
+  - ${
+  isTrimesterSearch
+    ? setTrimesterName(trimester)
+    : setMonthCompleteName(month)
+}`;
   }
   if (analysis === 1) {
     return ` ${statisticDictionary(analysis, statistic)} 
   ${variableDictionary(analysis, variable)}
   - ${
-  isTrimesterSearch ? setTrimesterName(trimester) : setMonthName(month)
+  isTrimesterSearch
+    ? setTrimesterName(trimester)
+    : setMonthCompleteName(month)
 }/${year}`;
   }
 };

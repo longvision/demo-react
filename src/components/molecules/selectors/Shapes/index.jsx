@@ -12,7 +12,7 @@ const Shapes = ({
     <>
       <CheckboxSelectorFilter
         title="Camadas"
-        label="Camadas"
+        label="Selecione"
         state={shape}
         handleChange={handleChange}
         setState={setShape}

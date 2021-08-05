@@ -85,12 +85,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     fontSize: 16,
-    [theme.breakpoints.up('sm')]: { fontSize: 20 },
-    [theme.breakpoints.up('md')]: { fontSize: 22 },
-    [theme.breakpoints.up('lg')]: { fontSize: 28 },
-    [theme.breakpoints.up('xl')]: { fontSize: 32 },
+    [theme.breakpoints.up('sm')]: { fontSize: 14 },
+    [theme.breakpoints.up('md')]: { fontSize: 16 },
+    [theme.breakpoints.up('lg')]: { fontSize: 20 },
+    [theme.breakpoints.up('xl')]: { fontSize: 22 },
   },
-
   body: {
     backgroundColor: 'white',
     padding: 15,
@@ -116,7 +115,7 @@ const WeatherTemplate = () => {
   const [variable, setVariable] = useState(0);
   const [indexType, setIndexType] = useState(0);
   const [phase, setPhase] = useState(0);
-  const [shape, setShape] = useState(['Estados']);
+  const [shape, setShape] = useState(['Selecione']);
   const [display, setDisplay] = useState(0);
   const [map, setMap] = useState('todas');
   const [isTrimesterSearch, setIsTrimesterSearch] = useState(false);
