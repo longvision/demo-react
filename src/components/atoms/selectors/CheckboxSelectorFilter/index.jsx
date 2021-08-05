@@ -26,6 +26,7 @@ const CheckboxSelectorFilter = ({
   setState,
   data,
   handleChange,
+  handleSelected,
   ...props
 }) => {
   const classes = useStyles();
@@ -39,7 +40,11 @@ const CheckboxSelectorFilter = ({
         id="demo-mutiple-checkbox"
         value={state}
         onChange={handleChange}
-        renderValue={(selected) => selected.join(', ')}
+        renderValue={(selected) => {
+          return selected.length > 1
+            ? selected.filter((item) => item !== 'Selecione').join(', ')
+            : 'Selecione';
+        }}
         label={label}
         className={classes.select}
       >

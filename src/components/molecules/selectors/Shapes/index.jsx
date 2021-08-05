@@ -12,9 +12,13 @@ const Shapes = ({
     <>
       <CheckboxSelectorFilter
         title="Camadas"
-        label="Selecione"
+        label="Camadas"
         state={shape}
         handleChange={handleChange}
+        handleSelected={(selected) => {
+          selected.filter((item) => item !== 'Selecione');
+          console.log(selected.filter((item) => item !== 'Selecione'));
+        }}
         setState={setShape}
         data={data}
         {...props}

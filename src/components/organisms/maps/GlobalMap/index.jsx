@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, CircularProgress } from '@material-ui/core';
+import { Box, CircularProgress, IconButton } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import InfoIcon from '@material-ui/icons/Info';
 import Map from '../../../atoms/map/Map';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,14 +68,14 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 0,
       position: 'absolute',
       top: 223,
-      left: 0,
+      left: 50,
     },
     [theme.breakpoints.up('lg')]: {
       width: '28%',
       zIndex: 0,
       position: 'absolute',
       top: 335,
-      left: 0,
+      left: 50,
     },
     [theme.breakpoints.up('xl')]: {
       width: '28%',
@@ -84,10 +85,24 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
+  toggleBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    zIndex: 1,
+    position: 'absolute',
+    top: 125,
+    left: 0,
+  },
+  button: {
+    width: 44,
+    heigth: 44,
+  },
+  main: { position: 'relative' },
 }));
 
 function GlobalMap() {
   const classes = useStyles();
+  const [show, setShow] = useState(true);
   const loading = useSelector(
     (state) => state.loading.effects.images.getImageAsync,
   );
@@ -99,15 +114,26 @@ function GlobalMap() {
   const subtitle = useSelector((state) => state.images.subtitle);
 
   useEffect(() => {}, [loading, selectedGlobalMap]);
+
+  function handleToggle() {
+    setShow(!show);
+  }
   return (
     <Box className={classes.container} border={selectedGlobalMap[0] ? 2 : 0}>
       {selectedGlobalMap && selectedGlobalMap.length ? (
-        <>
+        <div className={classes.main}>
           <Map className={classes.image} selectedMap={selectedGlobalMap[0]} />
-          {subtitle && (
-            <img src={subtitle} alt="label" className={classes.subtitle} />
-          )}
-        </>
+          <div className={classes.subtitle}>
+            <IconButton
+              icon={<InfoIcon />}
+              className={classes.button}
+              handleclick={handleToggle}
+            />
+            {subtitle && show && (
+              <img src={subtitle} alt="label" className={classes.subtitle} />
+            )}
+          </div>
+        </div>
       ) : (
         <div className={classes.message}>
           <CircularProgress color="primary" />
