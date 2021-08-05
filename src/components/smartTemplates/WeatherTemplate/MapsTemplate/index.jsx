@@ -38,11 +38,11 @@ const MapsTemplate = ({
     <>
       <Grid container className={classes.maps}>
         {checked === 'global' && <GlobalMap />}
-        {checked === 'brasil' && <BrasilMap shape={shape} />}
+        {checked === 'brasil' && <BrasilMap shape={shape} checked={checked} />}
         {checked === 'todas' && (
           <>
             <GlobalMap />
-            <BrasilMap shape={shape} />
+            <BrasilMap shape={shape} checked={checked} />
           </>
         )}
       </Grid>

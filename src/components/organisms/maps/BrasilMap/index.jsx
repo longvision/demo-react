@@ -23,6 +23,22 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: { width: 384, height: 385 },
     [theme.breakpoints.up('xl')]: { width: 505, height: 505 },
   },
+  singleContainer: {
+    display: 'flex',
+    // flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#BFBFBF',
+    position: 'relative',
+    // minHeight: 370,
+    // essa imagem nao eh quadrada, por isso da borda.
+    minWidth: 354,
+    // margin: 7,
+    [theme.breakpoints.up('sm')]: { width: 454, height: 454 },
+    [theme.breakpoints.up('md')]: { width: 456, height: 456 },
+    [theme.breakpoints.up('lg')]: { width: 584, height: 585 },
+    [theme.breakpoints.up('xl')]: { width: 805, height: 805 },
+  },
   image: {
     // marginTop: 5,
     display: 'flex',
@@ -48,6 +64,30 @@ const useStyles = makeStyles((theme) => ({
       height: 500,
     },
   },
+  singleImage: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundSize: 'cover',
+    width: 354,
+    height: 354,
+    [theme.breakpoints.up('sm')]: {
+      width: 450,
+      height: 450,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 450,
+      height: 450,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 580,
+      height: 580,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 800,
+      height: 800,
+    },
+  },
   message: {
     height: 150,
     display: 'flex',
@@ -63,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
   shapes: {
     zIndex: 0,
     position: 'absolute',
-
     // marginTop: 5,
     display: 'flex',
     justifyContent: 'center',
@@ -105,6 +144,52 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
       width: 500,
       height: 500,
+    },
+  },
+  singleShapes: {
+    zIndex: 0,
+    position: 'absolute',
+    // marginTop: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundSize: 'cover',
+    width: 354,
+    height: 360,
+    top: 0,
+    left: 0,
+
+    [theme.breakpoints.up('sm')]: {
+      width: 450,
+      height: 450,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 450,
+      height: 450,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 1,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 580,
+      height: 580,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: 800,
+      height: 800,
     },
   },
   bacias: {
@@ -152,6 +237,51 @@ const useStyles = makeStyles((theme) => ({
       height: 500,
     },
   },
+  singleBacias: {
+    zIndex: 0,
+    position: 'absolute',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundSize: 'cover',
+    width: 354,
+    height: 360,
+    top: 0,
+    left: 0,
+
+    [theme.breakpoints.up('sm')]: {
+      width: 450,
+      height: 450,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 450,
+      height: 450,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 1,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 580,
+      height: 580,
+      zIndex: 0,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      zIndex: 0,
+      position: 'absolute',
+      top: -4,
+      left: -5,
+      width: 800,
+      height: 800,
+    },
+  },
   subtitle: {
     width: '100%',
     zIndex: 0,
@@ -187,9 +317,44 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
+  singleSubtitle: {
+    width: '40%',
+    zIndex: 0,
+    position: 'absolute',
+    top: 310,
+    left: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 410,
+      left: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 410,
+      left: 0,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 510,
+      left: 0,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '40%',
+      zIndex: 0,
+      position: 'absolute',
+      top: 710,
+      left: 0,
+    },
+  },
 }));
 
-function BrasilMap({ shape }) {
+function BrasilMap({ shape, checked }) {
   const classes = useStyles();
 
   const selectedBrasilMap = useSelector(
@@ -199,18 +364,46 @@ function BrasilMap({ shape }) {
   const subtitle = useSelector((state) => state.images.subtitle);
   console.log({ shape });
   return (
-    <Box className={classes.container} border={selectedBrasilMap[0] ? 2 : 0}>
+    <Box
+      className={
+        checked === 'brasil' ? classes.singleContainer : classes.container
+      }
+      border={selectedBrasilMap[0] ? 2 : 0}
+    >
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <>
           {subtitle && (
-            <img src={subtitle} alt="label" className={classes.subtitle} />
+            <img
+              src={subtitle}
+              alt="label"
+              className={
+                checked === 'brasil' ? classes.singleSubtitle : classes.subtitle
+              }
+            />
           )}
 
-          <img className={classes.shapes} src={Estados} alt="Estados" />
+          <img
+            className={
+              checked === 'brasil' ? classes.singleShapes : classes.shapes
+            }
+            src={Estados}
+            alt="Estados"
+          />
           {shape && shape.includes('Bacias') && (
-            <img className={classes.bacias} src={Bacias} alt="Bacias" />
+            <img
+              className={
+                checked === 'brasil' ? classes.singleBacias : classes.bacias
+              }
+              src={Bacias}
+              alt="Bacias"
+            />
           )}
-          <Map className={classes.image} selectedMap={selectedBrasilMap[0]} />
+          <Map
+            className={
+              checked === 'brasil' ? classes.singleImage : classes.image
+            }
+            selectedMap={selectedBrasilMap[0]}
+          />
         </>
       ) : (
         <div className={classes.message}>

@@ -66,7 +66,7 @@ export const images = {
         payload;
 
       console.log(
-        `chagou no getImages effect ${{
+        `chegou no getImages effect ${{
           analysis,
           statistic,
           variable,
