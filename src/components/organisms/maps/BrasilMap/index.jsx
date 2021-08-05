@@ -324,7 +324,7 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
     zIndex: 0,
     position: 'absolute',
-    top: 310,
+    top: 320,
     left: 44,
     [theme.breakpoints.up('sm')]: {
       width: '50%',
@@ -351,7 +351,7 @@ const useStyles = makeStyles((theme) => ({
       width: '60%',
       zIndex: 0,
       position: 'absolute',
-      top: 755,
+      top: 718,
       left: 44,
     },
   },
