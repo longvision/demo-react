@@ -5,7 +5,7 @@ import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   container: {
-    height: '85%',
+    height: '95%',
     textAlign: 'left',
     overflow: 'auto',
     marginTop: 10,
