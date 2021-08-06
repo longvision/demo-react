@@ -9,6 +9,24 @@ import Map from '../../../atoms/map/Map';
 import Bacias from '../../../../assets/images/contornos/web_brasil_layer3.png';
 import Estados from '../../../../assets/images/contornos/web_brasil_layer4.png';
 
+// A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
+
+// Medidas do lado do mapa Brasil (Quadrado) quando aparecem em conjunto com o mapa Global
+const MOBILE_HEIGHT_AND_WIDTH = 258;
+const TABLET_HEIGHT_AND_WIDTH = 258;
+const LAPTOP_HEIGHT_AND_WIDTH = 256;
+const DESKTOP_HEIGHT_AND_WIDTH = 364;
+const XL_HEIGHT_AND_WIDTH = 455;
+
+// Medidas do lado do mapa Brasil (Quadrado) quando aparecem sem o mapa Global
+const SINGLE_MOBILE_HEIGHT_AND_WIDTH = 258;
+const SINGLE_TABLET_HEIGHT_AND_WIDTH = 454;
+const SINGLE_LAPTOP_HEIGHT_AND_WIDTH = 456;
+const SINGLE_DESKTOP_HEIGHT_AND_WIDTH = 484;
+const SINGLE_XL_HEIGHT_AND_WIDTH = 705;
+
+const HEIGHT_AND_WIDTH = '100%';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -19,12 +37,23 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     // minHeight: 370,
     // essa imagem nao eh quadrada, por isso da borda.
-    minWidth: 254,
     // margin: 7,
-    [theme.breakpoints.up('sm')]: { width: 454, height: 454 },
-    [theme.breakpoints.up('md')]: { width: 256, height: 256 },
-    [theme.breakpoints.up('lg')]: { width: 384, height: 385 },
-    [theme.breakpoints.up('xl')]: { width: 505, height: 505 },
+    [theme.breakpoints.up('sm')]: {
+      width: TABLET_HEIGHT_AND_WIDTH + 4,
+      height: TABLET_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: LAPTOP_HEIGHT_AND_WIDTH + 4,
+      height: LAPTOP_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: DESKTOP_HEIGHT_AND_WIDTH + 4,
+      height: DESKTOP_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: XL_HEIGHT_AND_WIDTH + 10,
+      height: XL_HEIGHT_AND_WIDTH + 10,
+    },
   },
   singleContainer: {
     display: 'flex',
@@ -37,10 +66,22 @@ const useStyles = makeStyles((theme) => ({
     // essa imagem nao eh quadrada, por isso da borda.
     minWidth: 354,
     // margin: 7,
-    [theme.breakpoints.up('sm')]: { width: 454, height: 454 },
-    [theme.breakpoints.up('md')]: { width: 456, height: 456 },
-    [theme.breakpoints.up('lg')]: { width: 584, height: 585 },
-    [theme.breakpoints.up('xl')]: { width: 805, height: 805 },
+    [theme.breakpoints.up('sm')]: {
+      width: SINGLE_TABLET_HEIGHT_AND_WIDTH + 4,
+      height: SINGLE_TABLET_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: SINGLE_LAPTOP_HEIGHT_AND_WIDTH + 4,
+      height: SINGLE_LAPTOP_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: SINGLE_DESKTOP_HEIGHT_AND_WIDTH + 4,
+      height: SINGLE_DESKTOP_HEIGHT_AND_WIDTH + 4,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: SINGLE_XL_HEIGHT_AND_WIDTH + 5,
+      height: SINGLE_XL_HEIGHT_AND_WIDTH + 5,
+    },
   },
   image: {
     // marginTop: 5,
@@ -48,23 +89,23 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
-    width: 254,
-    height: 254,
+    width: MOBILE_HEIGHT_AND_WIDTH,
+    height: MOBILE_HEIGHT_AND_WIDTH,
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: TABLET_HEIGHT_AND_WIDTH,
+      height: TABLET_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('md')]: {
-      width: 250,
-      height: 250,
+      width: LAPTOP_HEIGHT_AND_WIDTH,
+      height: LAPTOP_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 380,
-      height: 380,
+      width: DESKTOP_HEIGHT_AND_WIDTH,
+      height: DESKTOP_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 500,
-      height: 500,
+      width: XL_HEIGHT_AND_WIDTH,
+      height: XL_HEIGHT_AND_WIDTH,
     },
   },
   singleImage: {
@@ -75,20 +116,20 @@ const useStyles = makeStyles((theme) => ({
     width: 354,
     height: 354,
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_TABLET_HEIGHT_AND_WIDTH,
+      height: SINGLE_TABLET_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('md')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 580,
-      height: 580,
+      width: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 800,
-      height: 800,
+      width: SINGLE_XL_HEIGHT_AND_WIDTH,
+      height: SINGLE_XL_HEIGHT_AND_WIDTH,
     },
   },
   message: {
@@ -101,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: { width: 255, height: 255 },
     [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
     [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
-    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
+    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 480 },
   },
   shapes: {
     zIndex: 0,
@@ -111,30 +152,30 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
-    width: 254,
-    height: 260,
+    width: MOBILE_HEIGHT_AND_WIDTH,
+    height: MOBILE_HEIGHT_AND_WIDTH,
     top: 0,
     left: 0,
 
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: TABLET_HEIGHT_AND_WIDTH,
+      height: TABLET_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
-      width: 250,
-      height: 250,
+      width: LAPTOP_HEIGHT_AND_WIDTH,
+      height: LAPTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 1,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 380,
-      height: 380,
+      width: DESKTOP_HEIGHT_AND_WIDTH,
+      height: DESKTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
@@ -143,10 +184,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('xl')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 0,
+      top: 3,
       left: 0,
-      width: 500,
-      height: 500,
+      width: XL_HEIGHT_AND_WIDTH,
+      height: XL_HEIGHT_AND_WIDTH,
     },
   },
   singleShapes: {
@@ -157,30 +198,30 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
-    width: 354,
-    height: 360,
+    width: SINGLE_MOBILE_HEIGHT_AND_WIDTH,
+    height: SINGLE_MOBILE_HEIGHT_AND_WIDTH,
     top: 0,
     left: 0,
 
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_TABLET_HEIGHT_AND_WIDTH,
+      height: SINGLE_TABLET_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 1,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 580,
-      height: 580,
+      width: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
@@ -191,8 +232,8 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: 0,
       left: 0,
-      width: 800,
-      height: 800,
+      width: SINGLE_XL_HEIGHT_AND_WIDTH,
+      height: SINGLE_XL_HEIGHT_AND_WIDTH,
     },
   },
   bacias: {
@@ -202,30 +243,30 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
-    width: 254,
-    height: 260,
+    width: MOBILE_HEIGHT_AND_WIDTH,
+    height: MOBILE_HEIGHT_AND_WIDTH,
     top: 0,
     left: 0,
 
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: TABLET_HEIGHT_AND_WIDTH,
+      height: TABLET_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
-      width: 250,
-      height: 250,
+      width: LAPTOP_HEIGHT_AND_WIDTH,
+      height: LAPTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 1,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 380,
-      height: 380,
+      width: DESKTOP_HEIGHT_AND_WIDTH,
+      height: DESKTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
@@ -236,8 +277,8 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: -4,
       left: -5,
-      width: 500,
-      height: 500,
+      width: XL_HEIGHT_AND_WIDTH,
+      height: XL_HEIGHT_AND_WIDTH,
     },
   },
   singleBacias: {

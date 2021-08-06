@@ -6,6 +6,14 @@ import InfoIcon from '@material-ui/icons/Info';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
 
+// A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
+const MOBILE_HEIGHT = 158;
+const TABLET_HEIGHT = 258;
+const LAPTOP_HEIGHT = 256;
+const DESKTOP_HEIGHT = 364;
+const XL_HEIGHT = 455;
+const WIDTH = '100%';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -18,26 +26,26 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: 370,
 
     margin: 7,
-    height: 158,
+    height: MOBILE_HEIGHT,
     // 1920
     // 1080
-    [theme.breakpoints.up('sm')]: { height: 258 },
-    [theme.breakpoints.up('md')]: { height: 256 },
-    [theme.breakpoints.up('lg')]: { height: 384 },
-    [theme.breakpoints.up('xl')]: { height: 505 },
+    [theme.breakpoints.up('sm')]: { height: TABLET_HEIGHT + 4 },
+    [theme.breakpoints.up('md')]: { height: LAPTOP_HEIGHT + 4 },
+    [theme.breakpoints.up('lg')]: { height: DESKTOP_HEIGHT + 4 },
+    [theme.breakpoints.up('xl')]: { height: XL_HEIGHT + 5 },
   },
   image: {
-    height: 150,
+    height: MOBILE_HEIGHT,
     backgroundSize: 'cover',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
     width: '100%',
-    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
-    [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
-    [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
-    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
+    [theme.breakpoints.up('sm')]: { height: TABLET_HEIGHT },
+    [theme.breakpoints.up('md')]: { height: LAPTOP_HEIGHT },
+    [theme.breakpoints.up('lg')]: { height: DESKTOP_HEIGHT },
+    [theme.breakpoints.up('xl')]: { height: XL_HEIGHT },
   },
   message: {
     height: 150,
@@ -45,11 +53,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: { width: 583.85, height: 255 },
-    [theme.breakpoints.up('md')]: { width: 572.4, height: 250 },
-    [theme.breakpoints.up('lg')]: { width: 870, height: 380 },
-    [theme.breakpoints.up('xl')]: { width: 1144.74, height: 500 },
+    width: WIDTH,
+    [theme.breakpoints.up('sm')]: { width: WIDTH, height: TABLET_HEIGHT },
+    [theme.breakpoints.up('md')]: { width: WIDTH, height: LAPTOP_HEIGHT },
+    [theme.breakpoints.up('lg')]: { width: WIDTH, height: DESKTOP_HEIGHT },
+    [theme.breakpoints.up('xl')]: { width: WIDTH, height: XL_HEIGHT },
   },
   subtitle: {
     width: '50%',
@@ -86,7 +94,6 @@ const useStyles = makeStyles((theme) => ({
       left: 44,
     },
   },
-
   button: {
     width: 44,
     height: 44,

@@ -14,19 +14,24 @@ export const info = {
   },
   effects: (dispatch) => ({
     async getDescriptionAsync(payload) {
-      const { analysis, variable } = payload;
+      const {
+        analysis, variable, indexType,
+      } = payload;
 
       const analysisValue = config.analysis[analysis];
-      const variableValue = await config.variables[analysisValue][variable];
+      const textVariable =
+        analysis === 0
+          ? await config.indexType[indexType]
+          : await config.variables[analysisValue][variable];
 
       console.log({
         session_id: '8978d76440e44ebbbed7c2c04784cedf',
         analise: analysisValue,
-        variavel: variableValue,
+        variavel: textVariable,
       });
       const res = await api.post('/tokclima/variableinfo', {
         session_id: '8978d76440e44ebbbed7c2c04784cedf',
-        variavel: variableValue,
+        variavel: textVariable,
       });
 
       this.setDescription(res.data);

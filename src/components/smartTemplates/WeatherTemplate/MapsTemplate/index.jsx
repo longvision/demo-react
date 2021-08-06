@@ -13,12 +13,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    flexWrap: 'wrap',
-    // [theme.breakpoints.up('md')]: { flexWrap: 'nowrap' },
-    [theme.breakpoints.up('xl')]: {
-      justifyContent: 'space-evenly',
-      flexWrap: 'nowrap',
-    },
+    // flexWrap: 'wrap',
+
+    // [theme.breakpoints.up('xl')]: {
+    //   justifyContent: 'space-evenly',
+    //   flexWrap: 'nowrap',
+    // },
   },
   checkboxes: {
     display: 'flex',
@@ -42,6 +42,7 @@ const MapsTemplate = ({
         {checked === 'todas' && (
           <>
             <GlobalMap />
+
             <BrasilMap shape={shape} checked={checked} />
           </>
         )}

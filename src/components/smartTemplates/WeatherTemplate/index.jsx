@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 15,
+    // margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
     [theme.breakpoints.up('lg')]: {
@@ -30,17 +30,48 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  sideContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   sideBox: {
     display: 'flex',
-    height: '100%',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 15,
+    margin: 15,
+    [theme.breakpoints.down('lg')]: {
+      justifyContent: 'center',
+      marginLeft: 15,
+      padding: 0,
+      width: '100%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 81,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 81,
+    },
   },
   main: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
   paper: {
     backgroundColor: 'white',
@@ -51,13 +82,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
     flexWrap: 'wrap',
-    [theme.breakpoints.up('lg')]: { padding: 15, width: '80%' },
-    [theme.breakpoints.up('xl')]: { padding: 15, width: '55%' },
+    [theme.breakpoints.up('lg')]: { padding: 15, width: '100%' },
+    [theme.breakpoints.up('xl')]: { padding: 15, width: '100%' },
   },
   textBox: {
     backgroundColor: 'white',
-    padding: '10px 0px 0px 5px',
-    marginTop: 15,
+    padding: 15,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -65,21 +95,21 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       marginLeft: 15,
-      width: '100%',
+      width: 777,
     },
     [theme.breakpoints.up('lg')]: {
       width: 320,
       justifyContent: 'center',
-      marginTop: 111,
+      // marginTop: 111,
+      padding: 15,
       marginLeft: 15,
-      height: 540,
+      height: 702,
     },
     [theme.breakpoints.up('xl')]: {
       width: 320,
       justifyContent: 'center',
-      marginTop: 111,
-      marginLeft: 15,
-      height: 645,
+      padding: 15,
+      height: 927,
     },
   },
   title: {
@@ -101,8 +131,8 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     width: '100%',
     [theme.breakpoints.up('md')]: { width: '100%' },
-    [theme.breakpoints.up('lg')]: { minWidth: 1080 },
-    [theme.breakpoints.up('xl')]: { minWidth: 1580 },
+    [theme.breakpoints.up('lg')]: { width: '100%' },
+    [theme.breakpoints.up('xl')]: { width: '100%' },
   },
   top: { height: 10, [theme.breakpoints.up('sm')]: { height: 65 } },
 }));
@@ -149,7 +179,7 @@ const WeatherTemplate = () => {
   }, [statistic]);
 
   useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable });
+    dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
     if (
       (analysis === 1 && variable === 0) ||
       (analysis === 0 && variable === 3)
@@ -285,6 +315,10 @@ const WeatherTemplate = () => {
     dispatch.images.setSubtitle({ analysis, variable, statistic });
   }, [year, analysis, statistic, variable, indexType, map, range, phase]);
 
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
+  }, [indexType]);
+
   return (
     <Box className={classes.page}>
       <Box className={classes.container}>
@@ -345,7 +379,8 @@ const WeatherTemplate = () => {
           </Paper>
         </Box>
       </Box>
-      <Box className={classes.sideBox}>
+      <Box className={classes.sideContainer}>
+        <Box className={classes.sideBox} />
         <Paper className={classes.textBox}>
           <TextBox />
         </Paper>
