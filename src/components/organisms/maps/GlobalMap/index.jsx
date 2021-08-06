@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import InfoIcon from '@material-ui/icons/Info';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
-
+import { positions } from '../sharedPositions.js';
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 const MOBILE_HEIGHT = 158;
 const TABLET_HEIGHT = 258;
@@ -60,37 +60,36 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('xl')]: { width: WIDTH, height: XL_HEIGHT },
   },
   subtitle: {
-    width: '50%',
     zIndex: 0,
     position: 'absolute',
-    top: 125,
+    top: positions.TOP_MOBILE,
     left: 44,
     [theme.breakpoints.up('sm')]: {
-      width: '48%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 205,
+      top: positions.TOP_TABLET,
       left: 44,
     },
     [theme.breakpoints.up('md')]: {
-      width: '28%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 223,
+      top: positions.TOP_LAPTOP,
       left: 44,
     },
     [theme.breakpoints.up('lg')]: {
-      width: '28%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 335,
+      top: positions.TOP_DESKTOP,
       left: 44,
     },
     [theme.breakpoints.up('xl')]: {
-      width: '28%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 440,
+      top: positions.TOP_XL,
       left: 44,
     },
   },
@@ -101,29 +100,29 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     left: 0,
-    top: 110,
+    top: positions.TOP_MOBILE,
     [theme.breakpoints.up('sm')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 212,
+      top: positions.TOP_TABLET,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 210,
+      top: positions.SOP_LAPTOP,
       left: 0,
     },
     [theme.breakpoints.up('lg')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 338,
+      top: positions.TOP_DESKTOP,
       left: 0,
     },
     [theme.breakpoints.up('xl')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 458,
+      top: positions.TOP_XL,
       left: 0,
     },
   },

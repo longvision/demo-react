@@ -9,6 +9,9 @@ import Map from '../../../atoms/map/Map';
 import Bacias from '../../../../assets/images/contornos/web_brasil_layer3.png';
 import Estados from '../../../../assets/images/contornos/web_brasil_layer4.png';
 
+// positions sao referentes ao botao e à legenda
+import { positions } from '../sharedPositions.js';
+
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 
 // Medidas do lado do mapa Brasil (Quadrado) quando aparecem em conjunto com o mapa Global
@@ -19,13 +22,11 @@ const DESKTOP_HEIGHT_AND_WIDTH = 364;
 const XL_HEIGHT_AND_WIDTH = 455;
 
 // Medidas do lado do mapa Brasil (Quadrado) quando aparecem sem o mapa Global
-const SINGLE_MOBILE_HEIGHT_AND_WIDTH = 258;
+const SINGLE_MOBILE_HEIGHT_AND_WIDTH = 354;
 const SINGLE_TABLET_HEIGHT_AND_WIDTH = 454;
 const SINGLE_LAPTOP_HEIGHT_AND_WIDTH = 456;
 const SINGLE_DESKTOP_HEIGHT_AND_WIDTH = 484;
 const SINGLE_XL_HEIGHT_AND_WIDTH = 705;
-
-const HEIGHT_AND_WIDTH = '100%';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -288,30 +289,30 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundSize: 'cover',
-    width: 354,
-    height: 360,
+    width: SINGLE_MOBILE_HEIGHT_AND_WIDTH,
+    height: SINGLE_MOBILE_HEIGHT_AND_WIDTH,
     top: 0,
     left: 0,
 
     [theme.breakpoints.up('sm')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_TABLET_HEIGHT_AND_WIDTH,
+      height: SINGLE_TABLET_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
-      width: 450,
-      height: 450,
+      width: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_LAPTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
       left: 1,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 580,
-      height: 580,
+      width: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
+      height: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: 0,
@@ -322,82 +323,48 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: -4,
       left: -5,
-      width: 800,
-      height: 800,
+      width: SINGLE_XL_HEIGHT_AND_WIDTH,
+      height: SINGLE_XL_HEIGHT_AND_WIDTH,
     },
   },
-  subtitle: {
-    width: '60%',
-    zIndex: 0,
-    position: 'absolute',
-    top: 235,
-    left: 44,
-    [theme.breakpoints.up('sm')]: {
-      width: '60%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 403,
-      left: 44,
-    },
-    [theme.breakpoints.up('md')]: {
-      width: '60%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 225,
-      left: 44,
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '60%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 340,
-      left: 44,
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '60%',
-      zIndex: 0,
-      position: 'absolute',
-      top: 448,
-      left: 44,
-    },
-  },
+
   singleSubtitle: {
-    width: '50%',
+    height: 44,
     zIndex: 0,
     position: 'absolute',
-    top: 320,
+    top: positions.SINGLE_BR_TOP_MOBILE,
     left: 44,
     [theme.breakpoints.up('sm')]: {
-      width: '50%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 410,
+      top: positions.SINGLE_BR_TOP_TABLET,
       left: 44,
     },
     [theme.breakpoints.up('md')]: {
-      width: '50%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 410,
+      top: positions.SINGLE_BR_TOP_LAPTOP,
       left: 44,
     },
     [theme.breakpoints.up('lg')]: {
-      width: '60%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 520,
+      top: positions.SINGLE_BR_TOP_DESKTOP,
       left: 44,
     },
     [theme.breakpoints.up('xl')]: {
-      width: '60%',
+      height: 44,
       zIndex: 0,
       position: 'absolute',
-      top: 718,
+      top: positions.SINGLE_BR_TOP_XL,
       left: 44,
     },
   },
   singleButton: {
-    top: 310,
+    top: positions.SINGLE_BR_TOP_MOBILE,
     left: 0,
     width: 44,
     height: 44,
@@ -407,29 +374,63 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 405,
+      top: positions.SINGLE_BR_TOP_TABLET,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 410,
+      top: positions.SINGLE_BR_TOP_LAPTOP,
       left: 0,
     },
     [theme.breakpoints.up('lg')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 520,
+      top: positions.SINGLE_BR_TOP_DESKTOP,
       left: 0,
     },
     [theme.breakpoints.up('xl')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 758,
+      top: positions.SINGLE_BR_TOP_XL,
       left: 0,
     },
   },
-
+  subtitle: {
+    height: 44,
+    zIndex: 0,
+    position: 'absolute',
+    top: positions.BR_TOP_MOBILE,
+    left: 44,
+    [theme.breakpoints.up('sm')]: {
+      height: 44,
+      zIndex: 0,
+      position: 'absolute',
+      top: positions.BR_TOP_TABLET,
+      left: 44,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 44,
+      zIndex: 0,
+      position: 'absolute',
+      top: positions.BR_TOP_LAPTOP,
+      left: 44,
+    },
+    [theme.breakpoints.up('lg')]: {
+      height: 44,
+      zIndex: 0,
+      position: 'absolute',
+      top: positions.BR_TOP_DESKTOP,
+      left: 44,
+    },
+    [theme.breakpoints.up('xl')]: {
+      height: 44,
+      zIndex: 0,
+      position: 'absolute',
+      top: positions.BR_TOP_XL,
+      left: 44,
+    },
+  },
   button: {
     width: 44,
     height: 44,
@@ -437,29 +438,30 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     left: 0,
+    top: positions.BR_TOP_MOBILE,
 
     [theme.breakpoints.up('sm')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 408,
+      top: positions.BR_TOP_TABLET,
       left: 0,
     },
     [theme.breakpoints.up('md')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 208,
+      top: positions.BR_TOP_LAPTOP,
       left: 0,
     },
     [theme.breakpoints.up('lg')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 338,
+      top: positions.BR_TOP_DESKTOP,
       left: 0,
     },
     [theme.breakpoints.up('xl')]: {
       zIndex: 0,
       position: 'absolute',
-      top: 458,
+      top: positions.BR_TOP_XL,
       left: 0,
     },
   },

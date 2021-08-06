@@ -92,6 +92,37 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: 531,
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
+      marginLeft: 15,
+    },
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'center',
+      padding: 15,
+      width: '90%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 320,
+      justifyContent: 'center',
+      // marginTop: 111,
+      padding: 15,
+      marginLeft: 15,
+      height: 545,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 320,
+      justifyContent: 'center',
+      padding: 15,
+      height: 627,
+    },
+  },
+  textBoxBrasil: {
+    backgroundColor: 'white',
+    padding: 15,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 531,
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       marginLeft: 15,
@@ -381,7 +412,9 @@ const WeatherTemplate = () => {
       </Box>
       <Box className={classes.sideContainer}>
         <Box className={classes.sideBox} />
-        <Paper className={classes.textBox}>
+        <Paper
+          className={map === 'brasil' ? classes.textBoxBrasil : classes.textBox}
+        >
           <TextBox />
         </Paper>
       </Box>
