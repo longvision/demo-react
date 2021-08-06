@@ -11,9 +11,10 @@ import TextBox from '../../organisms/textboxes/TextBox';
 
 const useStyles = makeStyles((theme) => ({
   page: {
+    height: 1080,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     // margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
