@@ -157,22 +157,30 @@ export const images = {
         analysis, statistic, variable,
       } = payload;
 
-      if (analysis === 1) {
-        const subtitle = {
-          0: anomPrec,
-          1: anomTsm,
-          2: anomTemp,
-          3: anomPnmm,
-          4: anomGeop,
-          5: anomUmid,
-          6: anomPsi,
-          7: anomVento,
-          8: anomVento,
-          9: anomChi,
-        };
-        this.selectedSubtitle({ subtitle: subtitle[variable] });
+      const analysisSubtitle = {
+        0: anomPrec,
+        1: anomTsm,
+        2: anomTemp,
+        3: anomPnmm,
+        4: anomGeop,
+        5: anomUmid,
+        6: anomPsi,
+        7: anomVento,
+        8: anomVento,
+        9: anomChi,
+      };
+
+      const indexSubtitle = {
+        0: anomRad,
+        1: anomUmid,
+        2: anomGeop,
+        3: anomPrec,
+        4: anomUmid,
+      };
+      if (analysis === 0) {
+        this.selectedSubtitle({ subtitle: indexSubtitle[variable] });
       } else {
-        this.selectedSubtitle({ subtitle: null });
+        this.selectedSubtitle({ subtitle: analysisSubtitle[variable] });
       }
     },
   }),

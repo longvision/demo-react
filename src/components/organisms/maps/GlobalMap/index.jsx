@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import InfoIcon from '@material-ui/icons/Info';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
+import Ruler from '../../../../assets/icons/ruler.png';
 import { positions } from '../sharedPositions.js';
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 const MOBILE_HEIGHT = 158;
@@ -126,6 +127,7 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
+  ruler: { height: 35, width: 35, transform: 'rotate(45deg)' },
 }));
 
 function GlobalMap() {
@@ -163,7 +165,7 @@ function GlobalMap() {
               aria-label="bold"
               className={classes.button}
             >
-              <InfoIcon />
+              <img src={Ruler} className={classes.ruler} />
             </ToggleButton>
           </ToggleButtonGroup>
           {subtitle && show && (
