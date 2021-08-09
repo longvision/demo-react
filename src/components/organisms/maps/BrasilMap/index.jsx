@@ -334,9 +334,8 @@ const useStyles = makeStyles((theme) => ({
 
   singleSubtitle: {
     height: ICON_WIDTH,
-    zIndex: 0,
+    zIndex: 5,
     position: 'absolute',
-
     top: positions.SINGLE_BR_TOP_MOBILE,
     left: ICON_WIDTH,
     [theme.breakpoints.up('sm')]: {
@@ -374,7 +373,7 @@ const useStyles = makeStyles((theme) => ({
     width: ICON_WIDTH,
     height: ICON_WIDTH,
     backgroundColor: 'gray',
-    zIndex: 0,
+    zIndex: 11,
     position: 'absolute',
     [theme.breakpoints.up('sm')]: {
       zIndex: 0,
@@ -403,7 +402,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     height: ICON_WIDTH,
-    zIndex: 0,
+    zIndex: 11,
     position: 'absolute',
     top: positions.BR_TOP_MOBILE,
     left: ICON_WIDTH,
@@ -472,10 +471,10 @@ const useStyles = makeStyles((theme) => ({
   },
   ruler: { height: 35, width: 35 },
   subBox: {
-    backgroundColor: '#ffffff',
-    width: '100%',
-    height: '100%',
-    zIndex: 1,
+    height: ICON_WIDTH,
+    zIndex: 4,
+
+    backgroundColor: 'red',
   },
 }));
 
@@ -504,17 +503,13 @@ function BrasilMap({ shape, checked }) {
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <>
           {subtitle && show && (
-            <div className={classes.subBox}>
-              <img
-                src={subtitle}
-                alt="label"
-                className={
-                  checked === 'brasil'
-                    ? classes.singleSubtitle
-                    : classes.subtitle
-                }
-              />
-            </div>
+            <img
+              src={subtitle}
+              alt="label"
+              className={
+                checked === 'brasil' ? classes.singleSubtitle : classes.subtitle
+              }
+            />
           )}
 
           <img
