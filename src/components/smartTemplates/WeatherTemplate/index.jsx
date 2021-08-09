@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     [theme.breakpoints.up('lg')]: {
-      width: '100%',
+      width: '90%',
       justifyContent: 'center',
       alignItems: 'center',
     },
