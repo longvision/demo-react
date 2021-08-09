@@ -153,7 +153,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginBottom: 15,
   },
-  titleText: { marginLeft: 150 },
+  titleText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
   iconButton: {
     width: 44,
     height: 44,
@@ -414,6 +419,7 @@ const WeatherTemplate = () => {
                   )}`}
                 </Typography>
               </Grid>
+
               <Grid className={classes.iconButton}>
                 <IconButton
                   icon={<InfoIcon />}
