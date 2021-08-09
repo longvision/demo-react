@@ -470,12 +470,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ruler: { height: 35, width: 35 },
-  subBox: {
-    height: ICON_WIDTH,
-    zIndex: 4,
-
-    backgroundColor: 'red',
-  },
 }));
 
 function BrasilMap({ shape, checked }) {
