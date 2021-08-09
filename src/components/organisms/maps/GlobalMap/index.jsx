@@ -140,6 +140,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ruler: { height: 35, width: 35 },
+  subBox: {
+    backgroundColor: '#ffffff',
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  },
 }));
 
 function GlobalMap() {
@@ -181,7 +187,9 @@ function GlobalMap() {
             </ToggleButton>
           </ToggleButtonGroup>
           {subtitle && show && (
-            <img src={subtitle} alt="label" className={classes.subtitle} />
+            <div className={classes.subBox}>
+              <img src={subtitle} alt="label" className={classes.subtitle} />
+            </div>
           )}
         </>
       ) : (

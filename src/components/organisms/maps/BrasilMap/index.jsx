@@ -197,6 +197,7 @@ const useStyles = makeStyles((theme) => ({
   singleShapes: {
     zIndex: 0,
     position: 'absolute',
+
     // marginTop: 5,
     display: 'flex',
     justifyContent: 'center',
@@ -335,6 +336,7 @@ const useStyles = makeStyles((theme) => ({
     height: ICON_WIDTH,
     zIndex: 0,
     position: 'absolute',
+
     top: positions.SINGLE_BR_TOP_MOBILE,
     left: ICON_WIDTH,
     [theme.breakpoints.up('sm')]: {
@@ -469,6 +471,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   ruler: { height: 35, width: 35 },
+  subBox: {
+    backgroundColor: '#ffffff',
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  },
 }));
 
 function BrasilMap({ shape, checked }) {
@@ -496,13 +504,17 @@ function BrasilMap({ shape, checked }) {
       {selectedBrasilMap && selectedBrasilMap.length ? (
         <>
           {subtitle && show && (
-            <img
-              src={subtitle}
-              alt="label"
-              className={
-                checked === 'brasil' ? classes.singleSubtitle : classes.subtitle
-              }
-            />
+            <div className={classes.subBox}>
+              <img
+                src={subtitle}
+                alt="label"
+                className={
+                  checked === 'brasil'
+                    ? classes.singleSubtitle
+                    : classes.subtitle
+                }
+              />
+            </div>
           )}
 
           <img
