@@ -107,12 +107,23 @@ export const composeTitle = (
 }`;
   }
   if (analysis === 1) {
-    return ` ${statisticDictionary(analysis, statistic)} 
+    if (statistic !== 1) {
+      return ` ${statisticDictionary(analysis, statistic)} 
   ${variableDictionary(analysis, variable)}
   - ${
   isTrimesterSearch
     ? setTrimesterName(trimester)
     : setMonthCompleteName(month)
 }/${year}`;
+    }
+  }
+  if (statistic === 1) {
+    return ` ${statisticDictionary(analysis, statistic)} 
+  ${variableDictionary(analysis, variable)}
+  - ${
+  isTrimesterSearch
+    ? setTrimesterName(trimester)
+    : setMonthCompleteName(month)
+}`;
   }
 };

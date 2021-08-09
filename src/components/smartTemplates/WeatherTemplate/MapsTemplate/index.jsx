@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    // flexWrap: 'wrap',
+    // flexWrap: 'nowrap',
 
     // [theme.breakpoints.up('xl')]: {
     //   justifyContent: 'space-evenly',

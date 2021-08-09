@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, CircularProgress, Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import InfoIcon from '@material-ui/icons/Info';
+
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
-import Ruler from '../../../../assets/icons/ruler.png';
+import Ruler from '../../../../assets/icons/ruler.svg';
 import { positions } from '../sharedPositions.js';
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 const MOBILE_HEIGHT = 158;
@@ -30,10 +30,22 @@ const useStyles = makeStyles((theme) => ({
     height: MOBILE_HEIGHT,
     // 1920
     // 1080
-    [theme.breakpoints.up('sm')]: { height: TABLET_HEIGHT + 4 },
-    [theme.breakpoints.up('md')]: { height: LAPTOP_HEIGHT + 4 },
-    [theme.breakpoints.up('lg')]: { height: DESKTOP_HEIGHT + 4 },
-    [theme.breakpoints.up('xl')]: { height: XL_HEIGHT + 5 },
+    [theme.breakpoints.up('sm')]: {
+      height: TABLET_HEIGHT + 4,
+      minWidth: TABLET_HEIGHT * 2.23,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: LAPTOP_HEIGHT + 4,
+      minWidth: LAPTOP_HEIGHT * 2.23,
+    },
+    [theme.breakpoints.up('lg')]: {
+      height: DESKTOP_HEIGHT + 4,
+      minWidth: DESKTOP_HEIGHT * 2.23,
+    },
+    [theme.breakpoints.up('xl')]: {
+      height: XL_HEIGHT + 5,
+      minWidth: XL_HEIGHT * 2.23,
+    },
   },
   image: {
     height: MOBILE_HEIGHT,
@@ -127,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
-  ruler: { height: 35, width: 35, transform: 'rotate(45deg)' },
+  ruler: { height: 35, width: 35 },
 }));
 
 function GlobalMap() {

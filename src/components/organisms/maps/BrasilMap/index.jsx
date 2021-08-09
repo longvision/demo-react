@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import Map from '../../../atoms/map/Map';
 import Bacias from '../../../../assets/images/contornos/web_brasil_layer3.png';
 import Estados from '../../../../assets/images/contornos/web_brasil_layer4.png';
-import Ruler from '../../../../assets/icons/ruler.png';
+import Ruler from '../../../../assets/icons/ruler.svg';
 
 // positions sao referentes ao botao e à legenda
 import { positions } from '../sharedPositions.js';
@@ -466,7 +466,7 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
-  ruler: { height: 35, width: 35, transform: 'rotate(45deg)' },
+  ruler: { height: 35, width: 35 },
 }));
 
 function BrasilMap({ shape, checked }) {

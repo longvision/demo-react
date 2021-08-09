@@ -12,6 +12,14 @@ import anomTemp from '../../assets/images/legendas/anomalias/legenda_anom_temper
 import anomTsm from '../../assets/images/legendas/anomalias/legenda_anom_tsm.svg';
 import anomVento from '../../assets/images/legendas/anomalias/legenda_anom_vento.svg';
 
+import umid from '../../assets/images/legendas/cabecalhos/legenda_divergência_de_umidade.svg';
+import geop from '../../assets/images/legendas/cabecalhos/legenda_geopotencial.svg';
+import vento from '../../assets/images/legendas/cabecalhos/legenda_magnitude_do_vento.svg';
+import prec from '../../assets/images/legendas/cabecalhos/legenda_precipitação.svg';
+import t2m from '../../assets/images/legendas/cabecalhos/legenda_pressão_nível_médio_do_ar.svg';
+import mar from '../../assets/images/legendas/cabecalhos/legenda_pressão_nível_médio_do_mar.svg';
+import tsm from '../../assets/images/legendas/cabecalhos/legenda_tsm.svg';
+
 export const images = {
   name: 'images',
   state: {
@@ -157,7 +165,7 @@ export const images = {
         analysis, statistic, variable,
       } = payload;
 
-      const analysisSubtitle = {
+      const analysisAnomSubtitle = {
         0: anomPrec,
         1: anomTsm,
         2: anomTemp,
@@ -167,6 +175,18 @@ export const images = {
         6: anomPsi,
         7: anomVento,
         8: anomVento,
+        9: anomChi,
+      };
+      const analysisSubtitle = {
+        0: prec,
+        1: tsm,
+        2: t2m,
+        3: anomPnmm,
+        4: geop,
+        5: umid,
+        6: anomPsi,
+        7: vento,
+        8: vento,
         9: anomChi,
       };
 
@@ -179,8 +199,13 @@ export const images = {
       };
       if (analysis === 0) {
         this.selectedSubtitle({ subtitle: indexSubtitle[variable] });
-      } else {
-        this.selectedSubtitle({ subtitle: analysisSubtitle[variable] });
+      }
+      if (analysis === 1) {
+        if (statistic === 0) {
+          this.selectedSubtitle({ subtitle: analysisAnomSubtitle[variable] });
+        } else {
+          this.selectedSubtitle({ subtitle: analysisSubtitle[variable] });
+        }
       }
     },
   }),

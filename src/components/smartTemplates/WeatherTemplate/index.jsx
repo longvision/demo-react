@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
     // margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
+
     [theme.breakpoints.up('lg')]: {
       // width: '100%',
       justifyContent: 'center',
-      flexWrap: 'nowrap',
+      // flexWrap: 'nowrap',
       alignItems: 'flex-start',
     },
 
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: '1rem',
     margin: '1rem',
-    [theme.breakpoints.down('lg')]: {
+    [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       marginLeft: 15,
       padding: 0,
@@ -104,11 +105,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       justifyContent: 'center',
       marginLeft: 15,
+      width: '90%',
     },
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       padding: 15,
-      width: '90%',
+      width: 1200,
     },
     [theme.breakpoints.up('lg')]: {
       width: 320,
@@ -189,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     // flexWrap: 'wrap',
     width: '100%',
-    [theme.breakpoints.up('md')]: { width: '100%' },
+    [theme.breakpoints.up('md')]: { width: '100%', flexWrap: 'nowrap' },
     [theme.breakpoints.up('lg')]: { width: '100%' },
     [theme.breakpoints.up('xl')]: { width: '100%' },
   },
@@ -218,7 +220,7 @@ const WeatherTemplate = () => {
 
   const latestReportMonth = -1;
   const latestReportTrimester = -2;
-
+  const FIRSTREPORTYEAR = 1981;
   useEffect(() => {
     if (analysis === 0) {
       // year is set to other than current one in order to set months and trimesters bars to full size
@@ -239,7 +241,7 @@ const WeatherTemplate = () => {
   }, [statistic]);
 
   function handleDecrement() {
-    if (year > 1979 && year <= maxYear && range >= 0) {
+    if (year > FIRSTREPORTYEAR && year <= maxYear && range >= 0) {
       setRange(range + 1);
       setYear(year - 1);
     }
