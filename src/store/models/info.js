@@ -13,7 +13,7 @@ export const info = {
     },
   },
   effects: (dispatch) => ({
-    async getDescriptionAsync(payload) {
+    async getDescriptionAsync(payload, rootState) {
       const {
         analysis, variable, indexType,
       } = payload;
@@ -25,12 +25,14 @@ export const info = {
           : await config.variables[analysisValue][variable];
 
       console.log({
-        session_id: '8978d76440e44ebbbed7c2c04784cedf',
+        session_id:
+          rootState.images.token ?? '8978d76440e44ebbbed7c2c04784cedf',
         analise: analysisValue,
         variavel: textVariable,
       });
       const res = await api.post('/tokclima/variableinfo', {
-        session_id: '8978d76440e44ebbbed7c2c04784cedf',
+        session_id:
+          rootState.images.token ?? '8978d76440e44ebbbed7c2c04784cedf',
         variavel: textVariable,
       });
 

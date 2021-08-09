@@ -2,11 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import InfoIcon from '@material-ui/icons/Info';
 import MapsTemplate from './MapsTemplate';
 import HeaderControls from '../../organisms/controls/HeaderControls';
 import RulerControls from '../../organisms/controls/RulerControls';
 import { composeTitle } from '../../../utils/imageTitles.js';
-
+import IconButton from '../../molecules/button/IconButton';
 import TextBox from '../../organisms/textboxes/TextBox';
 
 const useStyles = makeStyles((theme) => ({
@@ -144,6 +145,22 @@ const useStyles = makeStyles((theme) => ({
       height: 927,
     },
   },
+  titleBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  titleText: { marginLeft: 150 },
+  iconButton: {
+    width: 44,
+    height: 44,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 16,
@@ -187,6 +204,7 @@ const WeatherTemplate = () => {
   const [range, setRange] = useState(0);
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
   const [maxMonth, setMaxMonth] = useState(new Date().getMonth() - 1);
+  const [hideTextBox, setHideTextBox] = useState(true);
 
   const latestReportMonth = -1;
   const latestReportTrimester = -2;
@@ -209,21 +227,6 @@ const WeatherTemplate = () => {
       setYear(maxYear - 1);
     }
   }, [statistic]);
-
-  useEffect(() => {
-    dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
-    if (
-      (analysis === 1 && variable === 0) ||
-      (analysis === 0 && variable === 3)
-    ) {
-      setMap('brasil');
-    } else {
-      setMap('todas');
-    }
-    if (analysis === 0 && indexType !== 0) {
-      setPhase(0);
-    }
-  }, [variable]);
 
   function handleDecrement() {
     if (year > 1979 && year <= maxYear && range >= 0) {
@@ -351,6 +354,25 @@ const WeatherTemplate = () => {
     dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
   }, [indexType]);
 
+  useEffect(() => {
+    dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
+    if (
+      (analysis === 1 && variable === 0) ||
+      (analysis === 0 && variable === 3)
+    ) {
+      setMap('brasil');
+    } else {
+      setMap('todas');
+    }
+    if (analysis === 0 && indexType !== 0) {
+      setPhase(0);
+    }
+  }, [variable]);
+
+  function handleHideTextBox() {
+    setHideTextBox(!hideTextBox);
+  }
+
   return (
     <Box className={classes.page}>
       <Box className={classes.container}>
@@ -376,20 +398,31 @@ const WeatherTemplate = () => {
             />
           </Paper>
           <Paper className={classes.body}>
-            <Typography className={classes.title}>
-              {` ${composeTitle(
-                analysis,
-                indexType,
-                variable,
-                statistic,
-                phase,
-                isTrimesterSearch,
-                trimester,
-                month,
-                year,
-              )}`}
-            </Typography>
-
+            <Grid className={classes.titleBar}>
+              <Grid className={classes.titleText}>
+                <Typography className={classes.title}>
+                  {` ${composeTitle(
+                    analysis,
+                    indexType,
+                    variable,
+                    statistic,
+                    phase,
+                    isTrimesterSearch,
+                    trimester,
+                    month,
+                    year,
+                  )}`}
+                </Typography>
+              </Grid>
+              <Grid className={classes.iconButton}>
+                <IconButton
+                  icon={<InfoIcon />}
+                  className={classes.leftIcon}
+                  handleclick={handleHideTextBox}
+                  disabled={false}
+                />
+              </Grid>
+            </Grid>
             <MapsTemplate checked={map} shape={shape} setShape={setShape} />
             <RulerControls
               handleDecrement={handleDecrement}
@@ -412,12 +445,18 @@ const WeatherTemplate = () => {
         </Box>
       </Box>
       <Box className={classes.sideContainer}>
-        <Box className={classes.sideBox} />
-        <Paper
-          className={map === 'brasil' ? classes.textBoxBrasil : classes.textBox}
-        >
-          <TextBox />
-        </Paper>
+        {!hideTextBox && (
+          <>
+            <Box className={classes.sideBox} />
+            <Paper
+              className={
+                map === 'brasil' ? classes.textBoxBrasil : classes.textBox
+              }
+            >
+              <TextBox />
+            </Paper>
+          </>
+        )}
       </Box>
     </Box>
   );
