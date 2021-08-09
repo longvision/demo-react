@@ -309,7 +309,7 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 0,
       position: 'absolute',
       top: 0,
-      left: 1,
+      left: 0,
     },
     [theme.breakpoints.up('lg')]: {
       width: SINGLE_DESKTOP_HEIGHT_AND_WIDTH,
