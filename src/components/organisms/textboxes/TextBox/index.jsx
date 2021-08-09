@@ -5,7 +5,7 @@ import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   container: {
-    height: '95%',
+    // height: '88%',
     textAlign: 'left',
     overflow: 'auto',
     marginTop: 10,
@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     display: 'table-cell',
   },
+  title: { verticalAlign: 'middle' },
 }));
 
 function TextBox({ variable, source }) {
@@ -39,16 +40,18 @@ function TextBox({ variable, source }) {
 
   return (
     <>
-      <Box>
-        <Typography
-          variant="subtitle1"
-          component="subtitle1"
-          align="justify"
-          gutterBottom
-        >
-          <strong>{description.header}</strong>
-        </Typography>
-      </Box>
+      <Container className={classes.container}>
+        <Box>
+          <Typography
+            variant="subtitle1"
+            component="subtitle1"
+            // align="justify"
+            gutterBottom
+          >
+            <strong>{description.header}</strong>
+          </Typography>
+        </Box>
+      </Container>
       <Container className={classes.container}>
         <Box className={classes.box} textOverflow="ellipsis">
           <Typography

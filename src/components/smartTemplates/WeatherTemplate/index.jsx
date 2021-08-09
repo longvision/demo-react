@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     // margin: 15,
     justifyContent: 'center',
     flexWrap: 'wrap',
 
-    [theme.breakpoints.up('lg')]: {
-      // width: '100%',
-      justifyContent: 'center',
-      // flexWrap: 'nowrap',
-      alignItems: 'flex-start',
-    },
+    // [theme.breakpoints.up('lg')]: {
+    //   // width: '100%',
+    //   justifyContent: 'center',
+    //   flexWrap: 'nowrap',
+    //   alignItems: 'flex-start',
+    // },
 
     [theme.breakpoints.up('xl')]: {
       // width: '100%',
@@ -52,23 +52,27 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     padding: '1rem',
-    margin: '1rem',
+
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       marginLeft: 15,
       padding: 0,
       width: '100%',
+      margin: '1rem',
+      height: 0,
     },
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 81,
+      height: 0,
+      margin: '1rem',
     },
     [theme.breakpoints.up('xl')]: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
+      margin: '1rem',
       height: 81,
     },
   },
@@ -101,54 +105,55 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 531,
+    height: '100%',
     [theme.breakpoints.up('sm')]: {
       justifyContent: 'center',
       marginLeft: 15,
-      width: '90%',
     },
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       padding: 15,
-      width: 1200,
+      width: 880,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 320,
+      width: '100%',
       justifyContent: 'center',
       // marginTop: 111,
       padding: 15,
       marginLeft: 15,
-      height: 595,
+      height: '100%',
     },
     [theme.breakpoints.up('xl')]: {
-      width: 320,
       justifyContent: 'center',
       padding: 15,
-      height: 627,
+      height: 702,
     },
   },
   textBoxBrasil: {
     backgroundColor: 'white',
     padding: 15,
-    width: '100%',
+    width: '90%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 531,
+    height: '100%',
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
+      width: 624,
+    },
     [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
-      marginLeft: 15,
-      width: 777,
+      width: 776,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 320,
+      width: '90%',
       justifyContent: 'center',
       // marginTop: 111,
       padding: 15,
       marginLeft: 15,
-      height: 702,
+      // height: 702,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 320,
+      width: '100%',
       justifyContent: 'center',
       padding: 15,
       height: 927,
@@ -191,7 +196,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     // flexWrap: 'wrap',
     width: '100%',
-    [theme.breakpoints.up('md')]: { width: '100%', flexWrap: 'nowrap' },
+    [theme.breakpoints.up('md')]: { width: '100%' },
     [theme.breakpoints.up('lg')]: { width: '100%' },
     [theme.breakpoints.up('xl')]: { width: '100%' },
   },
@@ -386,9 +391,9 @@ const WeatherTemplate = () => {
   }
 
   return (
-    <Box className={classes.page}>
-      <Box className={classes.container}>
-        <Box className={classes.main}>
+    <Grid container className={classes.page}>
+      <Grid item className={classes.container} xl={10} lg={12}>
+        <Grid className={classes.main}>
           <Paper className={classes.paper}>
             <HeaderControls
               analysis={analysis}
@@ -455,12 +460,12 @@ const WeatherTemplate = () => {
               analysis={analysis}
             />
           </Paper>
-        </Box>
-      </Box>
-      <Box className={classes.sideContainer}>
+        </Grid>
+      </Grid>
+      <Grid item className={classes.sideContainer} xl={2} lg={12}>
         {!hideTextBox && (
           <>
-            <Box className={classes.sideBox} />
+            <Grid className={classes.sideBox} />
             <Paper
               className={
                 map === 'brasil' ? classes.textBoxBrasil : classes.textBox
@@ -470,8 +475,8 @@ const WeatherTemplate = () => {
             </Paper>
           </>
         )}
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 
