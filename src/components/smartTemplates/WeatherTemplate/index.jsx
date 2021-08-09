@@ -13,6 +13,7 @@ import TextBox from '../../organisms/textboxes/TextBox';
 const useStyles = makeStyles((theme) => ({
   page: {
     height: 1080,
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       width: '100%',
       justifyContent: 'center',
-      flexWrap: 'nowrap',
+      // flexWrap: 'nowrap',
       alignItems: 'flex-start',
     },
   },
@@ -175,13 +176,13 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     backgroundColor: 'white',
-    padding: 15,
+    padding: 5,
     // margin: 15,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     width: '100%',
     [theme.breakpoints.up('md')]: { width: '100%' },
     [theme.breakpoints.up('lg')]: { width: '100%' },
