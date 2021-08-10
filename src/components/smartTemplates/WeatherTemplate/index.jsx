@@ -369,7 +369,7 @@ const WeatherTemplate = () => {
 
   useEffect(() => {
     dispatch.info.getDescriptionAsync({ analysis, variable, indexType });
-  }, [indexType]);
+  }, [analysis, indexType]);
 
   useEffect(() => {
     dispatch.info.getDescriptionAsync({ analysis, variable, indexType });

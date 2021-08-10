@@ -25,6 +25,7 @@ module.exports = {
     'consistent-return': 0,
     'import/namespace': 2,
     'import/default': 2,
+    'react/no-array-index-key': 0,
     'import/export': 2,
     'no-useless-return': 1,
     'prefer-destructuring': [

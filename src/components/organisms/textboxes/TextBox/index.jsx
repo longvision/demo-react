@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { useSelector } from 'react-redux';
 import { makeStyles, Box, Typography, Container } from '@material-ui/core';
@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     display: 'table-cell',
   },
+  body: { whiteSpace: 'pre-line' },
   title: { verticalAlign: 'middle' },
 }));
 
@@ -54,14 +55,18 @@ function TextBox({ variable, source }) {
       </Container>
       <Container className={classes.container}>
         <Box className={classes.box} textOverflow="ellipsis">
-          <Typography
-            variant="subtitle1"
-            component="p"
-            // align="justify"
-            gutterBottom
-          >
-            {description.body}
-          </Typography>
+          {description.body.split('|n|').map((item, key) => (
+            <Typography
+              variant="subtitle1"
+              component="p"
+              // align="justify"
+              gutterBottom
+              key={key}
+            >
+              {item !== '|n|' && item}
+              <br />
+            </Typography>
+          ))}
           <Box />
           <Typography variant="body1" component="body1" gutterBottom>
             <strong>Fonte:</strong>
