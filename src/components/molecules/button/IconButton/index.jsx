@@ -15,7 +15,7 @@ const IconButton = ({
       <MUIIconButton
         disabled={disabled}
         variant="contained"
-        size="large"
+        size="medium"
         onClick={handleclick}
         {...props}
       >

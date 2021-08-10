@@ -12,6 +12,7 @@ module.exports = {
   plugins: ['react', 'import', 'prettier'],
   rules: {
     'react/jsx-no-undef': 0,
+    'no-undef': 0,
     'jsx-a11y/alt-text': 'off',
     'operator-linebreak': 0,
     'prettier/prettier': 0,

@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core';
 
 import { ptBR } from '@material-ui/core/locale';
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   spacing: 2,
   palette: {
     primary: {
