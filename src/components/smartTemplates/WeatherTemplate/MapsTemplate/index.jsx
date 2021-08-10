@@ -13,12 +13,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    // flexWrap: 'nowrap',
-
-    // [theme.breakpoints.up('xl')]: {
-    //   justifyContent: 'space-evenly',
-    //   flexWrap: 'nowrap',
-    // },
+    [theme.breakpoints.up('xl')]: { flexWrap: 'nowrap' },
+    [theme.breakpoints.up('lg')]: { flexWrap: 'nowrap' },
   },
   checkboxes: {
     display: 'flex',

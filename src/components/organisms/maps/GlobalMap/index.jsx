@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: 370,
 
     margin: 7,
-    height: MOBILE_HEIGHT,
+    height: MOBILE_HEIGHT + 4,
     // 1920
     // 1080
     [theme.breakpoints.up('sm')]: {
