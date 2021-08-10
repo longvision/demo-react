@@ -33,6 +33,7 @@ const RulerControls = ({
   setYear,
   statistic,
   analysis,
+  variable,
 }) => {
   const classes = useStyles();
 
@@ -48,6 +49,8 @@ const RulerControls = ({
         year={year}
         maxYear={maxYear}
         maxMonth={maxMonth}
+        variable={variable}
+        analysis={analysis}
       />
 
       <TrimesterRuler
@@ -58,6 +61,8 @@ const RulerControls = ({
         year={year}
         maxMonth={maxMonth}
         maxYear={maxYear}
+        analysis={analysis}
+        variable={variable}
       />
       {statistic !== 1 && analysis !== 0 && (
         <YearRuler

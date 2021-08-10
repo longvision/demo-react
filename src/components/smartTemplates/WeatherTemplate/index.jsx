@@ -457,6 +457,7 @@ const WeatherTemplate = () => {
               setYear={setYear}
               statistic={statistic}
               analysis={analysis}
+              variable={variable}
             />
           </Paper>
         </Grid>

@@ -29,8 +29,23 @@ const MonthRuler = ({
   year,
   maxMonth,
   maxYear,
+  analysis,
+  variable,
 }) => {
   const classes = useStyles();
+
+  function setLastMonth(analys, variab) {
+    if (analys === 1 && variab === 0) {
+      return setMonthName(maxMonth - 1);
+    }
+    return setMonthName(maxMonth);
+  }
+  function setMaxMonth(analys, variab) {
+    if (analys === 1 && variab === 0) {
+      return 12 - maxMonth - 1;
+    }
+    return 12 - maxMonth;
+  }
 
   return (
     <Grid container className={classes.container}>
@@ -54,7 +69,7 @@ const MonthRuler = ({
             defaultValue={0}
             step={1}
             min={0}
-            max={year !== maxYear ? 11 : 12 - maxMonth}
+            max={year !== maxYear ? 11 : setMaxMonth(analysis, variable)}
             labelFunction={setMonthName}
             disabled={disabled}
             handleChange={setMonth}
@@ -68,7 +83,9 @@ const MonthRuler = ({
             variant="h3"
             color={disabled ? 'textSecondary' : 'primary'}
           >
-            <strong>{year !== maxYear ? 'DEZ' : setMonthName(maxMonth)}</strong>
+            <strong>
+              {year !== maxYear ? 'DEZ' : setLastMonth(analysis, variable)}
+            </strong>
           </Typography>
         </Grid>
       </Button>
