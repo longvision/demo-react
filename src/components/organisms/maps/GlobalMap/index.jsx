@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Map from '../../../atoms/map/Map';
 import Ruler from '../../../../assets/icons/ruler.svg';
-import { positions } from '../sharedPositions.js';
+import { positions, extraSize } from '../sharedPositions.js';
+
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 const MOBILE_HEIGHT = 158;
 const TABLET_HEIGHT = 258;
@@ -14,6 +15,7 @@ const LAPTOP_HEIGHT = 256;
 const DESKTOP_HEIGHT = 364;
 const XL_HEIGHT = 455;
 const WIDTH = '100%';
+const ICON_WIDTH = 50;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -76,39 +78,39 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     position: 'absolute',
     top: positions.TOP_MOBILE,
-    left: 44,
+    left: ICON_WIDTH,
     [theme.breakpoints.up('sm')]: {
-      height: 44,
+      height: ICON_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: positions.TOP_TABLET,
-      left: 44,
+      left: ICON_WIDTH,
     },
     [theme.breakpoints.up('md')]: {
-      height: 44,
+      height: ICON_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: positions.TOP_LAPTOP,
-      left: 44,
+      left: ICON_WIDTH,
     },
     [theme.breakpoints.up('lg')]: {
-      height: 44,
+      height: ICON_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: positions.TOP_DESKTOP,
-      left: 44,
+      left: ICON_WIDTH,
     },
     [theme.breakpoints.up('xl')]: {
-      height: 44,
+      height: ICON_WIDTH,
       zIndex: 0,
       position: 'absolute',
       top: positions.TOP_XL,
-      left: 44,
+      left: ICON_WIDTH,
     },
   },
   button: {
-    width: 44,
-    height: 44,
+    width: ICON_WIDTH,
+    height: ICON_WIDTH,
     backgroundColor: 'gray',
     zIndex: 0,
     position: 'absolute',
@@ -137,6 +139,8 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: positions.TOP_XL,
       left: 0,
+      width: ICON_WIDTH,
+      height: ICON_WIDTH,
     },
   },
   ruler: { height: 35, width: 35 },

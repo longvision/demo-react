@@ -11,7 +11,7 @@ import Estados from '../../../../assets/images/contornos/web_brasil_layer4.png';
 import Ruler from '../../../../assets/icons/ruler.svg';
 
 // positions sao referentes ao botao e à legenda
-import { positions } from '../sharedPositions.js';
+import { positions, extraSize } from '../sharedPositions.js';
 
 // A altura do mapa de Global deve ser igual aos lados do quadrado do mapa Brasil.
 
@@ -331,7 +331,6 @@ const useStyles = makeStyles((theme) => ({
       height: SINGLE_XL_HEIGHT_AND_WIDTH,
     },
   },
-
   singleSubtitle: {
     height: ICON_WIDTH,
     zIndex: 5,
@@ -360,11 +359,11 @@ const useStyles = makeStyles((theme) => ({
       left: ICON_WIDTH,
     },
     [theme.breakpoints.up('xl')]: {
-      height: ICON_WIDTH,
+      height: ICON_WIDTH + extraSize.XL_SCREEN_SUBTITLE_EXTRA_SIZE,
       zIndex: 0,
       position: 'absolute',
       top: positions.SINGLE_BR_TOP_XL,
-      left: ICON_WIDTH,
+      left: ICON_WIDTH + extraSize.XL_SCREEN_SUBTITLE_EXTRA_SIZE,
     },
   },
   singleButton: {
@@ -397,6 +396,8 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 0,
       position: 'absolute',
       top: positions.SINGLE_BR_TOP_XL,
+      width: ICON_WIDTH + extraSize.XL_SCREEN_SUBTITLE_EXTRA_SIZE,
+      height: ICON_WIDTH + extraSize.XL_SCREEN_SUBTITLE_EXTRA_SIZE,
       left: 0,
     },
   },
